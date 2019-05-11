@@ -19,8 +19,8 @@
 # Main Variables >>>>>>>>>>>>>> line  46
 # Print Var 	 >>>>>>>>>>>>>>	line  74 
 # Includes	 	 >>>>>>>>>>>>>>	line  96
-# Headers 		 >>>>>>>>>>>>>>	line 110 
-# Path Sources   >>>>>>>>>>>>>>	line 139
+# Headers 		 >>>>>>>>>>>>>>	line 106 
+# Path Sources   >>>>>>>>>>>>>>	line 133
 # Sources     	 >>>>>>>>>>>>>>	line 157
 #       |---> string		--> line 159 
 #       |---> char			--> line 236
@@ -95,12 +95,8 @@ ONELINE =\e[1A\r
 ################################################################################
 
 INCLUDES_LIBFT = includes/
-INCLUDES_FT_PRINTF = includes/ft_printf
-INCLUDES_GNL = includes/get_next_line
 
 I_INCLUDES += -I $(INCLUDES_LIBFT)
-I_INCLUDES += -I $(INCLUDES_FT_PRINTF)
-I_INCLUDES += -I $(INCLUDES_GNL)
 
 ################################################################################
 #################################               ################################
@@ -128,8 +124,6 @@ HEADER += ft_printf.h
 HEADER += ft_double.h
 
 vpath %.h $(INCLUDES_LIBFT)
-vpath %.h $(INCLUDES_FT_PRINTF)
-vpath %.h $(INCLUDES_GNL)
 
 ################################################################################
 #################################               ################################
