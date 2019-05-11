@@ -12,7 +12,7 @@
 
 #include "ft_string.h"
 
-char	*ft_strjoinfree(char **s1, char **s2, int which)
+char	*ft_strjoinfree_n(char **s1, char **s2, int which)
 {
 	char	*new_str;
 
@@ -21,5 +21,17 @@ char	*ft_strjoinfree(char **s1, char **s2, int which)
 		ft_strdel(s1);
 	if (which == SECOND || which == BOTH)
 		ft_strdel(s2);
+	return (new_str);
+}
+
+char	*ft_strjoinfree(char *s1, char *s2, int which)
+{
+	char	*new_str;
+
+	new_str = ft_strjoin(s1, s2);
+	if (which == FIRST || which == BOTH)
+		ft_strdel(&s1);
+	if (which == SECOND || which == BOTH)
+		ft_strdel(&s2);
 	return (new_str);
 }
