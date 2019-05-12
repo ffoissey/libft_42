@@ -440,7 +440,7 @@ $(DEBUG_NAME): $(DEBUG_OBJS)
 	printf "$(GREEN)$@ is ready.\n$(NC)"
 
 $(DEBUG_OBJS): $(DEBUG_PATH_OBJS)%.o: %.c $(HEADER) Makefile
-	$(CC) $(DFLAGS) $(I_INCLUDES) -c $< -o $@
+	$(CC) $(DBFLAGS) $(I_INCLUDES) -c $< -o $@
 	printf "$(ONELINE)$(PURPLE)Compiling for DEBUG $<"
 	printf "                                                            \n$(NC)"
 
