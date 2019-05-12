@@ -11,11 +11,10 @@
 /* ************************************************************************** */
 
 #include "ft_conversion.h"
-#include <limits.h>
 
 int		ft_atoi(const char *str)
 {
-	long		nbr;
+	int			nbr;
 	size_t		i;
 
 	nbr = 0;
@@ -24,19 +23,7 @@ int		ft_atoi(const char *str)
 		str++;
 	if (*str == '-' || *str == '+')
 		i++;
-	while (str[i] != '\0')
-	{
-		if (str[i] < '0' || str[i] > '9')
-			break ;
+	while (str[i] >= '0' && str[i] <= '9')
 		nbr = nbr * 10 + str[i++] - '0';
-	}
-	if (str[0] == '-')
-	{
-		if (nbr + 1 > LONG_MAX)
-			return (0);
-		return ((int)nbr * -1);
-	}	
-	if (nbr > LONG_MAX)
-		return (-1);
-	return ((int)nbr);
+	return (str[0] == '-' ? -nbr : nbr);
 }

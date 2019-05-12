@@ -10,20 +10,28 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
+#include "libft.h"
 
 char	*ft_strstr(const char *haystack, const char *needle)
 {
-	size_t		len_needle;
-	char		*target;
+	size_t		i;
+	size_t		j;
+	size_t		k;
 
-	target = (char *)haystack;
-	len_needle = ft_strlen((char *)len_needle);
-	while (target != '\0')
+	i = 0;
+	j = 0;
+	while (haystack[i])
 	{
-		if (ft_strnequ(target, needle, len_needle) == 1)
-			return (target);
-		target++;
+		j = 0;
+		k = i;
+		while (needle[j] == haystack[k] && needle[j])
+		{
+			j++;
+			k++;
+		}
+		if (!needle[j])
+			return ((char *)(haystack + i));
+		i++;
 	}
-	return (NULL);
+	return ((haystack[i] == needle[j]) ? ((char *)(haystack + i)) : NULL);
 }
