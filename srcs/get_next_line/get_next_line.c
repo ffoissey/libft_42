@@ -1,45 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_gnl_fd.c                                        :+:      :+:    :+:   */
+/*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/29 12:50:16 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/29 15:51:38 by ffoissey         ###   ########.fr       */
+/*   Created: 2018/11/16 10:56:25 by ffoissey          #+#    #+#             */
+/*   Updated: 2018/11/29 13:53:34 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-
-static t_list	*init_new_file(const int fd, char **line)
-{
-	t_file			*file;
-	t_list			*new_list;
-
-	if (fd < 0 || !line)
-		return (NULL);
-	if (!(file = (t_file *)malloc(sizeof(t_file))))
-		return (NULL);
-	file->fd = fd;
-	file->rest = NULL;
-	file->cur = NULL;
-	file->state = -1;
-	if (!(new_list = ft_lstnew(file, sizeof(t_file))))
-	{
-		free(file);
-		file = NULL;
-		if (new_list)
-		{
-			free(new_list);
-			new_list = NULL;
-		}
-		return (NULL);
-	}
-	free(file);
-	file = NULL;
-	return (new_list);
-}
 
 static void		ft_fill_line_with_rest(t_file *file)
 {
@@ -84,12 +55,11 @@ static int		ft_read(t_file *file)
 		if ((tmp = ft_strchr(buf, '\n')))
 		{
 			file->state = 1;
-			if (*(tmp + 1))
-				file->rest = ft_strdup(tmp + 1);
+			file->rest = ft_strdup(tmp + 1);
 			buf[tmp - buf] = '\0';
 			file->cur = ft_strjoin(file->cur, buf);
 			ft_strdel(&tmp_cur);
-			return (0);
+			return (SUCCESS);
 		}
 		file->cur = ft_strjoin(file->cur, buf);
 		ft_strdel(&tmp_cur);
@@ -99,43 +69,19 @@ static int		ft_read(t_file *file)
 	return (ret == -1 ? -1 : file->state);
 }
 
-static void		free_cp_lst(t_list **lst, t_file *file, char **line)
-{
-	if (file->cur)
-	{
-		*line = ft_strdup(file->cur);
-		ft_strdel(&file->cur);
-	}
-	else
-	{
-		free(file);
-		file = NULL;
-		free(*lst);
-		*lst = NULL;
-	}
-}
-
 int				get_next_line(const int fd, char **line)
 {
-	static	t_list	*lst = NULL;
-	t_list			*tmp;
+	static	t_file	file;
 
-	if (!line || (!lst && !(lst = init_new_file(fd, line))))
-		return (-1);
-	tmp = lst;
-	while (tmp)
+	if (fd < 0 || !line)
+		return (FAILURE);
+	ft_fill_line_with_rest(&file);
+	if (file.state != 1 && ft_read(&file) == FAILURE)
+		return (FAILURE);
+	if (file.cur != NULL)
 	{
-		if (FILEL->fd == fd)
-		{
-			ft_fill_line_with_rest(FILEL);
-			if (FILEL->state != 1 && ft_read(FILEL) == -1)
-				return (-1);
-			break ;
-		}
-		if (!tmp->next && !(tmp->next = init_new_file(fd, line)))
-			return (-1);
-		tmp = tmp->next;
+		*line = ft_strdup(file.cur);
+		ft_strdel(&file.cur);
 	}
-	free_cp_lst(&tmp, FILEL, line);
-	return (tmp ? FILEL->state : 0);
+	return ((*line == NULL && file.state != 0) ? FAILURE : file.state);
 }

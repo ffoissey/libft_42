@@ -22,21 +22,21 @@
 # Headers 		 >>>>>>>>>>>>>>	line 106 
 # Path Sources   >>>>>>>>>>>>>>	line 133
 # Sources     	 >>>>>>>>>>>>>>	line 157
-#       |---> string		--> line 159 
-#       |---> char			--> line 236
-#       |---> memory		--> line 256 
-#       |---> output		--> line 283 
-#       |---> conversion	--> line 307
-#       |---> maths			--> line 316
-#       |---> list			--> line 322
-#       |---> sort			--> line 343
-#       |---> other			--> line 352
-#       |---> get_next_line --> line 357 
-#       |---> ft_printf     --> line 362
-#       |---> #attribution  --> line 393 
-# Objs    	 	 >>>>>>>>>>>>>>	line 411
-# Rules     	 >>>>>>>>>>>>>>	line 423
-# End  		   	 >>>>>>>>>>>>>>	line 476
+#       |---> string		--> line 153 
+#       |---> char			--> line 230
+#       |---> memory		--> line 250 
+#       |---> output		--> line 277 
+#       |---> conversion	--> line 301
+#       |---> maths			--> line 310
+#       |---> list			--> line 318
+#       |---> sort			--> line 337
+#       |---> other			--> line 346
+#       |---> get_next_line --> line 351 
+#       |---> ft_printf     --> line 357
+#       |---> #attribution  --> line 388 
+# Objs    	 	 >>>>>>>>>>>>>>	line 406
+# Rules     	 >>>>>>>>>>>>>>	line 418
+# End  		   	 >>>>>>>>>>>>>>	line 471
 
 ################################################################################
 ################################                ################################
@@ -350,6 +350,7 @@ SRCS += ft_read_all.c
 #-------------------------------- GET NEXT LINE -------------------------------#
 
 SRCS += get_next_line.c
+SRCS += get_next_line_multifd.c
 SRCS += get_next_line_origin.c
 
 #---------------------------------- FT_PRINTF ---------------------------------#

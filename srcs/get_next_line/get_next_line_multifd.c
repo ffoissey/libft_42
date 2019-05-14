@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line_origin.c                             :+:      :+:    :+:   */
+/*   get_next_line_multifd.c                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/16 10:56:25 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/29 13:53:34 by ffoissey         ###   ########.fr       */
+/*   Created: 2018/11/29 12:50:16 by ffoissey          #+#    #+#             */
+/*   Updated: 2018/11/29 15:51:38 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ static int		ft_read(t_file *file)
 		if ((tmp = ft_strchr(buf, '\n')))
 		{
 			file->state = 1;
-			file->rest = ft_strdup(tmp + 1);
+			if (*(tmp + 1))
+				file->rest = ft_strdup(tmp + 1);
 			buf[tmp - buf] = '\0';
 			file->cur = ft_strjoin(file->cur, buf);
 			ft_strdel(&tmp_cur);
@@ -98,7 +99,23 @@ static int		ft_read(t_file *file)
 	return (ret == -1 ? -1 : file->state);
 }
 
-int				get_next_line_origin(const int fd, char **line)
+static void		free_cp_lst(t_list **lst, t_file *file, char **line)
+{
+	if (file->cur)
+	{
+		*line = ft_strdup(file->cur);
+		ft_strdel(&file->cur);
+	}
+	else
+	{
+		free(file);
+		file = NULL;
+		free(*lst);
+		*lst = NULL;
+	}
+}
+
+int				get_next_line_multifd(const int fd, char **line)
 {
 	static	t_list	*lst = NULL;
 	t_list			*tmp;
@@ -108,21 +125,17 @@ int				get_next_line_origin(const int fd, char **line)
 	tmp = lst;
 	while (tmp)
 	{
-		if (((t_file *)(tmp->content))->fd == fd)
+		if (FILEL->fd == fd)
 		{
-			ft_fill_line_with_rest((t_file *)(tmp->content));
-			if (((t_file *)(tmp->content))->state != 1
-				&& ft_read(tmp->content) == -1)
+			ft_fill_line_with_rest(FILEL);
+			if (FILEL->state != 1 && ft_read(FILEL) == -1)
 				return (-1);
-			if (((t_file *)(tmp->content))->cur)
-				*line = ft_strdup(((t_file *)(tmp->content))->cur);
-			ft_strdel(&(((t_file *)(tmp->content))->cur));
 			break ;
 		}
 		if (!tmp->next && !(tmp->next = init_new_file(fd, line)))
 			return (-1);
 		tmp = tmp->next;
 	}
-	return ((*line == NULL && ((t_file *)(tmp->content))->state != 0)
-			? -1 : ((t_file *)(tmp->content))->state);
+	free_cp_lst(&tmp, FILEL, line);
+	return (tmp ? FILEL->state : 0);
 }

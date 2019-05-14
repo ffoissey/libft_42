@@ -28,5 +28,6 @@ typedef struct		s_file
 
 int					get_next_line(const int fd, char **line);
 int					get_next_line_origin(const int fd, char **line);
+int					get_next_line_multifd(const int fd, char **line);
 
 #endif
