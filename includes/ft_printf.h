@@ -49,9 +49,12 @@ typedef	struct	s_flag
 	int			wildcard;
 }				t_flag;
 
-int				ft_printf(const char *format, ...);
-int				ft_dprintf(int fd, const char *format, ...);
-char			*ft_asprintf(const char *format, ...);
+int				ft_printf(const char *format, ...)
+				__attribute__((format(printf, 1, 2)));
+int				ft_dprintf(int fd, const char *format, ...)
+				__attribute__((format(printf, 2, 3)));
+char			*ft_asprintf(const char *format, ...)
+				__attribute__((format(printf, 1, 2)));
 int				ft_loop_args(char *s, va_list *args, char **out, t_flag *flag);
 char			*ft_fillcstr(const char *s, char **out, int null);
 void			ft_wildcard(va_list *args, t_flag *flag);
