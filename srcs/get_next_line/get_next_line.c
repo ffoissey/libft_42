@@ -76,6 +76,7 @@ int				get_next_line(const int fd, char **line)
 	if (fd < 0 || !line)
 		return (FAILURE);
 	ft_fill_line_with_rest(&file);
+	file.fd = fd;
 	if (file.state != 1 && ft_read(&file) == FAILURE)
 		return (FAILURE);
 	if (file.cur != NULL)
