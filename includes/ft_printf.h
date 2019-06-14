@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 16:27:07 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/05/24 15:37:10 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,12 @@ typedef	struct	s_flag
 	int			wildcard;
 }				t_flag;
 
-int				ft_printf(const char *format, ...)
-				__attribute__((format(printf, 1, 2)));
-int				ft_dprintf(int fd, const char *format, ...)
-				__attribute__((format(printf, 2, 3)));
-char			*ft_asprintf(const char *format, ...)
-				__attribute__((format(printf, 1, 2)));
+int				ft_printf(const char *format, ...) __attribute__
+						((format(printf,1,2)));
+int				ft_dprintf(int fd, const char *format, ...) __attribute__
+						((format(printf,2,3)));
+char			*ft_asprintf(const char *format, ...) __attribute__
+						((format(printf,1,2)));
 int				ft_loop_args(char *s, va_list *args, char **out, t_flag *flag);
 char			*ft_fillcstr(const char *s, char **out, int null);
 void			ft_wildcard(va_list *args, t_flag *flag);
