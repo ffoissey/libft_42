@@ -6,12 +6,12 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:25:10 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/03/14 15:58:34 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/07/10 17:49:54 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_DEFINE_LIBFT_H
-# define FT_DEFINE_LIBFT_H
+#ifndef DEFINE_LIBFT_H
+# define DEFINE_LIBFT_H
 
 /*
 ***************
