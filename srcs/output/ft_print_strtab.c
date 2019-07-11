@@ -12,10 +12,14 @@
 
 #include "ft_output.h"
 
-void	ft_print_strtab(char **tab)
+int	ft_print_strtab(char **tab)
 {
+	int ret;
+
+	ret = 0;
 	if (!tab)
-		return ;
+		return (0);
 	while (*tab)
-		ft_putendl(*tab++);
+		ret = ft_putendl(*tab++);
+	return (ret);
 }

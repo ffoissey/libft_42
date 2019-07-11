@@ -12,23 +12,26 @@
 
 #include "ft_output.h"
 
-void	ft_putnbr_fd(int n, int fd)
+int		ft_putnbr_fd(int n, int fd)
 {
+	int		ret;
+
 	if (n < 0)
 	{
 		if (n == -2147483648)
 		{
-			ft_putstr_fd("-2147483648", fd);
-			return ;
+			ret = ft_putstr_fd("-2147483648", fd);
+			return (ret);
 		}
-		write(fd, "-", 1);
-		ft_putnbr_fd(-n, fd);
+		ret = write(fd, "-", 1);
+		ret = ft_putnbr_fd(-n, fd);
 	}
 	else if (n <= 9)
-		ft_putchar_fd((char)(n + '0'), fd);
+		ret = ft_putchar_fd((char)(n + '0'), fd);
 	else
 	{
-		ft_putnbr_fd(n / 10, fd);
-		ft_putnbr_fd(n % 10, fd);
+		ret = ft_putnbr_fd(n / 10, fd);
+		ret = ft_putnbr_fd(n % 10, fd);
 	}
+	return (ret);
 }

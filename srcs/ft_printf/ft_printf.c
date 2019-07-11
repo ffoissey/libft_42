@@ -139,7 +139,8 @@ int			ft_printf(const char *format, ...)
 	if (len != -1)
 	{
 		len = ft_strlen_null(out, flag.null);
-		write(1, out, len);
+		if (write(1, out, len) == FAILURE)
+			len = -1;
 	}
 	ft_strdel(&out);
 	return (len);

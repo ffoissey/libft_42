@@ -30,7 +30,8 @@ int			ft_dprintf(int fd, const char *format, ...)
 	if (len != -1)
 	{
 		len = ft_strlen_null(out, flag.null);
-		write(fd, out, len);
+		if (write(fd, out, len) == FAILURE)
+			len = -1;
 	}
 	ft_strdel(&out);
 	return (len);

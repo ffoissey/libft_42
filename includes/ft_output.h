@@ -22,8 +22,8 @@
 ***************
 */
 
-void		ft_putchar(char c);
-void		ft_putchar_fd(char c, int fd);
+int			ft_putchar(char c);
+int			ft_putchar_fd(char c, int fd);
 
 /*
 ***************
@@ -31,10 +31,10 @@ void		ft_putchar_fd(char c, int fd);
 ***************
 */
 
-void		ft_putstr(char const *s);
-void		ft_putstr_fd(char const *s, int fd);
-void		ft_putendl(char const *s);
-void		ft_putendl_fd(char const *s, int fd);
+int			ft_putstr(char const *s);
+int			ft_putstr_fd(char const *s, int fd);
+int			ft_putendl(char const *s);
+int			ft_putendl_fd(char const *s, int fd);
 
 /*
 ***************
@@ -42,9 +42,9 @@ void		ft_putendl_fd(char const *s, int fd);
 ***************
 */
 
-void		ft_putnbr(int n);
-void		ft_putnbr_fd(int n, int fd);
-void		ft_putnbr_base(int nbr, char *base);
+int			ft_putnbr(int n);
+int			ft_putnbr_fd(int n, int fd);
+int			ft_putnbr_base(int nbr, char *base);
 
 /*
 ***************
@@ -52,8 +52,8 @@ void		ft_putnbr_base(int nbr, char *base);
 ***************
 */
 
-void		ft_print_inttab(int *tab, size_t size);
-void		ft_print_strtab(char **tab);
+int			ft_print_inttab(int *tab, size_t size);
+int			ft_print_strtab(char **tab);
 
 /*
 ***************
@@ -61,6 +61,6 @@ void		ft_print_strtab(char **tab);
 ***************
 */
 
-void		ft_print_int_bits(int m);
+int			ft_print_int_bits(int m);
 
 #endif

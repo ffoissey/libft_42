@@ -34,26 +34,29 @@ static int	check_base(char *base)
 	return (0);
 }
 
-void		ft_putnbr_base(int nbr, char *base)
+int			ft_putnbr_base(int nbr, char *base)
 {
+	int	ret;
+
 	if (!(*base) || !(*(base + 1)) || check_base(base))
-		return ;
+		return (-1);
 	if (nbr < 0)
 	{
-		write(1, "-", 1);
+		ret = write(1, "-", 1);
 		if (nbr == -2147483648)
 		{
-			ft_putnbr_base((nbr / (int)ft_strlen(base)) * -1, base);
-			ft_putchar(base[(nbr % (int)ft_strlen(base)) * -1]);
-			return ;
+			ret = ft_putnbr_base((nbr / (int)ft_strlen(base)) * -1, base);
+			ret += ft_putchar(base[(nbr % (int)ft_strlen(base)) * -1]);
+			return (ret);
 		}
-		ft_putnbr_base(nbr * -1, base);
+		ret = ft_putnbr_base(nbr * -1, base);
 	}
 	else if (nbr < (int)ft_strlen(base))
-		ft_putchar(base[nbr]);
+		ret = ft_putchar(base[nbr]);
 	else
 	{
-		ft_putnbr_base(nbr / (int)ft_strlen(base), base);
-		ft_putnbr_base(nbr % (int)ft_strlen(base), base);
+		ret = ft_putnbr_base(nbr / (int)ft_strlen(base), base);
+		ret = ft_putnbr_base(nbr % (int)ft_strlen(base), base);
 	}
+	return (ret);
 }

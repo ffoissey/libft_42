@@ -12,10 +12,10 @@
 
 #include "ft_output.h"
 
-void	ft_putendl(char const *s)
+int		ft_putendl(char const *s)
 {
 	if (!s)
-		return ;
+		return (0);
 	write(1, s, ft_strlen(s));
-	write(1, "\n", 1);
+	return (write(1, "\n", 1));
 }

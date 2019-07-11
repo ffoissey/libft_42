@@ -12,9 +12,9 @@
 
 #include "ft_output.h"
 
-void	ft_putstr(char const *s)
+int		ft_putstr(char const *s)
 {
 	if (!s)
-		return ;
-	write(1, s, ft_strlen(s));
+		return (0);
+	return (write(1, s, ft_strlen(s)));
 }

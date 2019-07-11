@@ -12,7 +12,7 @@
 
 #include "ft_printf.h"
 
-void	ft_print_int_bits(int m)
+int		ft_print_int_bits(int m)
 {
 	int		i;
 
@@ -27,5 +27,5 @@ void	ft_print_int_bits(int m)
 			write(1, " ", 1);
 		i--;
 	}
-	write(1, "\n", 1);
+	return (write(1, "\n", 1));
 }
