@@ -27,16 +27,16 @@
 #       |---> memory		--> line 250 
 #       |---> output		--> line 277 
 #       |---> conversion	--> line 301
-#       |---> maths			--> line 310
-#       |---> list			--> line 318
-#       |---> sort			--> line 337
-#       |---> other			--> line 346
-#       |---> get_next_line --> line 351 
-#       |---> ft_printf     --> line 357
-#       |---> #attribution  --> line 388 
-# Objs    	 	 >>>>>>>>>>>>>>	line 406
-# Rules     	 >>>>>>>>>>>>>>	line 418
-# End  		   	 >>>>>>>>>>>>>>	line 471
+#       |---> maths			--> line 311
+#       |---> list			--> line 319
+#       |---> sort			--> line 338
+#       |---> other			--> line 347
+#       |---> get_next_line --> line 352 
+#       |---> ft_printf     --> line 358
+#       |---> #attribution  --> line 389 
+# Objs    	 	 >>>>>>>>>>>>>>	line 407
+# Rules     	 >>>>>>>>>>>>>>	line 419
+# End  		   	 >>>>>>>>>>>>>>	line 472
 
 ################################################################################
 ################################                ################################
@@ -301,6 +301,7 @@ SRCS += ft_print_int_bits.c
 
 # Str to Int
 SRCS += ft_atoi.c
+SRCS += ft_atol.c
 
 # Int to Str
 SRCS += ft_itoa.c

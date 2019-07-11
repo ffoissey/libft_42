@@ -1,37 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_conversion.h                                    :+:      :+:    :+:   */
+/*   ft_atol.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 18:25:10 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/03/14 15:58:34 by ffoissey         ###   ########.fr       */
+/*   Created: 2018/11/05 18:25:30 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/02/11 18:21:15 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_CONVERSION_H
-# define FT_CONVERSION_H
+#include "ft_conversion.h"
 
-# include "define_libft.h"
-# include <string.h>
+long long	ft_atol(const char *str)
+{
+	long long	nbr;
+	size_t		i;
 
-/*
-****************
-** Str to Int **
-****************
-*/
-
-int			ft_atoi(const char *str);
-long long	ft_atol(const char *str);
-
-/*
-****************
-** Int to Str **
-****************
-*/
-
-char		*ft_itoa(int n);
-char		*ft_itoa_base(int value, int base);
-
-#endif
+	nbr = 0;
+	i = 0;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+		i++;
+	while (str[i] >= '0' && str[i] <= '9')
+		nbr = nbr * 10 + str[i++] - '0';
+	return (str[0] == '-' ? -nbr : nbr);
+}
