@@ -17,6 +17,7 @@
 # include "ft_list.h"
 # include <stdlib.h>
 # include <unistd.h>
+# define CLEANUP -42
 
 typedef struct		s_file
 {

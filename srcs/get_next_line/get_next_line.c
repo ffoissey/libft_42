@@ -73,17 +73,23 @@ int				get_next_line(const int fd, char **line)
 {
 	static	t_file	file;
 
-	if (fd < 0 || !line)
-		return (FAILURE);
-	file.fd = fd;
-	ft_fill_line_with_rest(&file);
-	file.fd = fd;
-	if (file.state != 1 && ft_read(&file) == FAILURE)
-		return (FAILURE);
-	if (file.cur != NULL)
+	if (fd >= 0 && line != NULL)
 	{
-		*line = ft_strdup(file.cur);
-		ft_strdel(&file.cur);
+		file.fd = fd;
+		ft_fill_line_with_rest(&file);
+		file.fd = fd;
+		if (file.state != 1 && ft_read(&file) == FAILURE)
+			return (FAILURE);
+		if (file.cur != NULL)
+		{
+			*line = ft_strdup(file.cur);
+			ft_strdel(&file.cur);
+		}
+		return ((*line == NULL && file.state != 0) ? FAILURE : file.state);
 	}
-	return ((*line == NULL && file.state != 0) ? FAILURE : file.state);
+	else if (fd != CLEANUP)
+		return (FAILURE);
+	ft_strdel(&file.rest);
+	ft_strdel(&file.cur);
+	return (SUCCESS);
 }
