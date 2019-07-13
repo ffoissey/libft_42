@@ -31,6 +31,7 @@ typedef struct		s_list
 */
 
 t_list				*ft_lstnew(void const *content, size_t content_size);
+t_list				*ft_lstnew_nomalloc(void *content, size_t content_size);
 
 /*
 ***************

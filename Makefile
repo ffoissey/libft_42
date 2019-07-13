@@ -29,14 +29,14 @@
 #       |---> conversion	--> line 301
 #       |---> maths			--> line 311
 #       |---> list			--> line 319
-#       |---> sort			--> line 338
-#       |---> other			--> line 347
-#       |---> get_next_line --> line 352 
-#       |---> ft_printf     --> line 358
-#       |---> #attribution  --> line 389 
-# Objs    	 	 >>>>>>>>>>>>>>	line 407
-# Rules     	 >>>>>>>>>>>>>>	line 419
-# End  		   	 >>>>>>>>>>>>>>	line 472
+#       |---> sort			--> line 339
+#       |---> other			--> line 348
+#       |---> get_next_line --> line 353
+#       |---> ft_printf     --> line 359
+#       |---> #attribution  --> line 390 
+# Objs    	 	 >>>>>>>>>>>>>>	line 408
+# Rules     	 >>>>>>>>>>>>>>	line 420
+# End  		   	 >>>>>>>>>>>>>>	line 473
 
 ################################################################################
 ################################                ################################
@@ -317,6 +317,7 @@ SRCS += ft_sqrt.c
 
 # New
 SRCS += ft_lstnew.c
+SRCS += ft_lstnew_nomalloc.c
 
 # Add
 SRCS += ft_lstadd.c
