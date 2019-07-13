@@ -29,14 +29,14 @@
 #       |---> conversion	--> line 301
 #       |---> maths			--> line 311
 #       |---> list			--> line 319
-#       |---> sort			--> line 342
-#       |---> other			--> line 351
-#       |---> get_next_line --> line 356
-#       |---> ft_printf     --> line 362
-#       |---> #attribution  --> line 393 
-# Objs    	 	 >>>>>>>>>>>>>>	line 411
-# Rules     	 >>>>>>>>>>>>>>	line 423
-# End  		   	 >>>>>>>>>>>>>>	line 476
+#       |---> sort			--> line 343
+#       |---> other			--> line 352
+#       |---> get_next_line --> line 357
+#       |---> ft_printf     --> line 363
+#       |---> #attribution  --> line 394 
+# Objs    	 	 >>>>>>>>>>>>>>	line 412
+# Rules     	 >>>>>>>>>>>>>>	line 424
+# End  		   	 >>>>>>>>>>>>>>	line 477
 
 ################################################################################
 ################################                ################################
@@ -324,6 +324,7 @@ SRCS += ft_lstadd.c
 SRCS += ft_lstadd_back.c
 
 # Del
+SRCS += ft_lstpop.c
 SRCS += ft_lstdel.c
 SRCS += ft_lstdelone.c
 
