@@ -40,7 +40,7 @@
 ***************
 */
 
-# define BUFF_SIZE 	4096
+# define BUFF_SIZE 	512
 # define FILEL		((t_file *)(tmp->content))
 
 #endif
