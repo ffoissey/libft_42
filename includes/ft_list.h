@@ -76,6 +76,6 @@ int					ft_lstsize(t_list *lst);
 */
 
 
-void				ft_mergesort_lst(t_list **lst, int (*test)(void *, void *));
+void				ft_lst_mergesort(t_list **lst, int (*test)(void *, void *));
 
 #endif

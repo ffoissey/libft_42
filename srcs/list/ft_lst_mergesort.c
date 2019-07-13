@@ -2,7 +2,7 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_mergesort_lst.c                                 :+:      :+:    :+:   */
+/*   ft_lst_mergesort.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
@@ -57,7 +57,7 @@ static t_list		*ft_process_merge(t_list *a, t_list *b,
 	return (result);
 }
 
-void				ft_mergesort_lst(t_list **lst, int (*test)(void *, void *))
+void				ft_lst_mergesort(t_list **lst, int (*test)(void *, void *))
 {
 	t_list	*head;
 	t_list	*a;
@@ -67,7 +67,7 @@ void				ft_mergesort_lst(t_list **lst, int (*test)(void *, void *))
 	if (head == NULL || head->next == NULL)
 		return ;
 	ft_mergesplit_lst(head, &a, &b);
-	ft_mergesort_lst(&a, test);
-	ft_mergesort_lst(&b, test);
+	ft_lst_mergesort(&a, test);
+	ft_lst_mergesort(&b, test);
 	*lst = ft_process_merge(a, b, test);
 }
