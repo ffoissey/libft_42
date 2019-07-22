@@ -327,6 +327,7 @@ SRCS += ft_lstadd_back.c
 SRCS += ft_lstpop.c
 SRCS += ft_lstdel.c
 SRCS += ft_lstdelone.c
+SRCS += ft_lstdelnode.c
 
 # Map
 SRCS += ft_lstiter.c
