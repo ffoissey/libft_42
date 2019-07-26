@@ -1,14 +1,21 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_lstdelnode.c                                    :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2019/07/26 09:38:27 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/07/26 09:41:15 by ffoissey         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "ft_list.h"
 
-#include "libft.h"
-
-void	ft_lstdelnode(t_list **lst, void *data, void (*del)(void *))
+static int	first_node(t_list **lst, void *data, void (*del)(void *))
 {
-	t_list	*tmp;
 	t_list	*run;
 
-	if (lst == NULL || *lst == NULL || data == NULL)
-		return ;
 	run = *lst;
 	if (run->content == data)
 	{
@@ -16,8 +23,21 @@ void	ft_lstdelnode(t_list **lst, void *data, void (*del)(void *))
 		if (del != NULL)
 			del(run->content);
 		free(run);
-		return ;
+		return (TRUE);
 	}
+	return (FALSE);
+}
+
+void		ft_lstdelnode(t_list **lst, void *data, void (*del)(void *))
+{
+	t_list	*tmp;
+	t_list	*run;
+
+	if (lst == NULL || *lst == NULL || data == NULL)
+		return ;
+	if (first_node(lst, data, del) == TRUE)
+		return ;
+	run = *lst;
 	tmp = run;
 	while (run != NULL)
 	{
