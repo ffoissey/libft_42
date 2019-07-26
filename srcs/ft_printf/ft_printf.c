@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:27:33 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 13:06:23 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/07/26 11:15:09 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -128,7 +128,7 @@ int			ft_printf(const char *format, ...)
 	va_list	args;
 	t_flag	flag;
 
-	flag.null = 0;
+	ft_bzero(&flag, sizeof(t_flag));
 	if (!format || !*format)
 		return (0);
 	out = NULL;
