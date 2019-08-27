@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/07/26 09:43:24 by ffoissey         ###   ########.fr        #
+#    Updated: 2019/08/27 10:17:26 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -429,7 +429,7 @@ all: $(PATH_OBJS) $(NAME)
 
 $(NAME): $(OBJS)
 	ar rcs $@ $^
-	printf "$(GREEN)$@ is ready.\n$(NC)"
+	printf "$(GREEN)$@ is ready.\n\n$(NC)"
 
 $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADER) Makefile
 	$(CC) $(CFLAGS) $(I_INCLUDES) -c $< -o $@
@@ -445,7 +445,7 @@ debug: $(DEBUG_PATH_OBJS) $(DEBUG_NAME)
 
 $(DEBUG_NAME): $(DEBUG_OBJS)
 	ar rcs $@ $^
-	printf "$(GREEN)$@ is ready.\n$(NC)"
+	printf "$(GREEN)$@ is ready.\n\n$(NC)"
 
 $(DEBUG_OBJS): $(DEBUG_PATH_OBJS)%.o: %.c $(HEADER) Makefile
 	$(CC) $(DBFLAGS) $(I_INCLUDES) -c $< -o $@
