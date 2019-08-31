@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:25:10 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/03/14 15:58:34 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/08/31 20:05:42 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@
 # include "ft_other.h"
 # include "get_next_line.h"
 # include "ft_printf.h"
+# include "ft_vector.h"
 
 #endif
