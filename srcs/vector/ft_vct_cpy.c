@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 09:18:16 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 13:01:03 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 19:20:51 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,5 +30,6 @@ int		vct_cpy(t_vector *dest, t_vector *src)
 		i++;
 	}
 	dest->str[i] = '\0';
+	dest->len = src->len;
 	return (SUCCESS);
 }

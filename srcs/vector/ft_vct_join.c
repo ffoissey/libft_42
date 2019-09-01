@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 08:52:55 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 17:58:04 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 19:34:53 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,8 +27,9 @@ t_vector	*vct_join(t_vector *vct1, t_vector *vct2)
 		new_vct = vct_new(vct1->size + vct2->size + 1);
 		new_vct->scale = vct1->scale > vct2->scale ? vct1->scale : vct2->scale;
 		new_vct->len = vct1->len + vct2->len;
-		vct_cpy(new_vct, vct1);
-		vct_cat(new_vct, vct2);
+		if (vct_cpy(new_vct, vct1) == FAILURE
+				|| vct_cat(new_vct, vct2) == FAILURE)
+			vct_del(&new_vct);
 	}
 	return (new_vct);
 }
