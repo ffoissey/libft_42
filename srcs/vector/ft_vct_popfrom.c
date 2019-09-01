@@ -1,20 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_del.c                                       :+:      :+:    :+:   */
+/*   ft_vct_popfrom.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 20:02:55 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 08:56:01 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 08:36:52 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 08:50:01 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-void	vct_del(t_vector **vct)
+int		vct_popfrom(t_vector *vector, size_t index)
 {
-	vct_reset(*vct);
-	free(*vct);
-	*vct = NULL;
+	size_t	i;
+
+	if (vct == NULL)
+		return (FAILURE);
+	if (vct->len == 0)
+		return (SUCCESS);
+	i = 0;
+	while (i < vct->len)
+		vct->str[i++] = vct->str[index++];
+	if (i > 0)
+		vct->str[i - 1] = '\0';
+	vct->len -= index;;
+	return (SUCCESS);
 }

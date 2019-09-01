@@ -1,20 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_del.c                                       :+:      :+:    :+:   */
+/*   ft_vct_addstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 20:02:55 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 08:56:01 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 09:30:14 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 09:34:29 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-void	vct_del(t_vector **vct)
+int		vct_addstr(t_vector *dest, char *src)
 {
-	vct_reset(*vct);
-	free(*vct);
-	*vct = NULL;
+	size_t	i;
+	size_t	src_len;
+
+	if (dest == NULL || src == NULL || dest->str == NULL)
+		return (SUCCESS);
+	src_len = ft_strlen(src);
+	if (dest->len + src_len + 1  >= dest->size)
+	{
+		if (vct_extend(vector, src_len + 1) == FAILURE)
+			return (FAILURE);
+	}
+	i = dest->len;
+	while (i < src_len)
+	{
+		dest->str[i] = src[i];
+		i++;
+	}
+	dest->str[i] = '\0';
+	return (SUCCESS);
 }

@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 19:58:58 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/08/31 20:08:18 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 09:02:25 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,13 +22,7 @@ t_vector	*vct_new(size_t size)
 	if (vct != NULL)
 	{
 		vct->str = NULL;
-		vct_reset(vct);
-		vct->str = (char *)ft_memalloc(DFL_VCT_SIZE);
-		if (vct->str == NULL)
-		{
-			free(vct);
-			vct = NULL;
-		}
+		vct = vct_reset(vct);
 	}
 	return (vct);
 }

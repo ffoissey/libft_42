@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 22:18:21 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/08/31 22:24:22 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 08:49:52 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 int		vct_pop(t_vector *vector)
 {
+	if (vct == NULL)
+		return (FAILURE);
 	if (vct->len == 0)
 		return (SUCCESS);
 	ft_memmove(vct->str, vct->str + 1, vct->len);

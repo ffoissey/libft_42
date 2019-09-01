@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_del.c                                       :+:      :+:    :+:   */
+/*   ft_vct_cutfrom.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 20:02:55 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 08:56:01 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 08:33:04 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 08:49:10 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-void	vct_del(t_vector **vct)
+int		vct_cutfrom(t_vector *vector, size_t index)
 {
-	vct_reset(*vct);
-	free(*vct);
-	*vct = NULL;
+	if (vct == NULL)
+		return (FAILURE);
+	if (vct->len == 0)
+		return (SUCCESS);
+	while (index < vct->len)
+		vct->str[index++] = '\0';
+	vct->len -= index;
+	return (SUCCESS);
 }

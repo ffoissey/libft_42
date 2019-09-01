@@ -1,20 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_del.c                                       :+:      :+:    :+:   */
+/*   ft_vct_clear.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 20:02:55 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 08:56:01 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 08:59:31 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 09:06:08 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-void	vct_del(t_vector **vct)
+void	vct_clear(t_vector *vct)
 {
-	vct_reset(*vct);
-	free(*vct);
-	*vct = NULL;
+	size_t	i;
+
+	if (vct == NULL || vct->str == NULL)
+		return ;
+	i = 0;
+	while (i < vct->len)
+		vct->str[i++] == '\0';
+	vct->len = 0;
+	vct->scale = VCT_DFL_SCALE;
 }

@@ -1,28 +1,36 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_add.c                                       :+:      :+:    :+:   */
+/*   ft_vct_pushstr.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 22:12:38 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 09:11:53 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 09:32:02 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 09:34:28 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-int		vct_add(t_vector *vector, char c)
+int		vct_pushstr(t_vector *dest, char *src)
 {
-	if (vct == NULL)
-		return (FAILURE);
-	if (vct->len + 2 >= vct->size)
+	size_t	i;
+	size_t	src_len;
+
+	if (dest == NULL || src == NULL || dest->str == NULL)
+		return (SUCCESS);
+	src_len = ft_strlen(src);
+	if (dest->len + src_len + 1  >= dest->size)
 	{
-		if (vct_extend(vector, vct->scale) == FAILURE)
+		if (vct_extend(vector, src_len + 1) == FAILURE)
 			return (FAILURE);
 	}
-	vct->str[vct->len] = c;
-	vct->str[vct->len + 1] = '\0';
-	vct->len++;
+	ft_memmove(dest->str + src_len, dest->str, dest->size);
+	i = 0;
+	while (i < src_len)
+	{
+		dest->str[i] = src[i];
+		i++;
+	}
 	return (SUCCESS);
 }

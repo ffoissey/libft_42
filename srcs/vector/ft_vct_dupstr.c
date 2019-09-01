@@ -1,20 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_del.c                                       :+:      :+:    :+:   */
+/*   ft_vct_dupstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 20:02:55 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 08:56:01 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 08:52:07 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 08:52:53 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-void	vct_del(t_vector **vct)
+char	*vct_dupstr(t_vector *vector)
 {
-	vct_reset(*vct);
-	free(*vct);
-	*vct = NULL;
+	if (vct == NULL)
+		return (0);
+	return (ft_strdup(vct->str));
 }

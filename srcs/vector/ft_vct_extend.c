@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 20:08:45 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/08/31 22:24:24 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 08:49:34 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ int		vct_extend(t_vector *vector, size_t size)
 {
 	char	*str_tmp;
 
-	if (size == 0)
+	if (size == 0 || vct == NULL)
 		return (SUCCESS);
 	size = size - size % vct->scale + vct->scale;
 	vct->scale = size - vct->size;

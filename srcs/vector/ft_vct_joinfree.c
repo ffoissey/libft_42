@@ -1,20 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_del.c                                       :+:      :+:    :+:   */
+/*   ft_vct_joinfree.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 20:02:55 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 08:56:01 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 09:23:38 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 09:26:48 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-void	vct_del(t_vector **vct)
+t_vector	*vct_joinfree(t_vector **vct1, t_vector **vct2, int flag)
 {
-	vct_reset(*vct);
-	free(*vct);
-	*vct = NULL;
+	t_vector	*new_vct;
+
+	new_vct = vct_join(*vct1, *vct2);
+	if (flag & FIRST)
+		vct_del(vct1);
+	if (flag & SECOND)
+		vct_del(vct2);
+	return (new_vct);
 }
