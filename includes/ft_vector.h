@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 15:08:00 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 18:30:00 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,14 +30,14 @@ t_vector		*vct_newstr(char *str);
 t_vector		*vct_reset(t_vector *vct, size_t size);
 void			vct_clear(t_vector *vct);
 void			vct_del(t_vector **vct);
-int				vct_extend(t_vector *vector, size_t size);
-int				vct_add(t_vector *vector, char c);
+int				vct_extend(t_vector *vector, size_t size); // OK
+int				vct_add(t_vector *vector, char c); // OK
 int				vct_charat(t_vector *vct, char c, size_t index);
-int				vct_push(t_vector *vector, char c);
-int				vct_pop(t_vector *vector);
-int				vct_popfrom(t_vector *vector, size_t index);
-int				vct_cut(t_vector *vector);
-int				vct_cutfrom(t_vector *vector, size_t index);
+int				vct_push(t_vector *vector, char c); // OK
+int				vct_pop(t_vector *vector); // OK
+int				vct_popfrom(t_vector *vector, size_t index); // OK
+int				vct_cut(t_vector *vector); // OK
+int				vct_cutfrom(t_vector *vector, size_t index); //OK
 t_vector		*vct_dup(t_vector *vector);
 t_vector		*vct_ndup(t_vector *vector, size_t n);
 t_vector		*vct_cdup(t_vector *vector, char c);
@@ -52,7 +52,7 @@ int				vct_addstr(t_vector *dest, char *src);
 int				vct_pushstr(t_vector *dest, char *src);
 t_vector		*vct_sub(t_vector *vct, size_t start, size_t end);
 void			vct_replacechar(t_vector *vector, char to_replace, char by);
-int				vct_replacestr(t_vector *vector, char *to_replace, char *by);
+int				vct_replacestr(t_vector *vector, char *to_replace, char *by); //OK
 void			vct_apply(t_vector *vct, void (*f)(char *));
 int				vct_strcheck(t_vector *vct, int (*f)(char *));
 

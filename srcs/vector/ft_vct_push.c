@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 22:16:16 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 13:04:58 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 18:27:57 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ int		vct_push(t_vector *vct, char c)
 		if (vct_extend(vct, vct->scale) == FAILURE)
 			return (FAILURE);
 	}
-	ft_memmove(vct->str + 1, vct->str, vct->size);
+	ft_memmove(vct->str + 1, vct->str, vct->size - 1);
 	vct->str[0] = c;
 	vct->len++;
 	return (SUCCESS);
