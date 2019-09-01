@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 12:42:25 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 15:08:00 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,11 +26,13 @@ typedef struct	s_vector
 }				t_vector;
 
 t_vector		*vct_new(size_t size);
-t_vector		*vct_reset(t_vector *vct);
+t_vector		*vct_newstr(char *str);
+t_vector		*vct_reset(t_vector *vct, size_t size);
 void			vct_clear(t_vector *vct);
 void			vct_del(t_vector **vct);
 int				vct_extend(t_vector *vector, size_t size);
 int				vct_add(t_vector *vector, char c);
+int				vct_charat(t_vector *vct, char c, size_t index);
 int				vct_push(t_vector *vector, char c);
 int				vct_pop(t_vector *vector);
 int				vct_popfrom(t_vector *vector, size_t index);

@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 09:32:02 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 13:05:14 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 17:59:27 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int		vct_pushstr(t_vector *dest, char *src)
 	if (dest == NULL || src == NULL || dest->str == NULL)
 		return (SUCCESS);
 	src_len = ft_strlen(src);
-	if (dest->len + src_len + 1  >= dest->size)
+	if (dest->len + src_len + 1 >= dest->size)
 	{
 		if (vct_extend(dest, src_len + 1) == FAILURE)
 			return (FAILURE);
@@ -32,5 +32,6 @@ int		vct_pushstr(t_vector *dest, char *src)
 		dest->str[i] = src[i];
 		i++;
 	}
+	dest->len += src_len;
 	return (SUCCESS);
 }

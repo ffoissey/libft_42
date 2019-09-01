@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 12:11:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 13:06:54 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 15:20:45 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 static int	replace_string(t_vector *vct, char *str, char *to_replace, char *by)
 {
 	size_t		offset;
+	size_t		len_replace;
 	size_t		len;
 	size_t		i;
 	int			ret;
@@ -22,14 +23,15 @@ static int	replace_string(t_vector *vct, char *str, char *to_replace, char *by)
 	i = 0;
 	offset = 0;
 	ret = SUCCESS;
-	len = ft_strlen(to_replace);
-	while (i + offset < vct->len && ret == SUCCESS)
+	len_replace = ft_strlen(to_replace);
+	len = vct->len;
+	vct_clear(vct);
+	while (i + offset <= len && ret == SUCCESS)
 	{
-		if (ft_strncmp(str, to_replace, len) == FALSE)
+		if (ft_strncmp(str + i + offset, to_replace, len_replace) == FALSE)
 		{
-			if (vct_addstr(vct, by) == FAILURE)
-				ret = FAILURE;
-			offset += len;
+			ret = vct_addstr(vct, by);
+			offset += len_replace - 1;
 		}
 		else if (vct_add(vct, str[i + offset]) == FAILURE)
 			ret = FAILURE;
@@ -44,6 +46,8 @@ int			vct_replacestr(t_vector *vct, char *to_replace, char *by)
 	int			ret;
 
 	if (vct == NULL || vct->str == NULL || to_replace == NULL || by == NULL)
+		return (SUCCESS);
+	if (ft_strcmp(to_replace, by) == FALSE || *to_replace == '\0')
 		return (SUCCESS);
 	str = vct_dupstr(vct);
 	ret = replace_string(vct, str, to_replace, by);

@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_reset.c                                     :+:      :+:    :+:   */
+/*   ft_vct_newstr.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 20:04:11 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 17:59:38 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/08/31 19:58:58 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 14:34:26 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-t_vector	*vct_reset(t_vector *vct, size_t size)
+t_vector	*vct_newstr(char *str)
 {
-	if (vct == NULL)
-		return (NULL);
-	if (size == 0)
-		size = DFL_VCT_SIZE;
-	ft_strdel(&vct->str);
-	vct->str = (char *)ft_memalloc(size);
-	if (vct->str == NULL)
+	t_vector	*vct;
+
+	vct = (t_vector *)malloc(sizeof(t_vector));
+	if (vct != NULL)
 	{
-		free(vct);
-		vct = NULL;
-	}
-	else
-	{
-		vct->size = DFL_VCT_SIZE;
-		vct->scale = DFL_VCT_SCALE;
-		vct->len = 0;
+		vct->str = NULL;
+		vct = vct_reset(vct, DFL_VCT_SIZE);
+		if (vct != NULL)
+		{
+			if (vct_addstr(vct, str) == FAILURE)
+				vct_del(&vct);
+		}
 	}
 	return (vct);
 }

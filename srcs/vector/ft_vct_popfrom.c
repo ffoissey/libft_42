@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 08:36:52 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 13:04:39 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 17:58:41 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,6 @@ int		vct_popfrom(t_vector *vct, size_t index)
 		vct->str[i++] = vct->str[index++];
 	if (i > 0)
 		vct->str[i - 1] = '\0';
-	vct->len -= index;;
+	vct->len -= index;
 	return (SUCCESS);
 }

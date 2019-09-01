@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 09:39:38 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 13:04:12 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 17:59:04 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,4 +24,3 @@ t_vector	*vct_ndup(t_vector *vct, size_t n)
 	new_vct->len = n;
 	return (new_vct);
 }
-

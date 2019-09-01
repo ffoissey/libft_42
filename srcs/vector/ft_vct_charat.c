@@ -1,35 +1,29 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_reset.c                                     :+:      :+:    :+:   */
+/*   ft_vct_charat.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/08/31 20:04:11 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 17:59:38 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 14:44:08 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 14:51:12 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-t_vector	*vct_reset(t_vector *vct, size_t size)
+int		vct_charat(t_vector *vct, char c, size_t index)
 {
 	if (vct == NULL)
-		return (NULL);
-	if (size == 0)
-		size = DFL_VCT_SIZE;
-	ft_strdel(&vct->str);
-	vct->str = (char *)ft_memalloc(size);
-	if (vct->str == NULL)
+		return (FAILURE);
+	if (index >= vct->size)
 	{
-		free(vct);
-		vct = NULL;
+		if (vct_extend(vct, index - vct->size + vct->scale) == FAILURE)
+			return (FAILURE);
+		vct->len++;
+		vct->str[index] = c;
+		vct->str[index + 1] = '\0';
 	}
-	else
-	{
-		vct->size = DFL_VCT_SIZE;
-		vct->scale = DFL_VCT_SCALE;
-		vct->len = 0;
-	}
-	return (vct);
+	vct->str[index] = c;
+	return (SUCCESS);
 }
