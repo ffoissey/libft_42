@@ -6,13 +6,13 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 08:33:04 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 08:49:10 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 13:01:41 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-int		vct_cutfrom(t_vector *vector, size_t index)
+int		vct_cutfrom(t_vector *vct, size_t index)
 {
 	if (vct == NULL)
 		return (FAILURE);

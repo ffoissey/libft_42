@@ -6,13 +6,13 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 08:36:52 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 08:50:01 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 13:04:39 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-int		vct_popfrom(t_vector *vector, size_t index)
+int		vct_popfrom(t_vector *vct, size_t index)
 {
 	size_t	i;
 

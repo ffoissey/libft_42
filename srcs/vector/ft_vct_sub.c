@@ -1,34 +1,27 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_cpy.c                                       :+:      :+:    :+:   */
+/*   ft_vct_sub.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/01 09:18:16 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 13:01:03 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 11:57:29 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 13:08:00 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-int		vct_cpy(t_vector *dest, t_vector *src)
+t_vector	*vct_sub(t_vector *vct, size_t start, size_t end)
 {
-	size_t	i;
+	t_vector	*new_vct;
 
-	if (dest == NULL || src == NULL || dest->str == NULL || src->str == NULL)
-		return (SUCCESS);
-	if (src->len + 1 >= dest->size)
-	{
-		if (vct_extend(dest, src->len + 1) == FAILURE)
-			return (FAILURE);
-	}
-	i = 0;
-	while (i < src->len)
-	{
-		dest->str[i] = src->str[i];
-		i++;
-	}
-	dest->str[i] = '\0';
-	return (SUCCESS);
+	if (vct == NULL || vct->str == NULL || start <= vct->len)
+		return (NULL);
+	if (end > vct->len)
+		end = vct->len;
+	new_vct = vct_new(vct->size);
+	new_vct->len = end - start;
+	ft_strncpy(new_vct->str, vct->str + start, end);
+	return (new_vct);
 }

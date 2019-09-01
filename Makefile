@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/08/27 10:17:26 by ffoissey         ###   ########.fr        #
+#    Updated: 2019/09/01 12:56:51 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,27 +16,28 @@
 ################################               #################################
 ################################################################################
 
-# Main Variables >>>>>>>>>>>>>> line  46
-# Print Var 	 >>>>>>>>>>>>>>	line  74 
-# Includes	 	 >>>>>>>>>>>>>>	line  96
-# Headers 		 >>>>>>>>>>>>>>	line 106 
-# Path Sources   >>>>>>>>>>>>>>	line 133
-# Sources     	 >>>>>>>>>>>>>>	line 157
-#       |---> string		--> line 153 
-#       |---> char			--> line 230
-#       |---> memory		--> line 250 
-#       |---> output		--> line 277 
-#       |---> conversion	--> line 301
-#       |---> maths			--> line 311
-#       |---> list			--> line 317
-#       |---> sort			--> line 344
-#       |---> other			--> line 353
-#       |---> get_next_line --> line 358
-#       |---> ft_printf     --> line 364
-#       |---> #attribution  --> line 395
-# Objs    	 	 >>>>>>>>>>>>>>	line 413
-# Rules     	 >>>>>>>>>>>>>>	line 425
-# End  		   	 >>>>>>>>>>>>>>	line 478
+# Main Variables >>>>>>>>>>>>>> line  47
+# Print Var 	 >>>>>>>>>>>>>>	line  75
+# Includes	 	 >>>>>>>>>>>>>>	line  97
+# Headers 		 >>>>>>>>>>>>>>	line 107
+# Path Sources   >>>>>>>>>>>>>>	line 135
+# Sources     	 >>>>>>>>>>>>>>	line 154
+#       |---> string		--> line 156 
+#       |---> char			--> line 233
+#       |---> memory		--> line 253 
+#       |---> output		--> line 280 
+#       |---> conversion	--> line 304
+#       |---> maths			--> line 314
+#       |---> list			--> line 320
+#       |---> sort			--> line 347
+#       |---> other			--> line 356
+#       |---> get_next_line --> line 361
+#       |---> ft_printf     --> line 367
+#       |---> vector	    --> line 397
+#       |---> #attribution  --> line 427
+# Objs    	 	 >>>>>>>>>>>>>>	line 447
+# Rules     	 >>>>>>>>>>>>>>	line 459
+# End  		   	 >>>>>>>>>>>>>>	line 512
 
 ################################################################################
 ################################                ################################
@@ -115,6 +116,7 @@ HEADER += ft_conversion.h
 HEADER += ft_maths.h
 HEADER += ft_sort.h
 HEADER += ft_other.h
+HEADER += ft_vector.h
 
 # get_next_line
 HEADER += get_next_line.h
@@ -142,6 +144,7 @@ PATH_SRCS_SORT = srcs/sort
 PATH_SRCS_OTHER = srcs/other
 PATH_SRCS_GNL = srcs/get_next_line
 PATH_SRCS_PRINTF = srcs/ft_printf
+PATH_SRCS_VECTOR = srcs/vector
 
 ################################################################################
 #################################               ################################
@@ -391,6 +394,36 @@ SRCS += ft_double_operate.c
 SRCS += ft_double_precision.c
 SRCS += ft_double_mantissa.c
 
+#----------------------------------- VECTOR -----------------------------------#
+
+SRCS += ft_vct_add.c
+SRCS += ft_vct_addstr.c
+SRCS += ft_vct_apply.c
+SRCS += ft_vct_cdup.c
+SRCS += ft_vct_clear.c
+SRCS += ft_vct_cpy.c
+SRCS += ft_vct_cut.c
+SRCS += ft_vct_cutfrom.c
+SRCS += ft_vct_del.c
+SRCS += ft_vct_dup.c
+SRCS += ft_vct_dupstr.c
+SRCS += ft_vct_extend.c
+SRCS += ft_vct_getstr.c
+SRCS += ft_vct_join.c
+SRCS += ft_vct_joinfree.c
+SRCS += ft_vct_len.c
+SRCS += ft_vct_ndup.c
+SRCS += ft_vct_new.c
+SRCS += ft_vct_pop.c
+SRCS += ft_vct_popfrom.c
+SRCS += ft_vct_push.c
+SRCS += ft_vct_pushstr.c
+SRCS += ft_vct_replacechar.c
+SRCS += ft_vct_replacestr.c
+SRCS += ft_vct_reset.c
+SRCS += ft_vct_strcheck.c
+SRCS += ft_vct_sub.c
+
 ################# ATTRIBUTION
 
 vpath %.c $(PATH_SRCS_STRING)
@@ -404,6 +437,7 @@ vpath %.c $(PATH_SRCS_SORT)
 vpath %.c $(PATH_SRCS_OTHER)
 vpath %.c $(PATH_SRCS_GNL)
 vpath %.c $(PATH_SRCS_PRINTF)
+vpath %.c $(PATH_SRCS_VECTOR)
 
 ################################################################################
 #################################               ################################

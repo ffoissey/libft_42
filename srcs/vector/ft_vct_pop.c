@@ -6,13 +6,13 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 22:18:21 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 08:49:52 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 13:04:26 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-int		vct_pop(t_vector *vector)
+int		vct_pop(t_vector *vct)
 {
 	if (vct == NULL)
 		return (FAILURE);

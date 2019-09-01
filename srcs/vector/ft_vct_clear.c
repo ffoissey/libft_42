@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 08:59:31 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 09:06:08 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 13:00:46 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	vct_clear(t_vector *vct)
 		return ;
 	i = 0;
 	while (i < vct->len)
-		vct->str[i++] == '\0';
+		vct->str[i++] = '\0';
 	vct->len = 0;
-	vct->scale = VCT_DFL_SCALE;
+	vct->scale = DFL_VCT_SCALE;
 }

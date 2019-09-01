@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 08:52:55 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 09:26:53 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/01 13:03:31 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,6 @@
 t_vector	*vct_join(t_vector *vct1, t_vector *vct2)
 {
 	t_vector	*new_vct;
-	size_t		i;
 
 	if (vct1 == NULL && vct2 == NULL)
 		return (NULL);

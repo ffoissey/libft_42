@@ -1,34 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_cpy.c                                       :+:      :+:    :+:   */
+/*   ft_vct_replacechar.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/01 09:18:16 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 13:01:03 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 12:07:22 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/01 13:05:54 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-int		vct_cpy(t_vector *dest, t_vector *src)
+void	vct_replacechar(t_vector *vct, char to_replace, char by)
 {
-	size_t	i;
+	size_t		i;
 
-	if (dest == NULL || src == NULL || dest->str == NULL || src->str == NULL)
-		return (SUCCESS);
-	if (src->len + 1 >= dest->size)
-	{
-		if (vct_extend(dest, src->len + 1) == FAILURE)
-			return (FAILURE);
-	}
+	if (vct == NULL || vct->str == NULL)
+		return ;
 	i = 0;
-	while (i < src->len)
+	while (i < vct->len)
 	{
-		dest->str[i] = src->str[i];
+		if (vct->str[i] == to_replace)
+			vct->str[i] = by;
 		i++;
 	}
-	dest->str[i] = '\0';
-	return (SUCCESS);
 }
