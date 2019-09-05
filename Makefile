@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/09/05 15:37:00 by ffoissey         ###   ########.fr        #
+#    Updated: 2019/09/05 19:51:44 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@
 #       |---> get_next_line --> line 362
 #       |---> ft_printf     --> line 368
 #       |---> vector	    --> line 399
-#       |---> #attribution  --> line 431
-# Objs    	 	 >>>>>>>>>>>>>>	line 451
-# Rules     	 >>>>>>>>>>>>>>	line 463
-# End  		   	 >>>>>>>>>>>>>>	line 516
+#       |---> #attribution  --> line 432
+# Objs    	 	 >>>>>>>>>>>>>>	line 452
+# Rules     	 >>>>>>>>>>>>>>	line 464
+# End  		   	 >>>>>>>>>>>>>>	line 517
 
 ################################################################################
 ################################                ################################
@@ -411,6 +411,7 @@ SRCS += ft_vct_del.c
 SRCS += ft_vct_dup.c
 SRCS += ft_vct_dupstr.c
 SRCS += ft_vct_extend.c
+SRCS += ft_vct_fill.c
 SRCS += ft_vct_getstr.c
 SRCS += ft_vct_join.c
 SRCS += ft_vct_joinfree.c

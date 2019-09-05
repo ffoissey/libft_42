@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 19:50:34 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/05 20:09:24 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,11 @@
 # define FT_VECTOR_H
 
 # include "libft.h"
+# include <limits.h>
+
 # define DFL_VCT_SIZE		64
 # define DFL_VCT_SCALE		16
+# define VCT_LIMIT			INT_MAX
 
 typedef struct	s_vector
 {
@@ -55,5 +58,6 @@ void			vct_replacechar(t_vector *vector, char to_replace, char by);
 int				vct_replacestr(t_vector *vector, char *to_replace, char *by);
 void			vct_apply(t_vector *vct, char *(*f)(char *));
 int				vct_strcheck(t_vector *vct, int (*f)(char *));
+int				vct_fill(t_vector *vct, char c, size_t nb);
 
 #endif
