@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/09/01 19:23:05 by ffoissey         ###   ########.fr        #
+#    Updated: 2019/09/05 15:37:00 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,17 +27,17 @@
 #       |---> memory		--> line 253 
 #       |---> output		--> line 280 
 #       |---> conversion	--> line 304
-#       |---> maths			--> line 314
-#       |---> list			--> line 320
-#       |---> sort			--> line 347
-#       |---> other			--> line 356
-#       |---> get_next_line --> line 361
-#       |---> ft_printf     --> line 367
-#       |---> vector	    --> line 398
-#       |---> #attribution  --> line 430
-# Objs    	 	 >>>>>>>>>>>>>>	line 450
-# Rules     	 >>>>>>>>>>>>>>	line 462
-# End  		   	 >>>>>>>>>>>>>>	line 515
+#       |---> maths			--> line 315
+#       |---> list			--> line 321
+#       |---> sort			--> line 348
+#       |---> other			--> line 357
+#       |---> get_next_line --> line 362
+#       |---> ft_printf     --> line 368
+#       |---> vector	    --> line 399
+#       |---> #attribution  --> line 431
+# Objs    	 	 >>>>>>>>>>>>>>	line 451
+# Rules     	 >>>>>>>>>>>>>>	line 463
+# End  		   	 >>>>>>>>>>>>>>	line 516
 
 ################################################################################
 ################################                ################################
@@ -304,6 +304,7 @@ SRCS += ft_print_int_bits.c
 
 # Str to Int
 SRCS += ft_atoi.c
+SRCS += ft_atoi_base.c
 SRCS += ft_atol.c
 
 # Int to Str
