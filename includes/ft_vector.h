@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/05 20:09:24 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 18:23:06 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,8 @@
 # define DFL_VCT_SIZE		64
 # define DFL_VCT_SCALE		16
 # define VCT_LIMIT			INT_MAX
+# define PUSH				0
+# define ADD				1
 
 typedef struct	s_vector
 {

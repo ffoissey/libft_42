@@ -6,95 +6,52 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:47:12 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 13:00:57 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 18:29:05 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static long long int	ft_di_conversion(long long int nb, t_flag *flag)
+static int64_t	apply_mod(int64_t nb, uint64_t flag)
 {
-	if (flag->h)
-		nb = (short int)(nb);
-	else if (flag->hh)
-		nb = (char)(nb);
-	else if (flag->l_low)
-		nb = (long int)(nb);
-	else if (!flag->ll)
-		nb = (int)(nb);
+	if (flag & MOD_HH)
+		nb = (int8_t)(nb);
+	else if (flag & MOD_H)
+		nb = (int16_t)(nb);
+	else if ((flag & MOD_LL) == FALSE)
+		nb = (int32_t)(nb);
 	return (nb);
 }
 
-static char				*ft_set_string(long long int nb,
-						t_flag *flag, char c)
+static t_vector	*ft_set_string(int64_t nb, t_option *option)
 {
-	char *s;
+	t_vector	*vct;
+	char		*tmp_str;
+	size_t		len;
 
-	if (c == 'p')
-	{
-		flag->field -= 2;
-		s = ft_strlowcase(ft_itoa_base_lu((unsigned long)nb, 16));
-	}
-	else if (nb < MIN_LONG)
-		s = ft_strdup(MIN_LONG_STR);
-	else
-		s = ft_itoa_base_l(nb, 10);
-	flag->precision -= ft_strlen(s);
-	flag->precision < 0 ? flag->precision = 0 : flag->precision;
-	flag->field -= flag->precision + ft_strlen(s)
-				+ flag->neg + flag->plus + flag->space;
-	return (s);
+	tmp_str = ft_itoa_base_l(nb, 10);
+	vct = vct_newstr(tmp_str);
+	ft_strdel(tmp_str);
+	len = vct_len(vct);
+	option->precision -= len < option->precision ? len : option->precision;
+	option->field -= len < option->field ? len : option->field;
+	return (vct);
 }
 
-static char				*ft_split_conversion_nb(long long int nb,
-						t_flag *flag, char c)
+t_vector		*di_conv(va_list *arg, t_option *option)
 {
-	nb = ft_di_conversion(nb, flag);
-	if (nb < 0)
+	t_vector	*vct;
+	int64_t		nb;
+
+	if (option->flag & CONV_D_MAJ)
 	{
-		flag->neg = 1;
-		flag->space = 0;
-		flag->plus = 0;
-		nb *= -1;
+		option->flag &= ~(ALL_MOD);
+		option |= MOD_LL;
 	}
-	return (ft_set_string(nb, flag, c));
-}
-
-static void				ft_up_d(char *c, t_flag *flag)
-{
-	if (*c == 'D')
-	{
-		flag->h = 0;
-		flag->hh = 0;
-		flag->l_low = 0;
-		flag->ll = 1;
-		*c = 'd';
-	}
-	flag->sharp = 0;
-	if (*c == 'p')
-		flag->plus = 0;
-	if (flag->dot && !flag->wildcard)
-		flag->zero = 0;
-	if (flag->plus || *c == 'p')
-		flag->space = 0;
-}
-
-char					*ft_hub_conversion_nb(long long int nb,
-						t_flag *flag, char c)
-{
-	char	*s;
-
-	ft_up_d(&c, flag);
-	if (flag->dot && !flag->precision && nb == 0)
-		s = NULL;
-	else if (c != 'p')
-		s = ft_split_conversion_nb(nb, flag, c);
-	else
-		s = ft_set_string(nb, flag, c);
-	if (flag->plus && flag->neg)
-		flag->space = 0;
-	ft_fill_string(&s, flag, c);
-	if (flag->field > 0 && !flag->zero)
-		ft_filler(&s, ft_strnew_c(flag->field, ' '), flag->min, flag->null);
-	return (s);
+	nb = apply_mod(va_arg(*arg, int64_t), option->flag);
+	vct = ft_set_string(nb, option);
+	vct_fill(vct, option & FLAG_ZERO ? '0' : ' ', option->field, PUSH);
+	if (option->flag & FLAG_SPACE)
+		vct_addchar(vct, ' ');
+	return (vct);
 }
