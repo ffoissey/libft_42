@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 19:47:49 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 18:27:07 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 19:29:39 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,10 @@
 
 static void	vct_process_fill(t_vector *vct, char c, size_t nb, uint8_t opt)
 {
-	if (opt == FRONT)
+	size_t		i;
+	size_t		goal;
+
+	if (opt == PUSH)
 	{
 		ft_memmove(vct->str + nb, vct->str, vct->len);
 		i = 0;
@@ -35,9 +38,6 @@ static void	vct_process_fill(t_vector *vct, char c, size_t nb, uint8_t opt)
 
 int			vct_fill(t_vector *vct, char c, size_t nb, uint8_t opt)
 {
-	size_t		i;
-	size_t		goal;
-
 	if (vct == NULL || nb == 0 || nb > VCT_LIMIT)
 		return (FAILURE);
 	if (vct->len + nb + 1 >= vct->size)

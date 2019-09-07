@@ -6,15 +6,15 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 18:23:06 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 19:28:50 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FT_VECTOR_H
 # define FT_VECTOR_H
 
-# include "libft.h"
 # include <limits.h>
+# include <string.h>
 
 # define DFL_VCT_SIZE		64
 # define DFL_VCT_SCALE		16
@@ -29,6 +29,8 @@ typedef struct	s_vector
 	size_t		scale;
 	size_t		len;
 }				t_vector;
+
+# include "libft.h"
 
 t_vector		*vct_new(size_t size);
 t_vector		*vct_newstr(char *str);
@@ -60,6 +62,6 @@ void			vct_replacechar(t_vector *vector, char to_replace, char by);
 int				vct_replacestr(t_vector *vector, char *to_replace, char *by);
 void			vct_apply(t_vector *vct, char *(*f)(char *));
 int				vct_strcheck(t_vector *vct, int (*f)(char *));
-int				vct_fill(t_vector *vct, char c, size_t nb);
+int				vct_fill(t_vector *vct, char c, size_t nb, uint8_t opt);
 
 #endif

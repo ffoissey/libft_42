@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 09:30:14 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 19:09:25 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 20:42:12 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int		vct_addstr(t_vector *dest, char *src)
 	src_len = ft_strlen(src);
 	if (dest->len + src_len + 1 >= dest->size)
 	{
-		if (vct_extend(dest, src_len + 1) == FAILURE)
+		if (vct_extend(dest, dest->len + src_len + 1) == FAILURE)
 			return (FAILURE);
 	}
 	i = dest->len;

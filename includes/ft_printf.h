@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 18:32:10 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 20:54:26 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,23 +37,22 @@
 
 # define MOD_HH					0x0000000000000001
 # define MOD_LL					0x0000000000000002
-# define MOD_H					0x0000000000000008
-# define MOD_L					0x0000000000000010
-# define MOD_L_MAJ				0x0000000000000020
-# define MOD_NONE				0x0000000000000040
+# define MOD_H					0x0000000000000004
+# define MOD_L					0x0000000000000008
+# define MOD_L_MAJ				0x0000000000000010
 
 /*
 **** FLAGS
 */
 
-# define FLAG_HASH				0x0000000000000100
-# define FLAG_ZERO				0x0000000000000200
-# define FLAG_MIN				0x0000000000000400
-# define FLAG_PLUS				0x0000000000000800
-# define FLAG_SPACE				0x0000000000001000
-# define FLAG_DOT				0x0000000000002000
-# define FLAG_FIELD				0x0000000000004000
-# define FLAG_NONE				0x0000000000008000
+# define FLAG_HASH				0x0000000000000020
+# define FLAG_ZERO				0x0000000000000040
+# define FLAG_MIN				0x0000000000000080
+# define FLAG_PLUS				0x0000000000000010
+# define FLAG_SPACE				0x0000000000000020
+# define FLAG_DOT				0x0000000000000040
+# define FLAG_FIELD				0x0000000000000080
+# define FLAG_NONE				0x0000000000000100
 
 /*
 **** CONVERSIONS
@@ -87,7 +86,7 @@
 # define CONV_SCALE				0x1000000
 # define ALL_MOD				0x3f
 
-# define FORMAT_CHAR			"%"
+# define FORMAT_CHAR			'%'
 
 enum e_state
 {
@@ -99,7 +98,7 @@ enum e_state
 
 typedef	struct		s_option
 {
-	uint64_t		option;
+	uint64_t		flag;
 	uint64_t		precision;
 	uint64_t		field;
 }					t_option;
@@ -133,7 +132,7 @@ typedef	struct	s_flag
 	int			wildcard;
 }				t_flag;
 
-typedef	int64_t		(*t_func_machine)(t_machine *, char *);
+typedef	int64_t		(*t_func_machine)(t_machine *, char *, t_vector *, va_list *);
 typedef	t_vector	*(*t_func_conv)(va_list *, t_option *);
 
 int				ft_printf(const char *format, ...);

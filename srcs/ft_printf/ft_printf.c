@@ -6,22 +6,21 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:29:32 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 18:32:36 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 20:54:46 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int64_t		get_numbers(int *nb, char *cur)
+uint64_t		get_numbers(uint64_t *nb, char *cur)
 {
 	uint8_t	i;
 
 	i = 0;
 	while (ft_isdigit(cur[i]) == TRUE)
 		i++;
-	if (i != 0)
-		*nb = ft_atol(cur);
-	return (i == 0 ? FAILURE : i);
+	*nb = ft_atol(cur);
+	return (i);
 }
 
 int64_t		get_flag(t_machine *machine, char *cur, t_vector *out, va_list *arg)
@@ -29,16 +28,16 @@ int64_t		get_flag(t_machine *machine, char *cur, t_vector *out, va_list *arg)
 	static const char	*flag[NB_FLAG] = {"hh", "ll", "h", "l", "L", "#", "0",
 										"-", "+", " ", "."};
 	uint8_t				i;
-	ssize_t				len;
+	uint64_t			len;
 
 	i = 0;
 	(void)out;
 	(void)arg;
 	while (i < NB_FLAG)
 	{
-		if (ft_strnequ(cur, flag[i]) == TRUE)
+		len = i < 2 ? 2 : 1;
+		if (ft_strnequ(cur, flag[i], len) == TRUE)
 		{
-			len = i < 2 ? 2 : 1;
 			if (i < 5)
 				machine->option.flag &= ~(ALL_MOD);
 			machine->option.flag |= 1 << i;
@@ -48,10 +47,17 @@ int64_t		get_flag(t_machine *machine, char *cur, t_vector *out, va_list *arg)
 		}
 		i++;
 	}
-	if (i == NB_FLAG
-		&& (len = get_numbers(&machine->option.field, cur)) == FAILURE)
-		machine->state = STATE_CONV;
-	return (len);
+	if (i == NB_FLAG)
+	{
+		if (ft_isdigit(*cur) == TRUE)
+			len = get_numbers(&machine->option.field, cur);
+		else
+		{
+			len = 0;
+			machine->state = STATE_CONV;
+		}
+	}
+	return (len == 0 ? FAILURE : len);
 }
 
 t_vector	*wildcard_conv(va_list *arg, t_option *option)
@@ -117,18 +123,21 @@ int64_t		get_conv(t_machine *machine, char *cur, t_vector *out, va_list *arg)
 									di_conv, di_conv, boux_conv, boux_conv,
 									boux_conv, boux_conv, boux_conv, boux_conv,
 									f_conv, f_conv, percent_conv, none_conv};
-	static const char	conv[NB_CONV] = "*cCsSpbBdDioOuUxXfF%";
+	static const char	conv_char[NB_CONV] = "*cCsSpbBdDioOuUxXfF%";
+	t_vector			*local;
 	uint8_t				i;
 
 	i = 0;
-	while (i < NB_CONV)
+	while (i < NB_CONV - 1)
 	{
-		if (*cur == conv[i])
+		if (*cur == conv_char[i])
 			break ;
 		i++;
 	}
 	machine->option.flag |= (1 << i) + CONV_SCALE;
-	vct_joinfree(out, conv[i](arg, &machine->option), SECOND);
+	local = conv[i](arg, &machine->option);
+	vct_cat(out, local);
+	vct_del(&local);
 	ft_bzero(machine, sizeof(t_machine));
 	return (1);
 }
@@ -136,60 +145,51 @@ int64_t		get_conv(t_machine *machine, char *cur, t_vector *out, va_list *arg)
 int64_t		get_string(t_machine *machine, char *cur,
 						t_vector *out, va_list *arg)
 {
-	char	*local;
 	int64_t	len;
 
 	len = 0;
-	if (*cur != '\0')
-	{	
-		local = ft_strcdup(cur, FORMAT_CHAR);
-		if (local != NULL)
-		{
-			len = vct_len(out);
-			vct_addstr(out, local);
-			len = vct_len(out) - len;
-			if (cur[len] == FORMAT_CHAR)
-				machine->state = STATE_FLAG;
-		}
-		ft_strdel(&local);
-	}
-	else
+	(void)arg;
+	while (cur[len] != '\0' && cur[len] != FORMAT_CHAR)
+		vct_add(out, cur[len++]);
+	machine->state = STATE_FLAG;
+	if (cur[len] != FORMAT_CHAR)
 		machine->state = STATE_FINISH;
+	else
+		len++;
 	return (len);
 }
 
-t_vector	*parser(const char *format)
+int8_t	parser(char *format, t_vector *out, va_list *arg)
 {
 	static t_func_machine	process[] = {get_string, get_flag, get_conv};
-	t_vector				*out;
-	size_t					i;
-	va_list					args;
+	int64_t					i;
+	int64_t					scale;
 	t_machine				machine;
 
 	ft_bzero(&machine, sizeof(t_machine));
-	out = vct_new(ft_strlen(format) * 2);
-	va_start(args, format);
 	i = 0;
-	machine->state = STATE_STRING;
-	while (machine->state != STATE_FINISH)
+	machine.state = STATE_STRING;
+	while (machine.state != STATE_FINISH)
 	{
-		if ((scale = process(machine, format + i, out, &arg)) != FAILURE)
+		if ((scale = process[machine.state](&machine, format + i, out, arg)) != FAILURE)
 			i += scale;
 	}
-	va_end(args);
-	return (out);
+	return (SUCCESS);
 }
 
 int			ft_printf(const char *format, ...)
 {
 	t_vector	*out;
+	va_list		arg;
 	int			write_ret;
 
 	if (format == NULL || *format == '\0')
 		return (0);
-	write_ret = 0;
-	out = parser(format);
-	write_ret = write(STDOUT_FILENO, vct_getstr(vct), vct_len(vct));
+	out = vct_new(ft_strlen(format) * 2);
+	va_start(arg, format);
+	parser((char *)format, out, &arg);
+	va_end(arg);
+	write_ret = write(STDOUT_FILENO, vct_getstr(out), vct_len(out));
 	vct_del(&out);
 	return (write_ret);
 }

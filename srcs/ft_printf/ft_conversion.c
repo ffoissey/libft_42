@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:47:12 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 18:29:05 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 20:46:38 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ static t_vector	*ft_set_string(int64_t nb, t_option *option)
 
 	tmp_str = ft_itoa_base_l(nb, 10);
 	vct = vct_newstr(tmp_str);
-	ft_strdel(tmp_str);
+	ft_strdel(&tmp_str);
 	len = vct_len(vct);
 	option->precision -= len < option->precision ? len : option->precision;
 	option->field -= len < option->field ? len : option->field;
@@ -46,12 +46,12 @@ t_vector		*di_conv(va_list *arg, t_option *option)
 	if (option->flag & CONV_D_MAJ)
 	{
 		option->flag &= ~(ALL_MOD);
-		option |= MOD_LL;
+		option->flag |= MOD_LL;
 	}
 	nb = apply_mod(va_arg(*arg, int64_t), option->flag);
 	vct = ft_set_string(nb, option);
-	vct_fill(vct, option & FLAG_ZERO ? '0' : ' ', option->field, PUSH);
+	vct_fill(vct, option->flag & FLAG_ZERO ? '0' : ' ', option->field, PUSH);
 	if (option->flag & FLAG_SPACE)
-		vct_addchar(vct, ' ');
+		vct_push(vct, ' ');
 	return (vct);
 }
