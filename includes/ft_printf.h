@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 20:54:26 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 22:05:37 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,11 +48,11 @@
 # define FLAG_HASH				0x0000000000000020
 # define FLAG_ZERO				0x0000000000000040
 # define FLAG_MIN				0x0000000000000080
-# define FLAG_PLUS				0x0000000000000010
-# define FLAG_SPACE				0x0000000000000020
-# define FLAG_DOT				0x0000000000000040
-# define FLAG_FIELD				0x0000000000000080
-# define FLAG_NONE				0x0000000000000100
+# define FLAG_PLUS				0x0000000000000100
+# define FLAG_SPACE				0x0000000000000200
+# define FLAG_DOT				0x0000000000000400
+# define FLAG_FIELD				0x0000000000000800
+# define FLAG_NONE				0x0000000000001000
 
 /*
 **** CONVERSIONS
@@ -138,6 +138,8 @@ typedef	t_vector	*(*t_func_conv)(va_list *, t_option *);
 int				ft_printf(const char *format, ...);
 
 t_vector		*di_conv(va_list *arg, t_option *option);
+t_vector		*c_conv(va_list *arg, t_option *option);
+t_vector		*s_conv(va_list *arg, t_option *option);
 
 
 

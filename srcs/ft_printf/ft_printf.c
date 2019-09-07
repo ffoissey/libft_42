@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:29:32 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 20:54:46 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 22:32:28 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,20 +61,6 @@ int64_t		get_flag(t_machine *machine, char *cur, t_vector *out, va_list *arg)
 }
 
 t_vector	*wildcard_conv(va_list *arg, t_option *option)
-{
-	(void)option;
-	(void)arg;
-	return (NULL);
-}
-
-t_vector	*c_conv(va_list *arg, t_option *option)
-{
-	(void)option;
-	(void)arg;
-	return (NULL);
-}
-
-t_vector	*s_conv(va_list *arg, t_option *option)
 {
 	(void)option;
 	(void)arg;

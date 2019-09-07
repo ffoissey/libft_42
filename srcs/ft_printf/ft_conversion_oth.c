@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:06:34 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 16:51:11 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 22:33:26 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,45 +37,39 @@ void		ft_fill_string(char **s, t_flag *flag, char c)
 		ft_filler(s, ft_strnew_c(tmp, ' '), 0, flag->null);
 }
 
-char		*ft_conversion_char(int c, t_flag *flag)
+t_vector		*c_conv(va_list *arg, t_option *option)
 {
-	char	*s;
+	t_vector	*vct;
+	char		c;
 
-	s = NULL;
-	if ((unsigned char)c == 0)
-		flag->null++;
-	flag->field--;
-	if (flag->field < 0)
-		flag->field = 0;
-	s = ft_strnew_c((size_t)flag->field + 1, flag->zero ? '0' : ' ');
-	if ((flag->min || flag->field <= 0))
-		s[0] = (unsigned char)c;
-	else if (flag->field > 0)
-		s[flag->field] = (unsigned char)c;
-	return (s);
+	vct = vct_new(0);
+	c = (char)va_arg(*arg, int);
+	vct_add(vct, c);
+	if (option->field > 0)
+		option->field--;
+	vct_fill(vct, option->flag & FLAG_ZERO ? '0' : ' ', option->field,
+			option->flag & FLAG_MIN ? ADD : PUSH);
+	return (vct);
 }
 
-char		*ft_conversion_str(const char *src, t_flag *flag)
+t_vector	*s_conv(va_list *arg, t_option *option)
 {
-	char	*s;
+	char		*s;
+	t_vector	*vct;
 
-	s = NULL;
-	if (!src && (flag->precision > 5 || flag->precision == 0) && !flag->dot)
-		s = ft_strdup("(null)");
-	else if (!src && flag->precision)
-		s = ft_strndup("(null)", flag->precision);
-	else if (flag->dot)
-	{
-		if (flag->precision > 0)
-			s = ft_strndup(src, flag->precision);
-	}
+	s = va_arg(*arg, char *);
+	option->flag &=~ FLAG_SPACE;
+	vct = vct_newstr(s == NULL ? "(null)" : s);
+	vct_cutfrom(vct, option->precision);
+	if (option->field > vct_len(vct))
+		option->field -= vct_len(vct);
 	else
-		s = ft_strdup(src);
-	flag->field = s ? (int)(flag->field - (ft_strlen(s))) : flag->field;
-	if (flag->field > 0)
-		ft_filler(&s, ft_strnew_c(flag->field, flag->zero && !flag->min ? '0'
-		: ' '), flag->min, 0);
-	return (s);
+		option->field = 0;
+	vct_fill(vct, option->flag & FLAG_ZERO ? '0' : ' ', option->field,
+			option->flag & FLAG_MIN ? ADD : PUSH);
+	if (option->flag & FLAG_SPACE)
+		vct_push(vct, ' ');
+	return (vct);
 }
 
 char		*ft_conversion_double(long double nb, t_flag *flag, char c)
