@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:29:32 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 22:32:28 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 23:20:21 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -95,20 +95,13 @@ t_vector	*none_conv(va_list *arg, t_option *option)
 	return (NULL);
 }
 
-t_vector	*p_conv(va_list *arg, t_option *option)
-{
-	(void)option;
-	(void)arg;
-	return (NULL);
-}
-
 int64_t		get_conv(t_machine *machine, char *cur, t_vector *out, va_list *arg)
 {
 	static t_func_conv	conv[] = {wildcard_conv, c_conv, c_conv, s_conv,
-									s_conv, p_conv, boux_conv, di_conv,
-									di_conv, di_conv, boux_conv, boux_conv,
-									boux_conv, boux_conv, boux_conv, boux_conv,
-									f_conv, f_conv, percent_conv, none_conv};
+									s_conv, pboux_conv, pboux_conv, di_conv,
+									di_conv, di_conv, pboux_conv, pboux_conv,
+									pboux_conv, pboux_conv, pboux_conv,
+									pboux_conv, f_conv, f_conv, c_conv, c_conv};
 	static const char	conv_char[NB_CONV] = "*cCsSpbBdDioOuUxXfF%";
 	t_vector			*local;
 	uint8_t				i;
@@ -120,7 +113,9 @@ int64_t		get_conv(t_machine *machine, char *cur, t_vector *out, va_list *arg)
 			break ;
 		i++;
 	}
-	machine->option.flag |= (1 << i) + CONV_SCALE;
+	machine->option.flag |= (((uint64_t)1 << i) << CONV_SHIFT);
+	if (i > 18)
+		machine->option.flag |= (((uint64_t)(*cur)) << CHAR_ERR_SHIFT);
 	local = conv[i](arg, &machine->option);
 	vct_cat(out, local);
 	vct_del(&local);

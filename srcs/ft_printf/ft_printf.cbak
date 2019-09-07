@@ -12,32 +12,6 @@
 
 #include "ft_printf.h"
 
-static int	ft_conversion_c_n_s(va_list *args, char *s, t_flag *flag,
-			char **new)
-{
-	if (*s == 'c' || *s == 'C')
-	{
-		if (*s == 'C' || flag->l_low)
-		{
-			if (ft_conversion_lchar(va_arg(*args, wint_t), flag, new))
-				return (1);
-		}
-		else
-			*new = ft_conversion_char(va_arg(*args, int), flag);
-	}
-	else if (*s == 's' || *s == 'S')
-	{
-		if (*s == 'S' || flag->l_low)
-		{
-			if (ft_conversion_lstr(va_arg(*args, wchar_t *), flag, new))
-				return (1);
-		}
-		else
-			*new = ft_conversion_str(va_arg(*args, const char *), flag);
-	}
-	return (0);
-}
-
 static int	ft_manage_conversion(va_list *args, t_flag *flag,
 		char *s, char **out)
 {
@@ -50,7 +24,7 @@ static int	ft_manage_conversion(va_list *args, t_flag *flag,
 	ft_wildcard(args, flag);
 	if (ft_ok_dioux(*s) || *s == 'b' || *s == 'B' || *s == 'p')
 		new = ft_nb(args, s, flag);
-	else if (*s == 'c' || *s == 'C' || *s == 's' || *s == 'S')
+	else if (*s == 'c' || *s == C' || *s == 's' || *s == 'S')
 	{
 		if (ft_conversion_c_n_s(args, s, flag, &new))
 			return (1);

@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:06:34 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 16:29:06 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 22:57:00 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -89,26 +89,22 @@ static char		*ft_utf8(unsigned int m, int ret)
 	return (s);
 }
 
-int				ft_conversion_lchar(wint_t c, t_flag *flag, char **new)
+int				ft_conversion_lchar(wint_t c, char **new)
 {
 	char	*tmp;
 	int		ret;
 
+	tmp = NULL;
 	if (!ft_check_largechar(c, NULL))
 		return (1);
 	ret = ft_ret_largechar(c);
-	if (ret == 1)
-	{
-		*new = ft_conversion_char((int)c, flag);
-		return (0);
-	}
-	tmp = ft_utf8(c, ret);
-	*new = ft_conversion_str(tmp, flag);
-	ft_strdel(&tmp);
+	if (ret != 1)
+		tmp = ft_utf8(c, ret);
+	*new = tmp;
 	return (0);
 }
 
-int				ft_conversion_lstr(wchar_t *src, t_flag *flag, char **new)
+int				ft_conversion_lstr(wchar_t *src, t_option *option, char **new)
 {
 	char	*s;
 	char	*tmp;
@@ -119,20 +115,20 @@ int				ft_conversion_lstr(wchar_t *src, t_flag *flag, char **new)
 	i = -1;
 	tmp = NULL;
 	s = NULL;
-	tmp_prec = flag->precision;
+	tmp_prec = option->precision;
 	while (src && src[++i])
 	{
 		if (!ft_check_largechar(src[i], &tmp))
 			return (1);
 		ret = ft_ret_largechar(src[i]);
-		if (!flag->dot || (flag->dot && ((tmp_prec -= ret) >= 0)))
+		if ((option->flag & FLAG_DOT) == FALSE
+				|| ((option->flag & FLAG_DOT) && ((tmp_prec -= ret) >= 0)))
 			ft_join_free(&tmp, (s = ft_utf8(src[i], ret)), 1, 0);
-		else if (flag->dot && tmp_prec < 0 && i == 0)
+		else if ((option->flag & FLAG_DOT) && tmp_prec < 0 && i == 0)
 			tmp = ft_strnew(1);
 		ft_strdel(&s);
 	}
 	tmp = (src && !src[0]) ? ft_strnew(1) : tmp;
-	*new = ft_conversion_str(tmp, flag);
-	ft_strdel(&tmp);
+	*new = tmp;
 	return (0);
 }

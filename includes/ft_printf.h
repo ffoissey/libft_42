@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 22:05:37 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 23:23:31 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,8 +83,9 @@
 # define NB_FLAG				11
 # define NB_CONV				20
 # define PRECISION_FLAG			10
-# define CONV_SCALE				0x1000000
+# define CONV_SHIFT				24
 # define ALL_MOD				0x3f
+# define CHAR_ERR_SHIFT			56
 
 # define FORMAT_CHAR			'%'
 
@@ -140,6 +141,8 @@ int				ft_printf(const char *format, ...);
 t_vector		*di_conv(va_list *arg, t_option *option);
 t_vector		*c_conv(va_list *arg, t_option *option);
 t_vector		*s_conv(va_list *arg, t_option *option);
+int				ft_conversion_lstr(wchar_t *src, t_option *option, char **new);
+int				ft_conversion_lchar(wint_t c, char **new);
 
 
 
@@ -153,14 +156,10 @@ char			*ft_fillcstr(const char *s, char **out, int null);
 void			ft_wildcard(va_list *args, t_flag *flag);
 double			ft_double_select(va_list *args, t_flag *flag);
 char			*ft_nb(va_list *args, char *format, t_flag *flag);
-char			*ft_set_all_flags(char *s, t_flag *flag);
-void			ft_init_flags(t_flag *flag);
 char			*ft_itoa_base_l(long long value, int base);
 char			*ft_itoa_base_lu(unsigned long long value,
 					unsigned int base);
 char			*ft_hub_conversion_nb(long long nb, t_flag *flag, char c);
-char			*ft_conversion_char(int c, t_flag *flag);
-char			*ft_conversion_str(const char *src, t_flag *flag);
 char			*ft_conversion_double(long double nb, t_flag *flag, char c);
 void			ft_filler(char **s, char *add, int after, int null);
 void			ft_join_free(char **s, char const *new, int after, int null);
@@ -175,15 +174,8 @@ size_t			ft_strlen_null(const char *s, int null);
 char			*ft_conversion_u(unsigned long long nb, t_flag *flag,
 				char c);
 char			*ft_strnew_c(size_t size, char c);
-char			*ft_bad_flag(char *s, t_flag *flag);
 char			*ft_dtoa(void *ptr, int prec);
 void			ft_set_wildcard(t_flag *flag);
-void			ft_set_min_field_size(char **s, t_flag *flag);
-void			ft_set_precision(char **s, t_flag *flag);
-void			ft_set_attribute_flags(char **s, t_flag *flag);
-void			ft_set_length_flags(char **s, t_flag *flag);
-int				ft_conversion_lstr(wchar_t *src, t_flag *flag, char **new);
-int				ft_conversion_lchar(wint_t c, t_flag *flag, char **new);
 int				ft_ok_conv(char c);
 int				ft_ok_dioux(char c);
 int				ft_ret_largechar(unsigned int c);

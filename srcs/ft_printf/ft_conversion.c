@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:47:12 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 22:32:30 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 23:27:24 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ t_vector		*di_conv(va_list *arg, t_option *option)
 	t_vector	*vct;
 	int64_t		nb;
 	char		filler;
+	uint8_t		neg;
 
-	if (option->flag & FLAG_DOT)
+	if ((option->flag & FLAG_DOT) || (option->flag & FLAG_MIN))
 		option->flag &= ~FLAG_ZERO;
 	if ((option->flag & FLAG_SPACE) && option->field > 0)
 		option->field--;
@@ -54,11 +55,21 @@ t_vector		*di_conv(va_list *arg, t_option *option)
 		option->flag &= ~(ALL_MOD);
 		option->flag |= MOD_LL;
 	}
+	neg = FALSE;
 	nb = apply_mod(va_arg(*arg, int64_t), option->flag);
+	if (nb < 0)
+	{
+		neg = TRUE;
+		nb = -nb;
+		if (option->field > 0)
+			option->field--;
+	}
 	vct = ft_set_string(nb, option);
 	vct_fill(vct, '0', option->precision, PUSH);
 	filler = (option->flag & FLAG_ZERO) ? '0' : ' ';
 	vct_fill(vct, filler, option->field, option->flag & FLAG_MIN ? ADD : PUSH);
+	if (neg ==TRUE)
+		vct_push(vct, '-');
 	if (option->flag & FLAG_SPACE)
 		vct_push(vct, ' ');
 	return (vct);

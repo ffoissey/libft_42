@@ -6,31 +6,12 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 12:00:30 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 17:54:41 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 23:23:08 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_fillcstr(const char *s, char **out, int null)
-{
-	char	*tmp;
-	char	*tmp2;
-	char	*tmp_out;
-
-	tmp_out = *out;
-	if (!(tmp = ft_strchr(s, '%')))
-	{
-		*out = ft_strjoin_hub(*out, s, null, 1);
-		ft_strdel(&tmp_out);
-		return (NULL);
-	}
-	tmp2 = ft_strsub(s, 0, tmp - s);
-	*out = ft_strjoin_hub(*out, tmp2, null, 1);
-	ft_strdel(&tmp_out);
-	ft_strdel(&tmp2);
-	return (tmp + 1);
-}
 
 void	ft_wildcard(va_list *args, t_flag *flag)
 {
@@ -72,11 +53,4 @@ double	ft_double_select(va_list *args, t_flag *flag)
 		nb = (long double)nb2;
 	}
 	return (nb);
-}
-
-char	*ft_nb(va_list *args, char *format, t_flag *flag)
-{
-	if (*format == 'd' || *format == 'D' || *format == 'i' || *format == 'p')
-		return (ft_hub_conversion_nb(va_arg(*args, long long), flag, *format));
-	return (ft_conversion_u(va_arg(*args, unsigned long long), flag, *format));
 }

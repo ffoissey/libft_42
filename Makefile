@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/09/05 19:51:44 by ffoissey         ###   ########.fr        #
+#    Updated: 2019/09/07 22:55:11 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -373,9 +373,6 @@ SRCS += ft_asprintf.c
 
 # Extend
 SRCS += ft_printf_extend.c
-SRCS += ft_set_flags.c
-SRCS += ft_set_flags_extend.c
-SRCS += ft_flag_extend.c
 SRCS += ft_functions_nb.c
 SRCS += ft_util.c
 SRCS += ft_util2.c

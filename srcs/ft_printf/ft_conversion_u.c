@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:33:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 16:16:14 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/07 23:30:52 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,20 +28,22 @@ static unsigned long long int	ft_u_conversion(unsigned long long int nb,
 	return (nb);
 }
 
-static char						*ft_set_ustring(unsigned long long int nb,
-								t_flag *flag, char c)
+static t_vector		*ft_set_ustring(uint64_t nb, t_option *option)
 {
-	char	*s;
-	int		base;
+	t_vector	*vct;
+	char		*s;
+	int			base;
 
 	base = 10;
-	if (c == 'b' || c == 'B')
+	if ((option->flag & CONV_B) || (option->flag & CONV_B_MAJ))
 		base = 2;
-	else if (c == 'o')
+	else if ((option->flag & CONV_O) || (option->flag & CONV_O_MAJ))
 		base = 8;
-	else if (c == 'x' || c == 'X')
+	else if ((option->flag & CONV_X) || (option->flag & CONV_X_MAJ))
 		base = 16;
 	s = ft_itoa_base_lu(nb, base);
+
+	//////
 	if (flag->sharp && (c == 'x' || c == 'X') && nb)
 		flag->field -= 2;
 	else if (flag->sharp && ft_strcmp(s, "0") && c == 'o')
@@ -54,31 +56,6 @@ static char						*ft_set_ustring(unsigned long long int nb,
 	flag->precision < 0 ? flag->precision = 0 : flag->precision;
 	flag->field -= flag->precision + ft_strlen(s) + flag->space;
 	return (s);
-}
-
-static void						ft_major(char *c, t_flag *flag)
-{
-	if (*c == 'O')
-	{
-		flag->h = 0;
-		flag->hh = 0;
-		flag->l_low = 0;
-		flag->ll = 1;
-		*c = 'o';
-	}
-	if (*c == 'U')
-	{
-		flag->h = 0;
-		flag->hh = 0;
-		flag->l_low = 0;
-		flag->ll = 1;
-		*c = 'u';
-	}
-	if (flag->dot && !flag->wildcard)
-		flag->zero = 0;
-	flag->plus = 0;
-	flag->neg = 0;
-	flag->space = 0;
 }
 
 static char						*ft_binary_format(char *s)
@@ -110,28 +87,29 @@ static char						*ft_binary_format(char *s)
 	return (new);
 }
 
-char							*ft_conversion_u(unsigned long long int nb,
-								t_flag *flag, char c)
+t_vector				*pboux_conv(va_list *arg, t_option *option)
 {
-	char	*s;
+	t_vector	*vct;
+	uint64_t	nb;
+	char		filler;
 
-	ft_major(&c, flag);
-	s = NULL;
-	if (flag->sharp && c == 'o' && nb == 0)
+	option->flag &= ~FLAG_PLUS;
+	option->flag &= ~FLAG_SPACE;
+	if ((option->flag & FLAG_DOT) || (option->flag & FLAG_MIN))
+		option->flag &= ~FLAG_ZERO;
+	//if ((option->flag & FLAG_SPACE) && option->field > 0)
+	//	option->field--;
+	if ((option->flag & CONV_U_MAJ) || (option->flag & CONV_O_MAJ))
 	{
-		s = ft_strdup("0");
-		if (flag->dot && !flag->precision)
-			flag->field--;
-		flag->sharp = 0;
+		option->flag &= ~(ALL_MOD);
+		option->flag |= MOD_LL;
 	}
-	if (flag->dot && !flag->precision && nb == 0)
-		flag->sharp = 0;
-	else
-		s = ft_set_ustring(ft_u_conversion(nb, flag), flag, c);
-	ft_fill_string(&s, flag, c);
-	if ((c == 'b' || c == 'B') && flag->sharp)
-		s = ft_binary_format(s);
-	if (flag->field > 0 && !flag->zero)
-		ft_filler(&s, ft_strnew_c(flag->field, ' '), flag->min, flag->null);
-	return (s);
+	nb = va_arg(*arg, unsigned long long);
+	vct = set_u_string(nb, option);
+	vct_fill(vct, '0', option->precision, PUSH);
+	filler = (option->flag & FLAG_ZERO) ? '0' : ' ';
+	vct_fill(vct, filler, option->field, option->flag & FLAG_MIN ? ADD : PUSH);
+	if (option->flag & FLAG_SPACE)
+		vct_push(vct, ' ');
+	return (vct);	
 }
