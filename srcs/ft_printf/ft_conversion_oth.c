@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:06:34 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 23:20:24 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/08 21:24:18 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ t_vector	*s_conv(va_list *arg, t_option *option)
 		s = va_arg(*arg, char *);
 	option->flag &=~ FLAG_SPACE;
 	vct = vct_newstr(s == NULL ? "(null)" : s);
-	vct_cutfrom(vct, option->precision);
+	if (option->precision > 0)
+		vct_cutfrom(vct, option->precision);
 	if (option->field > vct_len(vct))
 		option->field -= vct_len(vct);
 	else

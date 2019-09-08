@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:47:12 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 23:27:24 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/08 22:01:53 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ static int64_t	apply_mod(int64_t nb, uint64_t flag)
 	return (nb);
 }
 
-static t_vector	*ft_set_string(int64_t nb, t_option *option)
+static t_vector	*set_string(int64_t nb, t_option *option)
 {
 	t_vector	*vct;
 	char		*tmp_str;
@@ -46,6 +46,8 @@ t_vector		*di_conv(va_list *arg, t_option *option)
 	char		filler;
 	uint8_t		neg;
 
+	if (option->flag & FLAG_PLUS)
+		option->flag &= ~FLAG_SPACE;
 	if ((option->flag & FLAG_DOT) || (option->flag & FLAG_MIN))
 		option->flag &= ~FLAG_ZERO;
 	if ((option->flag & FLAG_SPACE) && option->field > 0)
@@ -64,13 +66,18 @@ t_vector		*di_conv(va_list *arg, t_option *option)
 		if (option->field > 0)
 			option->field--;
 	}
-	vct = ft_set_string(nb, option);
+	vct = set_string(nb, option);
 	vct_fill(vct, '0', option->precision, PUSH);
 	filler = (option->flag & FLAG_ZERO) ? '0' : ' ';
-	vct_fill(vct, filler, option->field, option->flag & FLAG_MIN ? ADD : PUSH);
-	if (neg ==TRUE)
+	if (filler == '0')
+		vct_fill(vct, filler, option->field, option->flag & FLAG_MIN ? ADD : PUSH);
+	if (neg == TRUE)
 		vct_push(vct, '-');
+	if (filler == ' ')
+		vct_fill(vct, filler, option->field, option->flag & FLAG_MIN ? ADD : PUSH);
 	if (option->flag & FLAG_SPACE)
 		vct_push(vct, ' ');
+	if ((option->flag & FLAG_PLUS) && neg == FALSE)
+		vct_push(vct, '+');
 	return (vct);
 }

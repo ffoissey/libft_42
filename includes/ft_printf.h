@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 23:23:31 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/08 22:01:50 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,7 @@
 # define NB_CONV				20
 # define PRECISION_FLAG			10
 # define CONV_SHIFT				24
-# define ALL_MOD				0x3f
+# define ALL_MOD				0x1f
 # define CHAR_ERR_SHIFT			56
 
 # define FORMAT_CHAR			'%'
@@ -139,6 +139,7 @@ typedef	t_vector	*(*t_func_conv)(va_list *, t_option *);
 int				ft_printf(const char *format, ...);
 
 t_vector		*di_conv(va_list *arg, t_option *option);
+t_vector		*pboux_conv(va_list *arg, t_option *option);
 t_vector		*c_conv(va_list *arg, t_option *option);
 t_vector		*s_conv(va_list *arg, t_option *option);
 int				ft_conversion_lstr(wchar_t *src, t_option *option, char **new);

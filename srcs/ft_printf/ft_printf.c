@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/07 14:29:32 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 23:20:21 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/08 22:01:52 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,28 +67,7 @@ t_vector	*wildcard_conv(va_list *arg, t_option *option)
 	return (NULL);
 }
 
-t_vector	*boux_conv(va_list *arg, t_option *option)
-{
-	(void)option;
-	(void)arg;
-	return (NULL);
-}
-
 t_vector	*f_conv(va_list *arg, t_option *option)
-{
-	(void)option;
-	(void)arg;
-	return (NULL);
-}
-
-t_vector	*percent_conv(va_list *arg, t_option *option)
-{
-	(void)option;
-	(void)arg;
-	return (NULL);
-}
-
-t_vector	*none_conv(va_list *arg, t_option *option)
 {
 	(void)option;
 	(void)arg;
@@ -98,15 +77,20 @@ t_vector	*none_conv(va_list *arg, t_option *option)
 int64_t		get_conv(t_machine *machine, char *cur, t_vector *out, va_list *arg)
 {
 	static t_func_conv	conv[] = {wildcard_conv, c_conv, c_conv, s_conv,
-									s_conv, pboux_conv, pboux_conv, di_conv,
-									di_conv, di_conv, pboux_conv, pboux_conv,
-									pboux_conv, pboux_conv, pboux_conv,
+									s_conv, pboux_conv, pboux_conv, pboux_conv,
+									di_conv, di_conv, di_conv, pboux_conv,
+									pboux_conv, pboux_conv, pboux_conv, pboux_conv,
 									pboux_conv, f_conv, f_conv, c_conv, c_conv};
 	static const char	conv_char[NB_CONV] = "*cCsSpbBdDioOuUxXfF%";
 	t_vector			*local;
 	uint8_t				i;
 
 	i = 0;
+	if (*cur == '\0')
+	{
+		machine->state = STATE_FINISH;
+		return (0);
+	}
 	while (i < NB_CONV - 1)
 	{
 		if (*cur == conv_char[i])
@@ -133,8 +117,11 @@ int64_t		get_string(t_machine *machine, char *cur,
 	while (cur[len] != '\0' && cur[len] != FORMAT_CHAR)
 		vct_add(out, cur[len++]);
 	machine->state = STATE_FLAG;
-	if (cur[len] != FORMAT_CHAR)
+	if (cur[len] == '\0')
+	{
 		machine->state = STATE_FINISH;
+		len = 0;
+	}
 	else
 		len++;
 	return (len);
@@ -152,7 +139,8 @@ int8_t	parser(char *format, t_vector *out, va_list *arg)
 	machine.state = STATE_STRING;
 	while (machine.state != STATE_FINISH)
 	{
-		if ((scale = process[machine.state](&machine, format + i, out, arg)) != FAILURE)
+		scale = process[machine.state](&machine, format + i, out, arg);
+		if (scale != FAILURE)
 			i += scale;
 	}
 	return (SUCCESS);

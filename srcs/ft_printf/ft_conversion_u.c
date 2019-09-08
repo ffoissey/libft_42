@@ -6,32 +6,28 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:33:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/07 23:30:52 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/08 22:01:52 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static unsigned long long int	ft_u_conversion(unsigned long long int nb,
-								t_flag *flag)
+static uint64_t	apply_mod(uint64_t nb, uint64_t flag)
 {
-	if (flag->h)
-		nb = (unsigned short int)(nb);
-	else if (flag->hh)
-		nb = (unsigned char)(nb);
-	else if (flag->l_low)
-		nb = (unsigned long int)(nb);
-	else if (flag->ll)
-		nb = (unsigned long long int)(nb);
-	else
-		nb = (unsigned int)(nb);
+	if (flag & MOD_HH)
+		nb = (uint8_t)(nb);
+	else if (flag & MOD_H)
+		nb = (uint16_t)(nb);
+	else if ((flag & MOD_LL) == FALSE)
+		nb = (uint32_t)(nb);
 	return (nb);
 }
 
-static t_vector		*ft_set_ustring(uint64_t nb, t_option *option)
+static t_vector		*set_ustring(uint64_t nb, t_option *option)
 {
 	t_vector	*vct;
 	char		*s;
+	size_t		len;
 	int			base;
 
 	base = 10;
@@ -39,31 +35,37 @@ static t_vector		*ft_set_ustring(uint64_t nb, t_option *option)
 		base = 2;
 	else if ((option->flag & CONV_O) || (option->flag & CONV_O_MAJ))
 		base = 8;
-	else if ((option->flag & CONV_X) || (option->flag & CONV_X_MAJ))
+	else if ((option->flag & CONV_X) || (option->flag & CONV_X_MAJ)
+			|| (option->flag & CONV_P))
 		base = 16;
 	s = ft_itoa_base_lu(nb, base);
-
-	//////
-	if (flag->sharp && (c == 'x' || c == 'X') && nb)
-		flag->field -= 2;
-	else if (flag->sharp && ft_strcmp(s, "0") && c == 'o')
-		ft_join_free(&s, "0", 0, 0);
-	else if (flag->sharp && c != 'b' && c != 'B')
-		flag->sharp = 0;
-	if (c == 'x')
-		s = ft_strlowcase(s);
-	flag->precision -= ft_strlen(s);
-	flag->precision < 0 ? flag->precision = 0 : flag->precision;
-	flag->field -= flag->precision + ft_strlen(s) + flag->space;
-	return (s);
+	vct = vct_newstr(s);
+	ft_strdel(&s);
+	if ((option->flag & FLAG_HASH) || (option->flag & CONV_P))
+	{
+		if ((option->flag & CONV_X) || (option->flag & CONV_X_MAJ)
+			|| (option->flag & CONV_P))
+			option->field = option->field > 1 ? option->field - 2 : 0;
+		else if (nb == 0
+				&& ((option->flag & CONV_O) || (option->flag & CONV_O_MAJ)))
+			vct_add(vct, '0');
+		else if ((option->flag & CONV_B) == FALSE
+				&& (option->flag & CONV_B_MAJ) == FALSE)
+			option->flag &= ~(FLAG_HASH);
+	}
+	len = vct_len(vct);
+	option->precision -= len < option->precision ? len : option->precision;
+	option->field -= (len + option->precision) < option->field ?
+			len + option->precision : option->field;
+	return (vct);
 }
-
+/*
 static char						*ft_binary_format(char *s)
 {
-	char	*new;
-	int		i;
-	int		j;
-	int		count;
+	char		*new;
+	int			i;
+	int			j;
+	int			count;
 
 	i = -1;
 	count = 0;
@@ -85,13 +87,13 @@ static char						*ft_binary_format(char *s)
 	}
 	ft_strdel(&s);
 	return (new);
-}
+}*/
 
 t_vector				*pboux_conv(va_list *arg, t_option *option)
 {
-	t_vector	*vct;
-	uint64_t	nb;
-	char		filler;
+	t_vector			*vct;
+	uint64_t			nb;
+	char				filler;
 
 	option->flag &= ~FLAG_PLUS;
 	option->flag &= ~FLAG_SPACE;
@@ -104,12 +106,19 @@ t_vector				*pboux_conv(va_list *arg, t_option *option)
 		option->flag &= ~(ALL_MOD);
 		option->flag |= MOD_LL;
 	}
-	nb = va_arg(*arg, unsigned long long);
-	vct = set_u_string(nb, option);
+	nb = apply_mod(va_arg(*arg, uint64_t), option->flag);
+	vct = set_ustring(nb, option);
 	vct_fill(vct, '0', option->precision, PUSH);
 	filler = (option->flag & FLAG_ZERO) ? '0' : ' ';
-	vct_fill(vct, filler, option->field, option->flag & FLAG_MIN ? ADD : PUSH);
-	if (option->flag & FLAG_SPACE)
-		vct_push(vct, ' ');
+	if (filler == '0')
+		vct_fill(vct, filler, option->field, option->flag & FLAG_MIN ? ADD : PUSH);
+	if (((option->flag & FLAG_HASH) && ((option->flag & CONV_X)
+			|| (option->flag & CONV_X_MAJ)))
+			|| (option->flag & CONV_P))
+			vct_pushstr(vct, "0X");
+	if (filler == ' ')
+		vct_fill(vct, filler, option->field, option->flag & FLAG_MIN ? ADD : PUSH);
+	if ((option->flag & CONV_X) || (option->flag & CONV_P))
+		vct_apply(vct, ft_strlowcase);
 	return (vct);	
 }
