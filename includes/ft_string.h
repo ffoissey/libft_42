@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/10 15:36:48 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/10 16:23:52 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -120,6 +120,7 @@ void		ft_free_tab_str(char **tab);
 int			ft_str_is_lowercase(char *str);
 int			ft_str_is_uppercase(char *str);
 int			ft_str_is_numeric(char *str);
+int			ft_strcheck(char *s, int (*f)(int));
 
 /*
 ***************

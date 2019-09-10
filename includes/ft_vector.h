@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/10 15:36:50 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/10 16:19:30 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@
 # define DFL_VCT_SCALE		16
 # define VCT_LIMIT			INT_MAX
 
-# define NB_INT_FT			3
+# define NB_INT_FT			12
 # define NB_CHAR_PTR_FT		4
 
 typedef struct	s_vector
@@ -31,14 +31,23 @@ typedef struct	s_vector
 	size_t		len;
 }				t_vector;
 
-typedef	int		(*t_int_funct)(char *);
+typedef	int		(*t_int_funct)(int c);
 typedef	char	*(*t_char_ptr_funct)(char *);
 
 enum	e_apply
 {
-	IS_UPPER,
 	IS_LOWER,
-	IS_NUMERIC,
+	IS_UPPER,
+	IS_ALPHA,
+	IS_DIGIT,
+	IS_ALNUM,
+	IS_ASCII,
+	IS_PRINTABLE,
+	IS_BLANK,
+	IS_CNTRL,
+	IS_GRAPH,
+	IS_SPACE,
+	IS_XDIGIT,
 	UPCASE,
 	LOWCASE,
 	CAPITAL,

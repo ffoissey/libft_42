@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 12:41:45 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/10 15:36:46 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/10 16:27:37 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,11 @@
 
 static t_int_funct		check_funct(enum e_apply type)
 {
-	static t_int_funct	funct[NB_INT_FT] = {ft_str_is_uppercase,
-										ft_str_is_lowercase,
-										ft_str_is_numeric};
+	static t_int_funct	funct[NB_INT_FT] = {ft_islower, ft_isupper, ft_isalpha,
+											ft_isdigit, ft_isalnum, ft_isascii,
+											ft_isprint, ft_isblank, ft_iscntrl,
+											ft_isgraph, ft_isspace, ft_isxdigit
+											};
 
 	return (funct[type]);
 }
@@ -38,7 +40,7 @@ int						vct_apply(t_vector *vct, enum e_apply type)
 	if (vct == NULL || vct->str == NULL || type > NB_INT_FT + NB_CHAR_PTR_FT)
 		ret = FAILURE;
 	else if (type < NB_INT_FT)
-		ret = check_funct(type)(vct->str);
+		ret = ft_strcheck(vct->str, check_funct(type));
 	else if (apply_funct(type - NB_INT_FT)(vct->str) == NULL)
 		ret = FAILURE;
 	return (ret);

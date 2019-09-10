@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/09/10 15:31:54 by ffoissey         ###   ########.fr        #
+#    Updated: 2019/09/10 16:24:40 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -23,21 +23,21 @@
 # Path Sources   >>>>>>>>>>>>>>	line 135
 # Sources     	 >>>>>>>>>>>>>>	line 154
 #       |---> string		--> line 156 
-#       |---> char			--> line 233
-#       |---> memory		--> line 253 
-#       |---> output		--> line 280 
-#       |---> conversion	--> line 304
-#       |---> maths			--> line 315
-#       |---> list			--> line 321
-#       |---> sort			--> line 348
-#       |---> other			--> line 357
-#       |---> get_next_line --> line 362
-#       |---> ft_printf     --> line 368
-#       |---> vector	    --> line 398
-#       |---> #attribution  --> line 431
-# Objs    	 	 >>>>>>>>>>>>>>	line 451
-# Rules     	 >>>>>>>>>>>>>>	line 463
-# End  		   	 >>>>>>>>>>>>>>	line 516
+#       |---> char			--> line 234
+#       |---> memory		--> line 254 
+#       |---> output		--> line 281 
+#       |---> conversion	--> line 305
+#       |---> maths			--> line 316
+#       |---> list			--> line 322
+#       |---> sort			--> line 349
+#       |---> other			--> line 358
+#       |---> get_next_line --> line 363
+#       |---> ft_printf     --> line 369
+#       |---> vector	    --> line 399
+#       |---> #attribution  --> line 432
+# Objs    	 	 >>>>>>>>>>>>>>	line 452
+# Rules     	 >>>>>>>>>>>>>>	line 464
+# End  		   	 >>>>>>>>>>>>>>	line 517
 
 ################################################################################
 ################################                ################################
@@ -205,6 +205,7 @@ SRCS += ft_free_tab_str.c
 SRCS += ft_str_is_lowercase.c
 SRCS += ft_str_is_uppercase.c
 SRCS += ft_str_is_numeric.c
+SRCS += ft_strcheck.c
 
 # New
 SRCS += ft_strnew.c
