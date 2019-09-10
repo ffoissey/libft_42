@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 16:27:07 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/10 15:36:48 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,7 @@ char		*ft_strupcase(char *str);
 char		*ft_strlowcase(char *str);
 char		*ft_strcapitalize(char *str);
 char		*ft_strrev(char *str);
+
 void		ft_striter(char *s, void (*f)(char *));
 void		ft_striteri(char *s, void (*f)(unsigned int, char *));
 
