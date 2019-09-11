@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/09/10 16:24:40 by ffoissey         ###   ########.fr        #
+#    Updated: 2019/09/11 15:34:45 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -33,11 +33,11 @@
 #       |---> other			--> line 358
 #       |---> get_next_line --> line 363
 #       |---> ft_printf     --> line 369
-#       |---> vector	    --> line 399
-#       |---> #attribution  --> line 432
-# Objs    	 	 >>>>>>>>>>>>>>	line 452
-# Rules     	 >>>>>>>>>>>>>>	line 464
-# End  		   	 >>>>>>>>>>>>>>	line 517
+#       |---> vector	    --> line 402
+#       |---> #attribution  --> line 435
+# Objs    	 	 >>>>>>>>>>>>>>	line 455
+# Rules     	 >>>>>>>>>>>>>>	line 467
+# End  		   	 >>>>>>>>>>>>>>	line 520
 
 ################################################################################
 ################################                ################################
@@ -399,6 +399,7 @@ SRCS += ft_double_mantissa.c
 #----------------------------------- VECTOR -----------------------------------#
 
 SRCS += ft_vct_add.c
+SRCS += ft_vct_addnstr.c
 SRCS += ft_vct_addstr.c
 SRCS += ft_vct_apply.c
 SRCS += ft_vct_cat.c
@@ -424,9 +425,11 @@ SRCS += ft_vct_pop.c
 SRCS += ft_vct_popfrom.c
 SRCS += ft_vct_push.c
 SRCS += ft_vct_pushstr.c
+SRCS += ft_vct_readline.c
 SRCS += ft_vct_replacechar.c
 SRCS += ft_vct_replacestr.c
 SRCS += ft_vct_reset.c
+SRCS += ft_vct_splitchr.c
 SRCS += ft_vct_sub.c
 
 ################# ATTRIBUTION

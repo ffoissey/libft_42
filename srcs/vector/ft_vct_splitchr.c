@@ -1,36 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_addstr.c                                    :+:      :+:    :+:   */
+/*   ft_vct_splitchr.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/01 09:30:14 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/11 15:39:44 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/11 14:23:53 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/11 15:49:13 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-int		vct_addstr(t_vector *dest, char *src)
+t_vector	*vct_splitchr(t_vector *vct, char c)
 {
-	size_t	i;
-	size_t	j;
-	size_t	src_len;
+	char		*search;
+	t_vector	*before;
+	size_t		size;
 
-	if (dest == NULL || src == NULL || dest->str == NULL)
-		return (SUCCESS);
-	src_len = ft_strlen(src);
-	if (dest->len + src_len + 1 >= dest->size)
+	before = vct_dup(vct);
+	search = ft_strchr(vct->str, c);
+	if (search == NULL)
+		vct_clear(vct);
+	else
 	{
-		if (vct_extend(dest, src_len + 1) == FAILURE)
-			return (FAILURE);
+		size = search - vct->str;
+		vct_popfrom(vct, size + 1);	
+		if (size == 0)
+			vct_clear(before);
+		else
+			vct_cutfrom(before, size);
 	}
-	i = dest->len;
-	j = 0;
-	while (j < src_len)
-		dest->str[i++] = src[j++];
-	dest->str[i] = '\0';
-	dest->len += src_len;
-	return (SUCCESS);
+	return (before);
 }

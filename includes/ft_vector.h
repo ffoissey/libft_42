@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/10 16:19:30 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/11 15:49:14 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,9 +26,9 @@
 typedef struct	s_vector
 {
 	char		*str;
+	size_t		len;
 	size_t		size;
 	size_t		scale;
-	size_t		len;
 }				t_vector;
 
 typedef	int		(*t_int_funct)(int c);
@@ -79,11 +79,14 @@ int				vct_cat(t_vector *dest, t_vector *src);
 t_vector		*vct_join(t_vector *vct1, t_vector *vct2);
 t_vector		*vct_joinfree(t_vector **vct1, t_vector **vct2, int flag);
 int				vct_addstr(t_vector *dest, char *src);
+int				vct_addnstr(t_vector *dest, char *src, size_t size);
 int				vct_pushstr(t_vector *dest, char *src);
 t_vector		*vct_sub(t_vector *vct, size_t start, size_t end);
 void			vct_replacechar(t_vector *vector, char to_replace, char by);
 int				vct_replacestr(t_vector *vector, char *to_replace, char *by);
 int				vct_apply(t_vector *vct, enum e_apply type);
 int				vct_fill(t_vector *vct, char c, size_t nb);
+t_vector		*vct_splitchr(t_vector *vct, char c);
+ssize_t			vct_readline(t_vector *vct, const int fd);
 
 #endif
