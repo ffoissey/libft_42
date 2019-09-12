@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/11 15:49:14 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/12 15:58:51 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,9 @@
 
 # define NB_INT_FT			12
 # define NB_CHAR_PTR_FT		4
+
+# define LINE_OK			1
+# define IS_EOF				0
 
 typedef struct	s_vector
 {
@@ -87,6 +90,7 @@ int				vct_replacestr(t_vector *vector, char *to_replace, char *by);
 int				vct_apply(t_vector *vct, enum e_apply type);
 int				vct_fill(t_vector *vct, char c, size_t nb);
 t_vector		*vct_splitchr(t_vector *vct, char c);
-ssize_t			vct_readline(t_vector *vct, const int fd);
+size_t			vct_chr(t_vector *vct, char c);
+int				vct_readline(t_vector *vct, const int fd);
 
 #endif
