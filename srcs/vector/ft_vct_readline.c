@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:13:28 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/12 16:12:13 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/12 17:31:13 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,14 +15,23 @@
 static int	get_rest_til_newline(t_vector *vct, t_vector *rest)
 {
 	t_vector	*tmp;
+	int			ret;
 
+	ret = LINE_OK;
 	if (vct_len(rest) != 0)
 	{
-		tmp = vct_splitchr(rest, '\n');
-		vct_cat(vct, tmp);
-		vct_del(&tmp);
+		if ((tmp = vct_splitchr(rest, '\n')) != NULL)
+		{
+			if (vct_cat(vct, tmp) == FAILURE)
+				ret = FAILURE;
+			vct_del(&tmp);
+		}
+		else
+			ret = FAILURE;
 	}
-	return (vct_len(rest) == 0 ? IS_EOF : LINE_OK);
+	if (ret != FAILURE && vct_len(rest) == 0)
+		ret = IS_EOF;
+	return (ret);
 }
 
 static int	read_next(t_vector *vct, t_vector *rest, const int fd)
@@ -35,13 +44,17 @@ static int	read_next(t_vector *vct, t_vector *rest, const int fd)
 		while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 		{
 			buf[ret] = '\0';
-			vct_addnstr(rest, buf, ret);
-			if (ft_strchr(buf, '\n') != NULL || ret < BUFF_SIZE)
+			if (vct_addnstr(rest, buf, ret) == FAILURE)
+			{
+				ret = FAILURE;
+				break ;
+			}
+			if (vct_chr(rest, '\n') != vct_len(rest))
 				break ;
 		}
 		if (ret != FAILURE)
 			ret = get_rest_til_newline(vct, rest);
-		if (ret == 0 && vct_len(vct) > 0)
+		if (ret == IS_EOF && vct_len(vct) > 0)
 			ret = LINE_OK;
 	}
 	return (ret);
@@ -63,9 +76,12 @@ int			vct_readline(t_vector *vct, const int fd)
 		vct_reset(vct, 0);
 		if (rest == NULL)
 			rest = vct_new(DFL_VCT_SIZE);
-		ret = read_next(vct, rest, fd);
-		if (ret <= 0)
-			vct_del(&rest);
+		if (rest != NULL)
+		{
+			ret = read_next(vct, rest, fd);
+			if (ret <= 0)
+				vct_del(&rest);
+		}
 	}
 	return (ret);
 }
