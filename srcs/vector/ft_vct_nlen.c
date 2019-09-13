@@ -1,37 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_fill.c                                      :+:      :+:    :+:   */
+/*   ft_vct_nlen.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/05 19:47:49 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/05 20:09:34 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/13 14:22:55 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/13 14:25:49 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-int		vct_fill(t_vector *vct, char c, size_t nb)
+size_t	vct_nlen(t_vector *vct, size_t n)
 {
-	size_t		i;
-	size_t		goal;
-
-	if (vct == NULL || nb > VCT_LIMIT)
-		return (FAILURE);
-	if (vct->len + nb + 1 >= vct->size)
-	{
-		if (vct_extend(vct, vct->scale + nb) == FAILURE)
-			return (FAILURE);
-	}
-	i = vct->len;
-	goal = vct->len + nb;
-	while (i < goal)
-	{
-		vct->str[i] = c;
-		i++;
-	}
-	vct->str[i] = '\0';
-	vct->len += nb;
-	return (SUCCESS);
+	if (vct == NULL)
+		return (0);
+	if (n > vct->len)
+		n = vct->len;
+	return (n);
 }

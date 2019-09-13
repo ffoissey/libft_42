@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 13:42:46 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/13 14:32:48 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,6 +75,8 @@ t_vector		*vct_dup(t_vector *vector);
 t_vector		*vct_ndup(t_vector *vector, size_t n);
 t_vector		*vct_cdup(t_vector *vector, char c);
 size_t			vct_len(t_vector *vector);
+size_t			vct_nlen(t_vector *vct, size_t n);
+size_t			vct_clen(t_vector *vct, char c);
 char			*vct_getstr(t_vector *vector);
 char			*vct_dupstr(t_vector *vector);
 int				vct_cpy(t_vector *dest, t_vector *src);
@@ -88,9 +90,16 @@ t_vector		*vct_sub(t_vector *vct, size_t start, size_t end);
 void			vct_replacechar(t_vector *vector, char to_replace, char by);
 int				vct_replacestr(t_vector *vector, char *to_replace, char *by);
 int				vct_apply(t_vector *vct, enum e_apply type);
-int				vct_fill(t_vector *vct, char c, size_t nb);
+int				vct_fillback(t_vector *vct, char c, size_t nb);
+int				vct_fillfront(t_vector *vct, char c, size_t nb);
 t_vector		*vct_splitchr(t_vector *vct, char c);
 ssize_t			vct_chr(t_vector *vct, char c);
 int				vct_readline(t_vector *vct, const int fd);
+int				vct_eq(t_vector *vct1, t_vector *vct2);
+int				vct_neq(t_vector *vct1, t_vector *vct2, size_t nb);
+int				vct_print(t_vector *vct);
+int				vct_printendl(t_vector *vct);
+int				vct_print_fd(t_vector *vct, int fd);
+int				vct_printendl_fd(t_vector *vct, int fd);
 
 #endif

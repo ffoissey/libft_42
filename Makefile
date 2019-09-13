@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/09/12 17:39:16 by ffoissey         ###   ########.fr        #
+#    Updated: 2019/09/13 14:33:54 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@
 #       |---> get_next_line --> line 363
 #       |---> ft_printf     --> line 369
 #       |---> vector	    --> line 400
-#       |---> #attribution  --> line 437
-# Objs    	 	 >>>>>>>>>>>>>>	line 456
-# Rules     	 >>>>>>>>>>>>>>	line 468
-# End  		   	 >>>>>>>>>>>>>>	line 521
+#       |---> #attribution  --> line 446
+# Objs    	 	 >>>>>>>>>>>>>>	line 455
+# Rules     	 >>>>>>>>>>>>>>	line 476
+# End  		   	 >>>>>>>>>>>>>>	line 530
 
 ################################################################################
 ################################                ################################
@@ -407,23 +407,32 @@ SRCS += ft_vct_cdup.c
 SRCS += ft_vct_charat.c
 SRCS += ft_vct_chr.c
 SRCS += ft_vct_clear.c
+SRCS += ft_vct_clen.c
 SRCS += ft_vct_cpy.c
 SRCS += ft_vct_cut.c
 SRCS += ft_vct_cutfrom.c
 SRCS += ft_vct_del.c
 SRCS += ft_vct_dup.c
 SRCS += ft_vct_dupstr.c
+SRCS += ft_vct_eq.c
 SRCS += ft_vct_extend.c
-SRCS += ft_vct_fill.c
+SRCS += ft_vct_fillback.c
+SRCS += ft_vct_fillfront.c
 SRCS += ft_vct_getstr.c
 SRCS += ft_vct_join.c
 SRCS += ft_vct_joinfree.c
 SRCS += ft_vct_len.c
 SRCS += ft_vct_ndup.c
+SRCS += ft_vct_neq.c
 SRCS += ft_vct_new.c
 SRCS += ft_vct_newstr.c
+SRCS += ft_vct_nlen.c
 SRCS += ft_vct_pop.c
 SRCS += ft_vct_popfrom.c
+SRCS += ft_vct_print.c
+SRCS += ft_vct_printendl.c
+SRCS += ft_vct_print_fd.c
+SRCS += ft_vct_printendl_fd.c
 SRCS += ft_vct_push.c
 SRCS += ft_vct_pushstr.c
 SRCS += ft_vct_readline.c

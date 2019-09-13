@@ -1,20 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_len.c                                       :+:      :+:    :+:   */
+/*   ft_vct_print_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/01 08:45:58 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 14:25:50 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/13 14:27:06 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/13 14:29:46 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-size_t	vct_len(t_vector *vct)
+int		vct_print_fd(t_vector *vct, int fd)
 {
-	if (vct == NULL)
-		return (0);
-	return (vct->len);
+	return (write(fd, vct->str, vct->len));
 }
