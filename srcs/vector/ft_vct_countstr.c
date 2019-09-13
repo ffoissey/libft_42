@@ -6,16 +6,16 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 15:49:23 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 15:50:55 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/13 17:42:00 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-size_t		vct_countstr(t_vector *vct, char *str)
+size_t	vct_countstr(t_vector *vct, char *str)
 {
-	size_t index;
-	size_t count;
+	size_t	index;
+	size_t	count;
 	size_t	len;
 
 	if (vct == NULL || str == NULL)

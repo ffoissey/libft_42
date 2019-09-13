@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 16:50:22 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 16:58:07 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/13 17:15:00 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int		vct_trim(t_vector *vct, char *str)
 	j = 0;
 	while (i < vct->len)
 	{
-		if (ft_strchr(str, vct->str[i]) == FALSE)
+		if (ft_strchr(str, vct->str[i]) == NULL)
 			new_vct->str[j++] = vct->str[i];
 		i++;
 	}
