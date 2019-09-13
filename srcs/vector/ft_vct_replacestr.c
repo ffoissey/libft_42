@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 12:11:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 15:20:45 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/13 13:50:52 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ static int	replace_string(t_vector *vct, char *str, char *to_replace, char *by)
 	len_replace = ft_strlen(to_replace);
 	len = vct->len;
 	vct_clear(vct);
-	while (i + offset <= len && ret == SUCCESS)
+	while (i + offset < len && ret == SUCCESS)
 	{
 		if (ft_strncmp(str + i + offset, to_replace, len_replace) == FALSE)
 		{

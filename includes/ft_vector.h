@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/12 16:59:54 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/13 13:42:46 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,7 +90,7 @@ int				vct_replacestr(t_vector *vector, char *to_replace, char *by);
 int				vct_apply(t_vector *vct, enum e_apply type);
 int				vct_fill(t_vector *vct, char c, size_t nb);
 t_vector		*vct_splitchr(t_vector *vct, char c);
-size_t			vct_chr(t_vector *vct, char c);
+ssize_t			vct_chr(t_vector *vct, char c);
 int				vct_readline(t_vector *vct, const int fd);
 
 #endif

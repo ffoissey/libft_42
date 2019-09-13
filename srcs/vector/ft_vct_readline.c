@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:13:28 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/12 17:31:13 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/13 13:44:15 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ static int	read_next(t_vector *vct, t_vector *rest, const int fd)
 				ret = FAILURE;
 				break ;
 			}
-			if (vct_chr(rest, '\n') != vct_len(rest))
+			if (vct_chr(rest, '\n') != (ssize_t)vct_len(rest))
 				break ;
 		}
 		if (ret != FAILURE)
