@@ -1,31 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_str.c                                       :+:      :+:    :+:   */
+/*   ft_vct_endby.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/13 15:34:58 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 15:40:05 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/13 15:41:49 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/13 15:45:11 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-ssize_t		vct_str(t_vector *vct, char *str)
+int		vct_endby(t_vector *vct, char *str)
 {
-	ssize_t index;
 	size_t	len;
 
 	if (vct == NULL || str == NULL)
-		return (FAILURE);
-	index = 0;
+		return (FALSE);
 	len = ft_strlen(str);
-	while ((size_t)index < vct->len)
+	if (len > vct->len || len == 0)
+		return (FALSE);
+	while (len--)
 	{
-		if (ft_strncmp(vct->str + index, str, len) == FALSE)
-			return (index);
-		index++;
+		if (vct->str[len] != str[len])
+			return (FALSE);
 	}
-	return (FAILURE);
+	return (TRUE);
 }

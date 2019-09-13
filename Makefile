@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/09/13 15:39:20 by ffoissey         ###   ########.fr        #
+#    Updated: 2019/09/13 15:45:55 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@
 #       |---> get_next_line --> line 363
 #       |---> ft_printf     --> line 369
 #       |---> vector	    --> line 400
-#       |---> #attribution  --> line 452
-# Objs    	 	 >>>>>>>>>>>>>>	line 461
-# Rules     	 >>>>>>>>>>>>>>	line 482
-# End  		   	 >>>>>>>>>>>>>>	line 536
+#       |---> #attribution  --> line 454
+# Objs    	 	 >>>>>>>>>>>>>>	line 463
+# Rules     	 >>>>>>>>>>>>>>	line 484
+# End  		   	 >>>>>>>>>>>>>>	line 538
 
 ################################################################################
 ################################                ################################
@@ -416,6 +416,7 @@ SRCS += ft_vct_cutfrom.c
 SRCS += ft_vct_del.c
 SRCS += ft_vct_dup.c
 SRCS += ft_vct_dupstr.c
+SRCS += ft_vct_endby.c
 SRCS += ft_vct_eq.c
 SRCS += ft_vct_extend.c
 SRCS += ft_vct_fillback.c
@@ -445,6 +446,7 @@ SRCS += ft_vct_replacechar.c
 SRCS += ft_vct_replacestr.c
 SRCS += ft_vct_reset.c
 SRCS += ft_vct_splitchr.c
+SRCS += ft_vct_startby.c
 SRCS += ft_vct_str.c
 SRCS += ft_vct_sub.c
 

@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 15:39:21 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/13 15:45:19 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,5 +107,7 @@ char			vct_getcharat(t_vector *vct, size_t index);
 int				vct_addcharat(t_vector *vct, char c, size_t index);
 int				vct_addstrat(t_vector *vct, char *str, size_t index);
 ssize_t			vct_str(t_vector *vct, char *str);
+int				vct_startby(t_vector *vct, char *str);
+int				vct_endby(t_vector *vct, char *str);
 
 #endif
