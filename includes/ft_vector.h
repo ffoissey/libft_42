@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 14:32:48 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/13 14:42:02 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,5 +101,8 @@ int				vct_print(t_vector *vct);
 int				vct_printendl(t_vector *vct);
 int				vct_print_fd(t_vector *vct, int fd);
 int				vct_printendl_fd(t_vector *vct, int fd);
+char			vct_getlastchar(t_vector *vct);
+char			vct_getfirstchar(t_vector *vct);
+char			vct_getcharat(t_vector *vct, size_t index);
 
 #endif
