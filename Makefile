@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/09/13 14:41:52 by ffoissey         ###   ########.fr        #
+#    Updated: 2019/09/13 15:27:53 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -34,10 +34,10 @@
 #       |---> get_next_line --> line 363
 #       |---> ft_printf     --> line 369
 #       |---> vector	    --> line 400
-#       |---> #attribution  --> line 449
-# Objs    	 	 >>>>>>>>>>>>>>	line 458
-# Rules     	 >>>>>>>>>>>>>>	line 479
-# End  		   	 >>>>>>>>>>>>>>	line 533
+#       |---> #attribution  --> line 451
+# Objs    	 	 >>>>>>>>>>>>>>	line 460
+# Rules     	 >>>>>>>>>>>>>>	line 481
+# End  		   	 >>>>>>>>>>>>>>	line 535
 
 ################################################################################
 ################################                ################################
@@ -399,8 +399,10 @@ SRCS += ft_double_mantissa.c
 #----------------------------------- VECTOR -----------------------------------#
 
 SRCS += ft_vct_add.c
+SRCS += ft_vct_addcharat.c
 SRCS += ft_vct_addnstr.c
 SRCS += ft_vct_addstr.c
+SRCS += ft_vct_addstrat.c
 SRCS += ft_vct_apply.c
 SRCS += ft_vct_cat.c
 SRCS += ft_vct_cdup.c
