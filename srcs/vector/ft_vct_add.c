@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 22:12:38 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 18:28:14 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/15 12:58:04 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,5 +24,6 @@ int		vct_add(t_vector *vct, char c)
 	vct->str[vct->len] = c;
 	vct->str[vct->len + 1] = '\0';
 	vct->len++;
+	vct_optimize(vct);
 	return (SUCCESS);
 }

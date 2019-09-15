@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 14:10:39 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 14:22:22 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/15 13:00:22 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,5 +31,6 @@ int		vct_fillfront(t_vector *vct, char c, size_t nb)
 		i++;
 	}
 	vct->len += nb;
+	vct_optimize(vct);
 	return (SUCCESS);
 }

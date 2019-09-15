@@ -1,35 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_cat.c                                       :+:      :+:    :+:   */
+/*   ft_vct_optimize.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/01 09:18:16 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/15 12:59:09 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/15 12:51:56 by ffoissey          #+#    #+#             */
+/*   Updated: 2019/09/15 13:03:34 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-int		vct_cat(t_vector *dest, t_vector *src)
+int		vct_optimize(t_vector *vct)
 {
-	size_t	i;
-	size_t	j;
+	char	*str_tmp;
 
-	if (dest == NULL || src == NULL || dest->str == NULL || src->str == NULL)
+	if (vct == NULL)
 		return (SUCCESS);
-	if (dest->len + src->len + 1 >= dest->size)
+	if (vct->len * 2 < vct->size && vct->size > DFL_VCT_SIZE)
 	{
-		if (vct_extend(dest, src->len + 1) == FAILURE)
+		vct->size = vct->len % vct->scale + vct->len + vct->scale;
+		vct->scale = vct->scale;
+		str_tmp = vct->str;
+		vct->str = (char *)ft_memalloc(vct->size);
+		if (vct->str == NULL)
 			return (FAILURE);
+		ft_memcpy((void *)vct->str, (void *)str_tmp, vct->len);
+		ft_strdel(&str_tmp);
 	}
-	i = dest->len;
-	j = 0;
-	while (j < src->len)
-		dest->str[i++] = src->str[j++];
-	dest->str[i] = '\0';
-	dest->len += src->len;
-	vct_optimize(dest);
 	return (SUCCESS);
 }
