@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/15 12:51:56 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/15 13:03:34 by ffoissey         ###   ########.fr       */
+/*   Updated: 2019/09/15 13:04:38 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		vct_optimize(t_vector *vct)
 
 	if (vct == NULL)
 		return (SUCCESS);
-	if (vct->len * 2 < vct->size && vct->size > DFL_VCT_SIZE)
+	if (vct->len * 3 < vct->size && vct->size > DFL_VCT_SIZE)
 	{
 		vct->size = vct->len % vct->scale + vct->len + vct->scale;
 		vct->scale = vct->scale;
