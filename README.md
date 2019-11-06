@@ -1,5 +1,6 @@
-# libft_42
-Premier projet de 42 ayant pour but de recoder un certain nombre de fonctions de la librairie C standard, ainsi que d'autres fonctions utilitaires.
+# libft
+*Premier projet de 42 ayant pour but de recoder un certain nombre de fonctions
+de la librairie C standard, ainsi que d'autres fonctions utilitaires.*
 
 ## Partie 1
 ### Reproduction de fonctions de la lib C :
@@ -163,64 +164,143 @@ Premier projet de 42 ayant pour but de recoder un certain nombre de fonctions de
 
 ## Partie Personnelle
 ### #String Vectors
+Un vecteur est ici un conteneur qui peut contenir une string.
+Toutes les allocations, redimensionnements et optimisations de la taille du conteneur
+sont gérés en interne par les fonctions elle-mêmes.
+Ils sont definis par la structure suivante:
+
+    typedef struct	s_vector
+    {
+	      char      *str;
+          size_t    len;
+	      size_t    size;
+	      size_t    scale;
+    }               t_vector;
+
 #### vct_add
+> Ajoute un caractère à la fin du vecteur.
 #### vct_addcharat
+> Remplace un caractère à l'indice donné.
 #### vct_addnstr
+> Ajoute une string sur n octets à la fin du vecteur.
 #### vct_addstr
+> Ajoute une string à la fin du vecteur.
 #### vct_addstrat
+> Ajoute une string à l'indice donné en remplaçant les caractères présents si ceux-ci existent.
 #### vct_apply
+> Applique une fonction de test (ex: is_upper) ou de modification (to_upper) à un vecteur.
 #### vct_cat
+> Concatène deux vecteurs.
 #### vct_cdup
+> Duplique un vecteur jusqu'à un caractère donné.
 #### vct_charat
+> Renvoie le caractère de l'indice donné.
 #### vct_chr
+> Renvoie l'indice de la première occurence du caractère recherché et -1 si celui-ci n'a pas été trouvé.
 #### vct_clear
+> Met tout les octets de str à '\0' et reinitialise len à 0.
 #### vct_clen
+> Renvoie la taille de la chaine contenue dans un vecteur jusqu'au caractère c.
 #### vct_countchar
+> Renvoie le nombre d'occurence d'un caractère dans un vecteur.
 #### vct_countstr
+> Renvoie le nombre d'occurence d'une caine de charactère dans un vecteur.
 #### vct_cpy
+> Copie le contenu d'un vecteur dans un autre.
 #### vct_cut
+> Supprime le dernier caractère d'un vecteur.
 #### vct_cutfrom
+> Supprime les n derniers caractères d'un vecteur.
 #### vct_del
+> Supprime un vecteur.
 #### vct_dup
+> Duplique un vecteur.
 #### vct_dupstr
+> Renvoie une copie de la chaine de caractères contenue dans un vecteur.
 #### vct_endby
+> Renvoie 1 si le vecteur se termine par la chaine str, sinon 0.
 #### vct_eq
+> Renvoie 1 si les chaines de caractères contenues dans les deux vecteurs sont identiques, sinon 0.
 #### vct_extend
+> Réalloue str à une taille donnée et recopie le contenu initialement présent dans la nouvelle chaine.
 #### vct_fillback
+> Ajoute n fois le caractère c à la fin du vecteur.
 #### vct_fillfront
+> Ajoute n fois le caractère c au début du vecteur.
 #### vct_getcharat
+> Renvoie le nième caractère d'un vecteur.
 #### vct_getfirstchar
+> Renvoie le premier caractère d'un vecteur.
 #### vct_getlastchar
+> Renvoie le dernier caractère d'un vecteur.
 #### vct_getstr
+> Renvoie un pointeur sur la chaine de caractères contenue dans un vecteur.
 #### vct_join
+> Joins les chaines contenues dans deux vecteurs dans un nouveau vecteur.
 #### vct_joinfree
+> Joins les chaines contenues dans deux vecteurs dans un nouveau vecteur et libère l'un, l'autre ou les deux.
 #### vct_len
+> Renvoie la taille de la chaine contenue dans un vecteur.
 #### vct_ndup
+> Duplique un vecteur sur au maximum n octets.
 #### vct_neq
+> Renvoie 1 si les chaines de caractères contenues dans les deux vecteurs sont identiques sur n octets, sinon 0.
 #### vct_new
+> Initialise un nouveau vecteur de la taille passée en paramètre.
+> Si la taille est de 0, la taille sera réinitialisée à la valeur définie par VCT_DEFAULT_SIZE.
 #### vct_newstr
+> Initialise un nouveau vecteur avec la chaine passée en paramètre.
 #### vct_nlen
+> Renvoie la taille de la chaine contenue dans un vecteur sur un maximum n octets.
 #### vct_optimize
+> Optimise la mémoire d'un vecteur en le réallouant si le conteneur est plus de
+> 3 fois plus grand que la chaine contenue par celui-ci.
 #### vct_pop
+> Supprime le premier charactère d'un vecteur.
 #### vct_popfrom
+> Supprime les n premiers charactères d'un vecteur.
 #### vct_print
+> Affiche un vecteur sur 'len' octets.
 #### vct_print_fd
+> Affiche un vecteur sur 'len' octets sur un fd donné.
 #### vct_printendl
+> Affiche un vecteur sur 'len' octets et ajoute un '\n'.
 #### vct_printendl_fd
+> Affiche un vecteur sur 'len' octets et ajoute un '\n' sur un fd donné.
 #### vct_push
+> Ajoute un caractère au début du vecteur.
 #### vct_pushstr
+> Ajoute une chaine de caractère au début du vecteur.
 #### vct_readline
+> Lis une ligne sur un fd et renvoie velle-ci via la chaine contenu dans le vecteur passé en paramètre.
 #### vct_replacechar
+> Remplace toutes les occurences du caractère 'to_replace' d'un vecteur par le caractère 'by'.
 #### vct_replacestr
+> Remplace toutes les occurences de la chaine de caractère 'to_replace' d'un vecteur par la chaine de caractère 'by'.
 #### vct_reset
+> Réinitialise un vecteur à ses valeurs aux valeurs par défaut définies dans ft_vector.h.
 #### vct_split
+> Divise la chaine de caractère contenue dans le vecteur via les caractères présents dans str
+> et renvoie à chaque appel de strsplit la prochaine partie divisée  dans un nouveau vecteur
+> tant que celle-ci est rappelé avec le même vecteur ou NULL. Si le vecteur initial change,
+> la division se fera sur ce nouveau vecteur.
 #### vct_splitchr
+> Divise le vecteur initial sur la première occurence du caractère c (celui-ci non inclus).
+> La première partie est renvoyé dans un nouveau vecteur tandis que la seconde
+> est copiée dans le vecteur initial en écrasant les données initialement présentes. 
 #### vct_startby
+> Renvoie 1 si le vecteur commence par la chaine str, sinon 0.
 #### vct_str
+> Renvoie l'indice de la première occurence de la chaine de caractère recherchée et -1 si celle-ci n'a pas été trouvée.
 #### vct_strcheck
+> Applique une fonction de test (ex: str_is_uppercase) à un vecteur.
 #### vct_sub
+> Renvoie un nouveau vecteur étant la suvdivision d'un autre.
 #### vct_trim
+> Supprime chaque occurence des caractères présents dans str.
 #### vct_wordsplit
+> Divise la chaine de caractère contenue dans le vecteur de la même façon que vct_split
+> mais la chaine passée en paramètre est strictement le délimiteur.
 
 ### #Autres Fonctions
 Reproduction de fonctions de la lib C :
