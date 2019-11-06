@@ -33,6 +33,7 @@ de la librairie C standard, ainsi que d'autres fonctions utilitaires.*
 * ft_toupper
 * ft_tolower
 
+
 ## Partie 2
 #### ft_memalloc
 > Alloue (avec malloc(3)) et retourne une zone de mémoire
@@ -122,6 +123,7 @@ de la librairie C standard, ainsi que d'autres fonctions utilitaires.*
 #### ft_putnbr_fd
 > Ecrit l’entier n sur le descripteur de fichier fd.
 
+
 ## Partie Bonus
 #### ft_lstnew
 > Alloue (avec malloc(3)) et retourne un maillon “frais”. Les
@@ -152,15 +154,19 @@ de la librairie C standard, ainsi que d'autres fonctions utilitaires.*
 > une nouvelle liste “fraiche” avec malloc(3) résultant des applications successives.
 > Si une allocation échoue, la fonction renvoie NULL.
 
-## get_next_line
-> Retourne une ligne lue depuis un file descriptor (gestion de plusieurs file descriptors simultanément).
-## ft_printf
-> Reproduction de la fonction printf
-> * Conversion gérés: CcSspDdiUuOoXxFfp%*.
-> * Ajout de la conversion B/b pour base binaire.
-> * Flags gérés: h,hh,l,ll,L,z,j,#,0,-,+
-> * Precision et taille minimum de champs.
-> * Fonctions ft_dprintf et ft_asprintf.
+
+## Get_next_line
+Retourne une ligne lue depuis un file descriptor (gestion de plusieurs file descriptors simultanément).
+
+
+## Ft_printf
+Reproduction de la fonction printf
+* Conversion gérés: CcSspDdiUuOoXxFfp%*.
+* Ajout de la conversion B/b pour base binaire.
+* Flags gérés: h,hh,l,ll,L,z,j,#,0,-,+
+* Precision et taille minimum de champs.
+* Fonctions ft_dprintf et ft_asprintf.
+
 
 ## Partie Personnelle
 ### #String Vectors
@@ -389,4 +395,4 @@ Reproduction de fonctions de la lib C :
 #### ft_strnlen
 > Renvoie la taille d'une chaine d'une taille maximum de n.
 #### ft_strsplit_whitespaces
-> Effectue un strsplit sur '\n', '\t' et ' ',
+> Effectue un strsplit sur '\n', '\t' et ' '.
