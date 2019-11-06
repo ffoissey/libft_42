@@ -1,4 +1,4 @@
-# libft
+# Libft
 *Premier projet de 42 ayant pour but de recoder un certain nombre de fonctions
 de la librairie C standard, ainsi que d'autres fonctions utilitaires.*
 
@@ -322,7 +322,7 @@ Reproduction de fonctions de la lib C :
 * ft_strncasecmp
 
 #### ft_atoi_base
->  Convertit la chaine str en entier dans la base donné.
+>  Convertit la chaine str en entier dans la base donnée.
 #### ft_itoa_base
 > Alloue (avec malloc(3)) et retourne une chaîne de caractères
 > “fraiche” terminée par un ’\0’ représentant l’entier value passé
