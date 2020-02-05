@@ -21,7 +21,10 @@ t_vector	*vct_sub(t_vector *vct, size_t start, size_t end)
 	if (end > vct->len)
 		end = vct->len;
 	new_vct = vct_new(vct->size);
-	new_vct->len = end - start;
-	ft_strncpy(new_vct->str, vct->str + start, new_vct->len);
+	if (new_vct != NULL)
+	{
+		new_vct->len = end - start;
+		ft_strncpy(new_vct->str, vct->str + start, new_vct->len);
+	}
 	return (new_vct);
 }
