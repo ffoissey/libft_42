@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2020/03/11 17:38:44 by ffoissey         ###   ########.fr        #
+#    Updated: 2020/03/11 18:15:25 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,13 +40,11 @@ else ifeq ($(d), 3)
 	CFLAGS += -g3
 	CFLAGS += -fsanitize=address,undefined
 	CFLAGS += -Wpadded
-	CFLAGS += -ansi
 	CFLAGS += -pedantic
 else ifeq ($(d), 4)
 	CFLAGS += -g3
 	CFLAGS += -fsanitize=address,undefined
 	CFLAGS += -Wpadded
-	CFLAGS += -ansi
 	CFLAGS += -pedantic
 	CFLAGS += -Weverything
 endif
@@ -511,4 +509,4 @@ re: fclean
 #----------------------------------- Special ----------------------------------#
 
 .PHONY: clean fclean re all
-#.SILENT:
+.SILENT:
