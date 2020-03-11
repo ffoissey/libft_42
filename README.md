@@ -233,6 +233,8 @@ Ils sont definis par la structure suivante:
 > Ajoute n fois le caractère c à la fin du vecteur.
 #### vct_fillfront
 > Ajoute n fois le caractère c au début du vecteur.
+#### vct_fullof
+> Verifie que le vecteur est rempli uniquement de charactere du charset.
 #### vct_getcharat
 > Renvoie le nième caractère d'un vecteur.
 #### vct_getfirstchar
@@ -304,6 +306,8 @@ Ils sont definis par la structure suivante:
 > Renvoie un nouveau vecteur étant la suvdivision d'un autre.
 #### vct_trim
 > Supprime chaque occurence des caractères présents dans str.
+#### vct_trimfront
+> Supprime toutes les occurences des caractères présents au debut de str.
 #### vct_wordsplit
 > Divise la chaine de caractère contenue dans le vecteur de la même façon que vct_split
 > mais la chaine passée en paramètre est strictement le délimiteur.
