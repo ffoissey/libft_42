@@ -6,15 +6,15 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:25:30 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/02/11 18:21:15 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/03/11 17:34:35 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_conversion.h"
 
-long long	ft_atol(const char *str)
+long	ft_atol(const char *str)
 {
-	long long	nbr;
+	long		nbr;
 	size_t		i;
 
 	nbr = 0;

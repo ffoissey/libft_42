@@ -6,13 +6,13 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:42:17 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/26 11:24:51 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/03/11 17:36:06 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static void	fill_str(char *str, long long int nbr, size_t *i, int base)
+static void	fill_str(char *str, long nbr, size_t *i, int base)
 {
 	if (nbr < 0)
 	{
@@ -40,10 +40,10 @@ static void	fill_str(char *str, long long int nbr, size_t *i, int base)
 	}
 }
 
-char		*ft_itoa_base_l(long long int value, int base)
+char		*ft_itoa_base_l(long value, int base)
 {
 	size_t				i;
-	long long int		tmp;
+	long		tmp;
 	char				*str;
 
 	i = 0;
@@ -63,7 +63,7 @@ char		*ft_itoa_base_l(long long int value, int base)
 	return (str);
 }
 
-static void	fill_str_lu(char *str, unsigned long long int nbr,
+static void	fill_str_lu(char *str, unsigned long nbr,
 			size_t *i, unsigned int base)
 {
 	if (nbr < base)
@@ -81,10 +81,10 @@ static void	fill_str_lu(char *str, unsigned long long int nbr,
 	}
 }
 
-char		*ft_itoa_base_lu(unsigned long long int value, unsigned int base)
+char		*ft_itoa_base_lu(unsigned long value, unsigned int base)
 {
 	size_t					i;
-	unsigned long long int	tmp;
+	unsigned long	tmp;
 	char					*str;
 
 	i = 0;

@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2019/09/15 12:57:46 by ffoissey         ###   ########.fr        #
+#    Updated: 2020/03/11 17:32:10 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,6 @@
 
 # Name
 NAME = libft.a
-DEBUG_NAME = db_libft.a
 
 # Compiler
 CC = clang
@@ -55,13 +54,34 @@ CC = clang
 # Compiler Flags
 CFLAGS += -Wall
 CFLAGS += -Wextra
-CFLAGS += -Werror
 
 # Compiler Debug Flags
-DBFLAGS += $(CFLAGS)
-DBFLAGS += -fsanitize=address,undefined
-DBFLAGS += -g3
-DBFLAGS += -pedantic
+ifeq ($(d), 0)
+	CFLAGS += -g3
+else ifeq ($(d), 1)
+	CFLAGS += -g3
+	CFLAGS += -fsanitize=address,undefined
+else ifeq ($(d), 2)
+	CFLAGS += -g3
+	CFLAGS += -fsanitize=address,undefined
+	CFLAGS += -Wpadded
+else ifeq ($(d), 3)
+	CFLAGS += -g3
+	CFLAGS += -fsanitize=address,undefined
+	CFLAGS += -Wpadded
+	CFLAGS += -ansi
+	CFLAGS += -pedantic
+else ifeq ($(d), 4)
+	CFLAGS += -g3
+	CFLAGS += -fsanitize=address,undefined
+	CFLAGS += -Wpadded
+	CFLAGS += -ansi
+	CFLAGS += -pedantic
+	CFLAGS += -Weverything
+endif
+ifneq ($(err), no)
+	CFLAGS += -Werror
+endif
 
 # Debug Dir
 DSYM += $(NAME).dSYM
@@ -480,9 +500,6 @@ vpath %.c $(PATH_SRCS_VECTOR)
 PATH_OBJS = objs/
 OBJS = $(patsubst %.c, $(PATH_OBJS)%.o, $(SRCS))
 
-DEBUG_PATH_OBJS = objs_debug/
-DEBUG_OBJS = $(patsubst %.c, $(DEBUG_PATH_OBJS)%.o, $(SRCS))
-
 ################################################################################
 #################################               ################################
 #################################     RULES     ################################
@@ -505,40 +522,22 @@ $(OBJS): $(PATH_OBJS)%.o: %.c $(HEADER) Makefile
 $(PATH_OBJS):
 	mkdir $@
 
-#------------------------------------ DEBUG -----------------------------------#
-
-debug: $(DEBUG_PATH_OBJS) $(DEBUG_NAME)
-
-$(DEBUG_NAME): $(DEBUG_OBJS)
-	ar rcs $@ $^
-	printf "$(GREEN)$@ is ready.\n\n$(NC)"
-
-$(DEBUG_OBJS): $(DEBUG_PATH_OBJS)%.o: %.c $(HEADER) Makefile
-	$(CC) $(DBFLAGS) $(I_INCLUDES) -c $< -o $@
-	printf "$(ONELINE)$(PURPLE)Compiling for DEBUG $<"
-	printf "                                                            \n$(NC)"
-
-$(DEBUG_PATH_OBJS):
-	mkdir $@
-
 #--------------------------------- Basic Rules --------------------------------#
 
 clean:
 	$(RM) $(OBJS)
-	$(RM) $(DEBUG_OBJS)
 	$(RM) -R $(PATH_OBJS)
-	$(RM) -R $(DEBUG_PATH_OBJS)
 	$(RM) -R $(DSYM)
 	printf "$(RED)Objs from libft removed\n$(NC)"
 
 fclean: clean
 	$(RM) $(NAME)
-	$(RM) $(DEBUG_NAME)
 	printf "$(RED)$(NAME) removed\n$(NC)"
 
-re: fclean all
+re: fclean
+	$(MAKE)
 
 #----------------------------------- Special ----------------------------------#
 
 .PHONY: clean fclean re all
-.SILENT:
+#.SILENT:

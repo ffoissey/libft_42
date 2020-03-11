@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 12:00:30 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/26 12:03:36 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/03/11 17:37:19 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,6 +77,6 @@ double	ft_double_select(va_list *args, t_flag *flag)
 char	*ft_nb(va_list *args, char *format, t_flag *flag)
 {
 	if (*format == 'd' || *format == 'D' || *format == 'i' || *format == 'p')
-		return (ft_hub_conversion_nb(va_arg(*args, long long), flag, *format));
-	return (ft_conversion_u(va_arg(*args, unsigned long long), flag, *format));
+		return (ft_hub_conversion_nb(va_arg(*args, long), flag, *format));
+	return (ft_conversion_u(va_arg(*args, unsigned long), flag, *format));
 }

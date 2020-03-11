@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/15 13:02:16 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/03/11 17:33:15 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ enum	e_apply
 	LOWCASE,
 	CAPITAL,
 	REV,
-	EMPTY,
+	EMPTY
 };
 
 t_vector		*vct_new(size_t size);

@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/08/29 21:47:41 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/03/11 17:33:51 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,7 @@ typedef	struct	s_flag
 	int			percent;
 	int			null;
 	int			wildcard;
+	char		pad[4];
 }				t_flag;
 
 int				ft_printf(const char *format, ...);
@@ -59,10 +60,10 @@ double			ft_double_select(va_list *args, t_flag *flag);
 char			*ft_nb(va_list *args, char *format, t_flag *flag);
 char			*ft_set_all_flags(char *s, t_flag *flag);
 void			ft_init_flags(t_flag *flag);
-char			*ft_itoa_base_l(long long value, int base);
-char			*ft_itoa_base_lu(unsigned long long value,
+char			*ft_itoa_base_l(long value, int base);
+char			*ft_itoa_base_lu(unsigned long value,
 					unsigned int base);
-char			*ft_hub_conversion_nb(long long nb, t_flag *flag, char c);
+char			*ft_hub_conversion_nb(long nb, t_flag *flag, char c);
 char			*ft_conversion_char(int c, t_flag *flag);
 char			*ft_conversion_str(const char *src, t_flag *flag);
 char			*ft_conversion_double(long double nb, t_flag *flag, char c);
@@ -76,7 +77,7 @@ char			*ft_strjoin_hub(const char *s1, const char *s2,
 char			*ft_strjoin_null(const char *s1, const char *s2,
 				int null, int id);
 size_t			ft_strlen_null(const char *s, int null);
-char			*ft_conversion_u(unsigned long long nb, t_flag *flag,
+char			*ft_conversion_u(unsigned long nb, t_flag *flag,
 				char c);
 char			*ft_strnew_c(size_t size, char c);
 char			*ft_bad_flag(char *s, t_flag *flag);

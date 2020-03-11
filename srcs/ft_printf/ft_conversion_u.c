@@ -6,29 +6,29 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:33:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 16:16:14 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/03/11 17:37:02 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static unsigned long long int	ft_u_conversion(unsigned long long int nb,
+static unsigned long	ft_u_conversion(unsigned long nb,
 								t_flag *flag)
 {
 	if (flag->h)
-		nb = (unsigned short int)(nb);
+		nb = (unsigned short)(nb);
 	else if (flag->hh)
 		nb = (unsigned char)(nb);
 	else if (flag->l_low)
-		nb = (unsigned long int)(nb);
+		nb = (unsigned long)(nb);
 	else if (flag->ll)
-		nb = (unsigned long long int)(nb);
+		nb = (unsigned long)(nb);
 	else
 		nb = (unsigned int)(nb);
 	return (nb);
 }
 
-static char						*ft_set_ustring(unsigned long long int nb,
+static char						*ft_set_ustring(unsigned long nb,
 								t_flag *flag, char c)
 {
 	char	*s;
@@ -110,7 +110,7 @@ static char						*ft_binary_format(char *s)
 	return (new);
 }
 
-char							*ft_conversion_u(unsigned long long int nb,
+char							*ft_conversion_u(unsigned long nb,
 								t_flag *flag, char c)
 {
 	char	*s;

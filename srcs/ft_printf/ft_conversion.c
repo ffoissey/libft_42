@@ -6,27 +6,26 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:47:12 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 13:00:57 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/03/11 17:35:39 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-static long long int	ft_di_conversion(long long int nb, t_flag *flag)
+static long				ft_di_conversion(long nb, t_flag *flag)
 {
 	if (flag->h)
-		nb = (short int)(nb);
+		nb = (short)(nb);
 	else if (flag->hh)
 		nb = (char)(nb);
 	else if (flag->l_low)
-		nb = (long int)(nb);
+		nb = (long)(nb);
 	else if (!flag->ll)
 		nb = (int)(nb);
 	return (nb);
 }
 
-static char				*ft_set_string(long long int nb,
-						t_flag *flag, char c)
+static char				*ft_set_string(long nb, t_flag *flag, char c)
 {
 	char *s;
 
@@ -46,7 +45,7 @@ static char				*ft_set_string(long long int nb,
 	return (s);
 }
 
-static char				*ft_split_conversion_nb(long long int nb,
+static char				*ft_split_conversion_nb(long nb,
 						t_flag *flag, char c)
 {
 	nb = ft_di_conversion(nb, flag);
@@ -79,7 +78,7 @@ static void				ft_up_d(char *c, t_flag *flag)
 		flag->space = 0;
 }
 
-char					*ft_hub_conversion_nb(long long int nb,
+char					*ft_hub_conversion_nb(long int nb,
 						t_flag *flag, char c)
 {
 	char	*s;
