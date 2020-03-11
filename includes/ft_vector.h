@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/03/11 17:33:15 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/03/11 19:55:11 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,5 +115,7 @@ int				vct_trim(t_vector *vct, char *str);
 t_vector		*vct_split(t_vector *vct, char *str);
 t_vector		*vct_wordsplit(t_vector *vct, char *str);
 int				vct_optimize(t_vector *vct);
+int				vct_fullof(t_vector *vct, char *charset);
+int				vct_trimfront(t_vector *vct, char *str);
 
 #endif

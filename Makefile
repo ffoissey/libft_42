@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2020/03/11 18:15:25 by ffoissey         ###   ########.fr        #
+#    Updated: 2020/03/11 19:51:24 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -412,6 +412,7 @@ SRCS += ft_vct_eq.c
 SRCS += ft_vct_extend.c
 SRCS += ft_vct_fillback.c
 SRCS += ft_vct_fillfront.c
+SRCS += ft_vct_fullof.c
 SRCS += ft_vct_getcharat.c
 SRCS += ft_vct_getfirstchar.c
 SRCS += ft_vct_getlastchar.c
@@ -443,6 +444,7 @@ SRCS += ft_vct_startby.c
 SRCS += ft_vct_str.c
 SRCS += ft_vct_sub.c
 SRCS += ft_vct_trim.c
+SRCS += ft_vct_trimfront.c
 SRCS += ft_vct_wordsplit.c
 
 ################# ATTRIBUTION
