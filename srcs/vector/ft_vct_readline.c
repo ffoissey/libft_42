@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:13:28 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 13:44:15 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/03/12 15:50:28 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,22 +34,25 @@ static int	get_rest_til_newline(t_vector *vct, t_vector *rest)
 	return (ret);
 }
 
-static int	read_next(t_vector *vct, t_vector *rest, const int fd)
+static int	read_next(t_vector *vct, t_vector *rest, const int fd,
+			int force_buffer)
 {
 	char		buf[BUFF_SIZE + 1];
 	int			ret;
+	static int	buffer_size = -1;
 
+	if (buffer_size == -1 && (force_buffer <= 0 || force_buffer > BUFF_SIZE))
+		buffer_size = BUFF_SIZE;
+	else if (buffer_size == -1)
+		buffer_size = force_buffer;
 	if ((ret = get_rest_til_newline(vct, rest)) == IS_EOF)
 	{
-		while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
+		while ((ret = read(fd, buf, buffer_size)) > 0)
 		{
 			buf[ret] = '\0';
 			if (vct_addnstr(rest, buf, ret) == FAILURE)
-			{
-				ret = FAILURE;
-				break ;
-			}
-			if (vct_chr(rest, '\n') != (ssize_t)vct_len(rest))
+				return (FAILURE);
+			if (vct_chr(rest, '\n') != FAILURE)
 				break ;
 		}
 		if (ret != FAILURE)
@@ -60,7 +63,7 @@ static int	read_next(t_vector *vct, t_vector *rest, const int fd)
 	return (ret);
 }
 
-int			vct_readline(t_vector *vct, const int fd)
+int			vct_readline(t_vector *vct, const int fd, int force_buffer)
 {
 	static t_vector		*rest = NULL;
 	int					ret;
@@ -78,7 +81,7 @@ int			vct_readline(t_vector *vct, const int fd)
 			rest = vct_new(DFL_VCT_SIZE);
 		if (rest != NULL)
 		{
-			ret = read_next(vct, rest, fd);
+			ret = read_next(vct, rest, fd, force_buffer);
 			if (ret <= 0)
 				vct_del(&rest);
 		}
