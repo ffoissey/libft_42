@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/03/12 15:30:15 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/09 14:43:53 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include "libft.h"
 # include <limits.h>
+# include <stdint.h>
 
 # define DFL_VCT_SIZE		64
 # define DFL_VCT_SCALE		16
@@ -25,6 +26,10 @@
 
 # define LINE_OK			1
 # define IS_EOF				0
+
+# define NO_SEP				0x01
+# define EACH_SEP			0x02
+# define ALL_SEP			0x04
 
 typedef struct	s_vector
 {
@@ -112,7 +117,7 @@ int				vct_endby(t_vector *vct, char *str);
 size_t			vct_countchar(t_vector *vct, char c);
 size_t			vct_countstr(t_vector *vct, char *str);
 int				vct_trim(t_vector *vct, char *str);
-t_vector		*vct_split(t_vector *vct, char *str);
+t_vector		*vct_split(t_vector *vct, char *str, uint8_t flag);
 t_vector		*vct_wordsplit(t_vector *vct, char *str);
 int				vct_optimize(t_vector *vct);
 int				vct_fullof(t_vector *vct, char *charset);

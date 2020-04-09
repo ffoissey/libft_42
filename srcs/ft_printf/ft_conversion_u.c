@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:33:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/03/11 17:37:02 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/09 15:02:27 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,7 +28,7 @@ static unsigned long	ft_u_conversion(unsigned long nb,
 	return (nb);
 }
 
-static char						*ft_set_ustring(unsigned long nb,
+static char				*ft_set_ustring(unsigned long nb,
 								t_flag *flag, char c)
 {
 	char	*s;
@@ -56,7 +56,7 @@ static char						*ft_set_ustring(unsigned long nb,
 	return (s);
 }
 
-static void						ft_major(char *c, t_flag *flag)
+static void				ft_major(char *c, t_flag *flag)
 {
 	if (*c == 'O')
 	{
@@ -81,7 +81,7 @@ static void						ft_major(char *c, t_flag *flag)
 	flag->space = 0;
 }
 
-static char						*ft_binary_format(char *s)
+static char				*ft_binary_format(char *s)
 {
 	char	*new;
 	int		i;
@@ -110,7 +110,7 @@ static char						*ft_binary_format(char *s)
 	return (new);
 }
 
-char							*ft_conversion_u(unsigned long nb,
+char					*ft_conversion_u(unsigned long nb,
 								t_flag *flag, char c)
 {
 	char	*s;

@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:42:17 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/03/11 17:36:06 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/09 15:01:54 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,9 +42,9 @@ static void	fill_str(char *str, long nbr, size_t *i, int base)
 
 char		*ft_itoa_base_l(long value, int base)
 {
-	size_t				i;
+	size_t		i;
 	long		tmp;
-	char				*str;
+	char		*str;
 
 	i = 0;
 	if (value <= 0)
@@ -83,9 +83,9 @@ static void	fill_str_lu(char *str, unsigned long nbr,
 
 char		*ft_itoa_base_lu(unsigned long value, unsigned int base)
 {
-	size_t					i;
+	size_t			i;
 	unsigned long	tmp;
-	char					*str;
+	char			*str;
 
 	i = 0;
 	if (value <= 0)

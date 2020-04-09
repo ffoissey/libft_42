@@ -293,6 +293,8 @@ Ils sont definis par la structure suivante:
 > et renvoie à chaque appel de strsplit la prochaine partie divisée  dans un nouveau vecteur
 > tant que celle-ci est rappelé avec le même vecteur ou NULL. Si le vecteur initial change,
 > la division se fera sur ce nouveau vecteur.
+> Le flag EACH_SEP permet d'obtenir chaque séparateur dans un vecteur distinct et ALL_SEP,
+> tout les séparateurs qui se suivent dans le même vecteur.
 #### vct_splitchr
 > Divise le vecteur initial sur la première occurence du caractère c (celui-ci non inclus).
 > La première partie est renvoyé dans un nouveau vecteur tandis que la seconde

@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 12:50:16 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/29 15:51:38 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/09 14:59:37 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -125,10 +125,11 @@ int				get_next_line_multifd(const int fd, char **line)
 	tmp = lst;
 	while (tmp)
 	{
-		if (FILEL->fd == fd)
+		if (((t_file *)(tmp->content))->fd == fd)
 		{
-			ft_fill_line_with_rest(FILEL);
-			if (FILEL->state != 1 && ft_read(FILEL) == -1)
+			ft_fill_line_with_rest((t_file *)(tmp->content));
+			if (((t_file *)(tmp->content))->state != 1
+				&& ft_read((t_file *)(tmp->content)) == -1)
 				return (-1);
 			break ;
 		}
@@ -136,6 +137,6 @@ int				get_next_line_multifd(const int fd, char **line)
 			return (-1);
 		tmp = tmp->next;
 	}
-	free_cp_lst(&tmp, FILEL, line);
-	return (tmp ? FILEL->state : 0);
+	free_cp_lst(&tmp, (t_file *)(tmp->content), line);
+	return (tmp ? ((t_file *)(tmp->content))->state : 0);
 }
