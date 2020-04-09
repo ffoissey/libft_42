@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 17:04:46 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/09 19:42:07 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/09 20:39:30 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,7 +43,7 @@ static ssize_t	get_offset(t_vector *init, char *str, size_t *index,
 		*index += offset;
 	if (offset == 0 || (flag & NO_SEP))
 		offset = til_next(init, str, *index);
-	return (offset == 0 && (flag & NO_SEP) ? -1 : offset);
+	return (offset == 0 && (flag & NO_SEP) ? -1 : (ssize_t)offset);
 }
 
 t_vector		*vct_split(t_vector *vct, char *str, uint8_t flag)
