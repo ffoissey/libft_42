@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/09 16:14:44 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/09 19:41:15 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,7 @@
 # define NO_SEP				0x01
 # define EACH_SEP			0x02
 # define ALL_SEP			0x04
+# define INIT				0x08
 
 typedef struct	s_vector
 {

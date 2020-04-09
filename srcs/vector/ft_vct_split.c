@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 17:04:46 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/09 14:53:14 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/09 19:42:07 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,7 +53,7 @@ t_vector		*vct_split(t_vector *vct, char *str, uint8_t flag)
 	t_vector		*new_vct;
 	ssize_t			offset;
 
-	if (vct != init && vct != NULL)
+	if ((vct != init && vct != NULL) || (flag & INIT))
 	{
 		init = vct;
 		index = 0;
