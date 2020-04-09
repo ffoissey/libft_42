@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/09 14:43:53 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/09 16:14:44 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ enum	e_apply
 	LOWCASE,
 	CAPITAL,
 	REV,
+	IS_NUMBER,
 	EMPTY
 };
 

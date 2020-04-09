@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 12:41:45 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/10 16:27:37 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/09 16:17:06 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,12 +35,20 @@ static t_char_ptr_funct	apply_funct(enum e_apply type)
 int						vct_apply(t_vector *vct, enum e_apply type)
 {
 	int		ret;
+	char	*str;
 
 	ret = SUCCESS;
 	if (vct == NULL || vct->str == NULL || type > NB_INT_FT + NB_CHAR_PTR_FT)
 		ret = FAILURE;
 	else if (type < NB_INT_FT)
 		ret = ft_strcheck(vct->str, check_funct(type));
+	else if (type == IS_NUMBER)
+	{
+		str = vct_getstr(vct);
+		if (vct_getfirstchar(vct) == '-')
+			str++;
+		ret = ft_strcheck(str, check_funct(IS_DIGIT));
+	}
 	else if (apply_funct(type - NB_INT_FT)(vct->str) == NULL)
 		ret = FAILURE;
 	return (ret);
