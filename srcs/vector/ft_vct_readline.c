@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:13:28 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/10 18:09:30 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/10 18:29:29 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ static int	read_next(t_vector *vct, t_vector *rest, const int fd)
 	t_vector	*line;
 	int			ret;
 
+	ret = LINE_OK;
 	if (vct_chr(rest, '\n') == FAILURE)
 	{
 		while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
