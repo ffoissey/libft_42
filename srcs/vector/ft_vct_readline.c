@@ -6,64 +6,40 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:13:28 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/03/12 15:50:28 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/10 18:09:30 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-static int	get_rest_til_newline(t_vector *vct, t_vector *rest)
+static int	read_next(t_vector *vct, t_vector *rest, const int fd)
 {
-	t_vector	*tmp;
+	char		buf[BUFF_SIZE];
+	t_vector	*line;
 	int			ret;
 
-	ret = LINE_OK;
-	if (vct_len(rest) != 0)
+	if (vct_chr(rest, '\n') == FAILURE)
 	{
-		if ((tmp = vct_splitchr(rest, '\n')) != NULL)
+		while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 		{
-			if (vct_cat(vct, tmp) == FAILURE)
-				ret = FAILURE;
-			vct_del(&tmp);
-		}
-		else
-			ret = FAILURE;
-	}
-	if (ret != FAILURE && vct_len(rest) == 0)
-		ret = IS_EOF;
-	return (ret);
-}
-
-static int	read_next(t_vector *vct, t_vector *rest, const int fd,
-			int force_buffer)
-{
-	char		buf[BUFF_SIZE + 1];
-	int			ret;
-	static int	buffer_size = -1;
-
-	if (buffer_size == -1 && (force_buffer <= 0 || force_buffer > BUFF_SIZE))
-		buffer_size = BUFF_SIZE;
-	else if (buffer_size == -1)
-		buffer_size = force_buffer;
-	if ((ret = get_rest_til_newline(vct, rest)) == IS_EOF)
-	{
-		while ((ret = read(fd, buf, buffer_size)) > 0)
-		{
-			buf[ret] = '\0';
 			if (vct_addnstr(rest, buf, ret) == FAILURE)
 				return (FAILURE);
 			if (vct_chr(rest, '\n') != FAILURE)
 				break ;
 		}
-		if (ret != FAILURE)
-			ret = get_rest_til_newline(vct, rest);
-		if (ret == IS_EOF && vct_len(vct) > 0)
-			ret = LINE_OK;
+		if (ret == FAILURE)
+			return (FAILURE);
 	}
+	line = vct_splitchr(rest, '\n', DEL_CHAR);
+	if (vct_cpy(vct, line) == FAILURE)
+		ret = FAILURE;
+	if (ret == IS_EOF && vct_len(vct) > 0)
+		ret = LINE_OK;
+	vct_del(&line);
 	return (ret);
 }
 
-int			vct_readline(t_vector *vct, const int fd, int force_buffer)
+int			vct_readline(t_vector *vct, const int fd)
 {
 	static t_vector		*rest = NULL;
 	int					ret;
@@ -81,7 +57,7 @@ int			vct_readline(t_vector *vct, const int fd, int force_buffer)
 			rest = vct_new(DFL_VCT_SIZE);
 		if (rest != NULL)
 		{
-			ret = read_next(vct, rest, fd, force_buffer);
+			ret = read_next(vct, rest, fd);
 			if (ret <= 0)
 				vct_del(&rest);
 		}

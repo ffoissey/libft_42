@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:25:10 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/09 14:58:33 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/10 18:10:59 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,8 @@
 ***************
 */
 
-# define BUFF_SIZE 	512
+# ifndef BUFF_SIZE
+#  define BUFF_SIZE 	512
+# endif
 
 #endif

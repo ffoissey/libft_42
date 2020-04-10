@@ -6,21 +6,22 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:23:53 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/03/12 14:52:58 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/10 18:08:24 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-t_vector	*vct_splitchr(t_vector *vct, char c)
+t_vector	*vct_splitchr(t_vector *vct, char c, int flag)
 {
 	t_vector	*before;
-	ssize_t		index;
 
-	index = vct_chr(vct, c);
-	if (index == FAILURE)
-		index = (ssize_t)vct->len;
-	before = vct_ndup(vct, index);
-	vct_popfrom(vct, index + 1);
+	before = vct_cdup(vct, c);
+	if (before != NULL)
+	{
+		if (vct_len(before) == vct_len(vct))
+			flag = 0;
+		vct_popfrom(vct, vct_len(before) + flag);
+	}
 	return (before);
 }

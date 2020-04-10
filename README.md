@@ -281,7 +281,6 @@ Ils sont definis par la structure suivante:
 > Ajoute une chaine de caractère au début du vecteur.
 #### vct_readline
 > Lis une ligne sur un fd et renvoie velle-ci via la chaine contenu dans le vecteur passé en paramètre.
-> Le paramètre force_buffer permet de forcer une taille de buffer. 
 #### vct_replacechar
 > Remplace toutes les occurences du caractère 'to_replace' d'un vecteur par le caractère 'by'.
 #### vct_replacestr

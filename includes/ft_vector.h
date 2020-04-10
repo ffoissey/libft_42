@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/09 19:41:15 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/10 18:02:19 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,9 @@
 # define EACH_SEP			0x02
 # define ALL_SEP			0x04
 # define INIT				0x08
+
+# define KEEP_CHAR			0
+# define DEL_CHAR			1
 
 typedef struct	s_vector
 {
@@ -99,9 +102,9 @@ int				vct_replacestr(t_vector *vector, char *to_replace, char *by);
 int				vct_apply(t_vector *vct, enum e_apply type);
 int				vct_fillback(t_vector *vct, char c, size_t nb);
 int				vct_fillfront(t_vector *vct, char c, size_t nb);
-t_vector		*vct_splitchr(t_vector *vct, char c);
+t_vector		*vct_splitchr(t_vector *vct, char c, int flag);
 ssize_t			vct_chr(t_vector *vct, char c);
-int				vct_readline(t_vector *vct, const int fd, int force_buffer);
+int				vct_readline(t_vector *vct, const int fd);
 int				vct_eq(t_vector *vct1, t_vector *vct2);
 int				vct_neq(t_vector *vct1, t_vector *vct2, size_t nb);
 int				vct_print(t_vector *vct);
