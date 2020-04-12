@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2020/04/12 15:32:08 by ffoissey         ###   ########.fr        #
+#    Updated: 2020/04/12 17:27:45 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -390,6 +390,7 @@ SRCS += ft_double_mantissa.c
 
 SRCS += ft_vct_add.c
 SRCS += ft_vct_addcharat.c
+SRCS += ft_vct_addmemat.c
 SRCS += ft_vct_addnstr.c
 SRCS += ft_vct_addstr.c
 SRCS += ft_vct_addstrat.c
