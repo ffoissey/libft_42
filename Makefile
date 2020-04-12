@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2020/03/11 19:51:24 by ffoissey         ###   ########.fr        #
+#    Updated: 2020/04/12 15:32:08 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -320,6 +320,7 @@ SRCS += ft_lstadd_back.c
 # Del
 SRCS += ft_lstpop.c
 SRCS += ft_lstdel.c
+SRCS += ft_lstdeltil.c
 SRCS += ft_lstdelone.c
 SRCS += ft_lstdelnode.c
 
