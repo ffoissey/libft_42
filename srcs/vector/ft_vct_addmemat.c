@@ -16,9 +16,9 @@ int		vct_addmemat(t_vector *vct, char *str, size_t len, size_t index)
 {
 	size_t	i;
 
-	if (vct == NULL || str == NULL || index > vct->size)
+	if (vct == NULL || str == NULL)
 		return (FAILURE);
-	if (vct->len + len + 1 >= vct->size)
+	if (vct->len + index + len + 1 >= vct->size)
 	{
 		if (vct_extend(vct, len + vct->scale) == FAILURE)
 			return (FAILURE);
