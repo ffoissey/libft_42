@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:26:55 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/08/29 21:46:39 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 15:57:49 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,24 +14,5 @@
 
 int		ft_putnbr(int n)
 {
-	int		ret;
-
-	if (n < 0)
-	{
-		if (n == -2147483648)
-		{
-			ret = ft_putstr("-2147483648");
-			return (ret);
-		}
-		ret = write(1, "-", 1);
-		ret = ft_putnbr(-n);
-	}
-	else if (n <= 9)
-		ret = ft_putchar((char)(n + '0'));
-	else
-	{
-		ret = ft_putnbr(n / 10);
-		ret = ft_putnbr(n % 10);
-	}
-	return (ret);
+	return (ft_putnbr_fd(n, 1));
 }
