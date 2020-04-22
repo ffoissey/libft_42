@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 10:09:30 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 15:03:27 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:25:02 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ static void	ft_process_carry(char *s)
 	int		carry;
 	int		i;
 
-	i = ft_strlen(s) - 1;
+	i = (int)ft_strlen(s) - 1;
 	carry = 1;
 	while (i > 0 && s[i] == '9' && carry == 1 && s[i] != '.')
 	{

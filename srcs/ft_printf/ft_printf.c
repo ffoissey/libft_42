@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:27:33 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/07/26 11:15:09 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 18:13:23 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -98,14 +98,17 @@ static int	ft_loop_args_extend(char **s, char **out,
 	return (0);
 }
 
-int			ft_loop_args(char *s, va_list *args, char **out, t_flag *flag)
+int			ft_loop_args(const char *str, va_list *args, char **out,
+				t_flag *flag)
 {
 	int		ret;
+	char	*s;
 
+	s = (char *)str;
 	while (*s)
 	{
 		ft_init_flags(flag);
-		if (!(s = ft_fillcstr(s, out, flag->null)))
+		if (!(s = (char *)ft_fillcstr(s, out, flag->null)))
 			return (0);
 		if (*s == '%')
 		{
@@ -133,13 +136,13 @@ int			ft_printf(const char *format, ...)
 		return (0);
 	out = NULL;
 	va_start(args, format);
-	len = ft_loop_args((char *)format, &args, &out, &flag);
+	len = ft_loop_args(format, &args, &out, &flag);
 	va_end(args);
 	ft_strdel(&flag.str);
 	if (len != -1)
 	{
-		len = ft_strlen_null(out, flag.null);
-		if (write(1, out, len) == FAILURE)
+		len = (int)ft_strlen_null(out, flag.null);
+		if (write(1, out, (size_t)len) == FAILURE)
 			len = -1;
 	}
 	ft_strdel(&out);

@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 10:09:38 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/26 10:40:00 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:31:28 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,10 +48,10 @@ void		ft_set_ptr(void *ptr, int *tab)
 	int				i;
 	int				j;
 	char			tmp;
-	unsigned char	*c_ptr;
+	char			*c_ptr;
 
 	i = 79;
-	c_ptr = (unsigned char *)ptr;
+	c_ptr = (char *)ptr;
 	while (i >= 0)
 	{
 		j = 0;
@@ -73,16 +73,16 @@ static void	ft_zero_extend(char *tab, long double zero)
 	tab[64] = '\0';
 	while (count < 64)
 	{
-		tab[count++] = (int)zero + '0';
+		tab[count++] = (char)((int)zero + '0');
 		zero -= (int)zero;
-		zero *= 10.0;
+		zero *= (long double)10.0;
 	}
 }
 
 char		*ft_zero(void *ptr)
 {
 	long double zero;
-	int			count;
+	size_t		count;
 	char		*tab_z;
 	char		tab[65];
 
@@ -93,7 +93,7 @@ char		*ft_zero(void *ptr)
 	while ((int)zero == 0)
 	{
 		zero -= (int)zero;
-		zero *= 10.0;
+		zero *= (long double)10.0;
 		count++;
 	}
 	tab_z = ft_strnew(count);

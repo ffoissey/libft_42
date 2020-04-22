@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 17:04:46 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/09 20:39:30 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:23:30 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,6 +70,6 @@ t_vector		*vct_split(t_vector *vct, char *str, uint8_t flag)
 		new_vct = vct_newstr("");
 	else if (offset != -1)
 		new_vct = vct_sub(init, index, index + (size_t)offset);
-	index += offset;
+	index += (size_t)offset;
 	return (new_vct);
 }

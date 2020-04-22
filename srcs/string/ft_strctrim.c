@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/02/11 17:50:54 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/02/11 17:52:22 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 16:55:49 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,14 @@
 
 char			*ft_strctrim(char const *s, char c)
 {
-	char	*tmp;
-	char	*new_str;
-	size_t	len;
-	size_t	cp_len;
+	const char	*tmp;
+	char		*new_str;
+	size_t		len;
+	size_t		cp_len;
 
-	tmp = (char *)s;
 	if (!s)
 		return (NULL);
+	tmp = s;
 	while (*tmp && *tmp == c)
 		tmp++;
 	len = ft_strlen(tmp);

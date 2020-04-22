@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/11 14:13:28 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/11 16:30:05 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:22:54 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,14 +16,14 @@ static int	read_next(t_vector *vct, t_vector *rest, const int fd)
 {
 	char		buf[BUFF_SIZE];
 	t_vector	*line;
-	int			ret;
+	ssize_t		ret;
 
 	ret = LINE_OK;
 	if (vct_chr(rest, '\n') == FAILURE)
 	{
 		while ((ret = read(fd, buf, BUFF_SIZE)) > 0)
 		{
-			if (vct_addnstr(rest, buf, ret) == FAILURE)
+			if (vct_addnstr(rest, buf, (size_t)ret) == FAILURE)
 				return (FAILURE);
 			if (vct_chr(rest, '\n') != FAILURE)
 				break ;
@@ -37,7 +37,7 @@ static int	read_next(t_vector *vct, t_vector *rest, const int fd)
 	if (ret == IS_EOF && vct_len(vct) > 0)
 		ret = LINE_OK;
 	vct_del(&line);
-	return (ret);
+	return ((int)ret);
 }
 
 int			vct_readline(t_vector *vct, const int fd)

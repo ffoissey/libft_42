@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:06:34 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 16:29:06 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:34:12 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,7 +71,7 @@ static char		*ft_utf8(unsigned int m, int ret)
 	unsigned int	tmp;
 	char			*s;
 
-	s = ft_strnew(ret);
+	s = ft_strnew((size_t)ret);
 	if (ret == 1)
 		s[0] = (char)m;
 	else if (ret == 2)
@@ -119,14 +119,14 @@ int				ft_conversion_lstr(wchar_t *src, t_flag *flag, char **new)
 	i = -1;
 	tmp = NULL;
 	s = NULL;
-	tmp_prec = flag->precision;
+	tmp_prec = (int)flag->precision;
 	while (src && src[++i])
 	{
-		if (!ft_check_largechar(src[i], &tmp))
+		if (!ft_check_largechar((unsigned int)src[i], &tmp))
 			return (1);
-		ret = ft_ret_largechar(src[i]);
+		ret = ft_ret_largechar((unsigned int)src[i]);
 		if (!flag->dot || (flag->dot && ((tmp_prec -= ret) >= 0)))
-			ft_join_free(&tmp, (s = ft_utf8(src[i], ret)), 1, 0);
+			ft_join_free(&tmp, (s = ft_utf8((unsigned int)src[i], ret)), 1, 0);
 		else if (flag->dot && tmp_prec < 0 && i == 0)
 			tmp = ft_strnew(1);
 		ft_strdel(&s);

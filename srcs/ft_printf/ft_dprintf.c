@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 11:27:33 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/07/26 11:14:59 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:59:09 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,13 @@ int			ft_dprintf(int fd, const char *format, ...)
 		return (0);
 	out = NULL;
 	va_start(args, format);
-	len = ft_loop_args((char *)format, &args, &out, &flag);
+	len = ft_loop_args(format, &args, &out, &flag);
 	va_end(args);
 	ft_strdel(&flag.str);
 	if (len != -1)
 	{
-		len = ft_strlen_null(out, flag.null);
-		if (write(fd, out, len) == FAILURE)
+		len = (int)ft_strlen_null(out, flag.null);
+		if (write(fd, out, (size_t)len) == FAILURE)
 			len = -1;
 	}
 	ft_strdel(&out);

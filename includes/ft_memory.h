@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:25:10 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/03/14 15:58:34 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 18:06:59 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 ***************
 */
 
-void		*ft_memchr(const void *s, int c, size_t n);
+const void	*ft_memchr(const void *s, int c, size_t n);
 
 /*
 ***************

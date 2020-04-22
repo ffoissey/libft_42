@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/12 11:12:51 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/12 11:12:53 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:16:40 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		ft_insertsort_integer(int *tab, size_t size)
 static void	ft_insert_elem_long(long *tab, size_t i, size_t j)
 {
 	size_t	n;
-	int		tmp;
+	long	tmp;
 
 	n = 0;
 	tmp = tab[i];

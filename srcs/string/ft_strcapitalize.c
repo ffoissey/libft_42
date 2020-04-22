@@ -6,11 +6,12 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/08/31 15:16:36 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/13 15:39:49 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 16:56:29 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_char.h"
+#include "ft_string.h"
 #include <string.h>
 
 char	*ft_strcapitalize(char *str)

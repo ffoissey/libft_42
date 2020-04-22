@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:27:21 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/19 18:05:46 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:12:03 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,6 @@
 int		ft_putstr_fd(char const *s, int fd)
 {
 	if (!s)
-		return (0);
-	return (write(fd, s, ft_strlen(s)));
+		return (FAILURE);
+	return ((int)write(fd, s, ft_strlen(s)));
 }

@@ -6,13 +6,13 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/06 18:27:30 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/12 12:19:49 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 18:08:44 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_string.h"
 
-char	*ft_strrchr(const char *s, int c)
+const char	*ft_strrchr(const char *s, int c)
 {
 	size_t			i;
 	size_t			j;
@@ -21,7 +21,7 @@ char	*ft_strrchr(const char *s, int c)
 	i = 0;
 	c_cp = (unsigned char)c;
 	if (!c_cp)
-		return ((char *)s + ft_strlen(s));
+		return (s + ft_strlen(s));
 	while (s[i])
 	{
 		if (c_cp == s[i])
@@ -30,9 +30,9 @@ char	*ft_strrchr(const char *s, int c)
 			while (s[j] && s[j] != c_cp)
 				j++;
 			if (!s[j])
-				return ((char *)(s + i));
+				return (s + i);
 		}
 		i++;
 	}
-	return ((s[i] == c_cp) ? ((char *)s + i) : NULL);
+	return ((s[i] == c_cp) ? (s + i) : NULL);
 }

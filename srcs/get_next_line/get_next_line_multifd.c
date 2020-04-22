@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/29 12:50:16 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/09 14:59:37 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 18:10:21 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,8 +43,8 @@ static t_list	*init_new_file(const int fd, char **line)
 
 static void		ft_fill_line_with_rest(t_file *file)
 {
-	char	*tmp;
-	char	*tmp_rest;
+	const char	*tmp;
+	char		*tmp_rest;
 
 	file->state = 0;
 	if (file->rest)
@@ -61,7 +61,7 @@ static void		ft_fill_line_with_rest(t_file *file)
 		}
 		else
 		{
-			file->cur = ft_strsub(file->rest, 0, tmp - file->rest);
+			file->cur = ft_strsub(file->rest, 0, (size_t)(tmp - file->rest));
 			tmp_rest = file->rest;
 			file->rest = ft_strdup(tmp + 1);
 			ft_strdel(&tmp_rest);
@@ -72,10 +72,10 @@ static void		ft_fill_line_with_rest(t_file *file)
 
 static int		ft_read(t_file *file)
 {
-	int		ret;
-	char	buf[BUFF_SIZE + 1];
-	char	*tmp;
-	char	*tmp_cur;
+	ssize_t		ret;
+	char		buf[BUFF_SIZE + 1];
+	const char	*tmp;
+	char		*tmp_cur;
 
 	while ((ret = read(file->fd, buf, BUFF_SIZE)) > 0)
 	{
