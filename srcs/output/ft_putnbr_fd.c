@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:27:05 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/22 15:57:13 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 16:11:32 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_putnbr_fd(int n, int fd)
 	{
 		if (n == -2147483648)
 			return (ft_putstr_fd("-2147483648", fd));
-		if (write(1, "-", fd) == FAILURE)
+		if (write(fd, "-", 1) == FAILURE)
 			return (FAILURE);
 		return (ft_putnbr_fd(-n, fd));
 	}
