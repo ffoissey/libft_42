@@ -219,6 +219,8 @@ Ils sont definis par la structure suivante:
 > Supprime les n derniers caractères d'un vecteur.
 #### vct_del
 > Supprime un vecteur.
+#### vct_delchar
+> Supprime un charactere.
 #### vct_dup
 > Duplique un vecteur.
 #### vct_dupstr
