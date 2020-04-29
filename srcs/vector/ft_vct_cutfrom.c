@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/01 08:33:04 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/11 16:29:59 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/29 21:20:55 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int		vct_cutfrom(t_vector *vct, size_t index)
 		vct_clear(vct);
 	else
 	{
-		i = index - 1;
+		i = index;
 		while (i < vct->len)
 			vct->str[i++] = '\0';
 		vct->len = index;
