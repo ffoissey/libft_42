@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 18:23:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/29 17:33:23 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/05/01 14:26:35 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,7 @@ int				vct_fillfront(t_vector *vct, char c, size_t nb);
 t_vector		*vct_splitchr(t_vector *vct, char c, int flag);
 ssize_t			vct_chr(t_vector *vct, char c);
 int				vct_readline(t_vector *vct, const int fd);
+int				vct_creadline(t_vector *vct, const int fd, int c);
 int				vct_eq(t_vector *vct1, t_vector *vct2);
 int				vct_neq(t_vector *vct1, t_vector *vct2, size_t nb);
 int				vct_print(t_vector *vct);

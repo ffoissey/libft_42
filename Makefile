@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2020/04/29 17:32:56 by ffoissey         ###   ########.fr        #
+#    Updated: 2020/05/01 14:28:01 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -404,6 +404,7 @@ SRCS += ft_vct_clen.c
 SRCS += ft_vct_countchar.c
 SRCS += ft_vct_countstr.c
 SRCS += ft_vct_cpy.c
+SRCS += ft_vct_creadline.c
 SRCS += ft_vct_cut.c
 SRCS += ft_vct_cutfrom.c
 SRCS += ft_vct_del.c
