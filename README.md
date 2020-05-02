@@ -352,6 +352,8 @@ Reproduction de fonctions de la lib C :
 > Renvoie la factorielle du nombre passé en paramètre.
 #### ft_pow
 > Renvoie le nombre n à la puissance p.
+#### ft_abs
+> Renvoie la valeur absolue d'un nombre.
 #### ft_sqrt
 > Renvoie la racine carré du nombre passé en paramètre.
 #### ft_swap_bits
