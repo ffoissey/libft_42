@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:19:32 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/26 11:40:56 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:44:11 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,8 +55,8 @@ char		*ft_error_flag(char *s, t_flag *flag)
 		|| flag->space || (flag->space && *s && *(s + 1)) || flag->min)
 	{
 		if (flag->field > 1)
-			ft_filler(&flag->str, ft_strnew_c(flag->field - 1, flag->zero ? '0'
-			: ' '), 0, 0);
+			ft_filler(&flag->str, ft_strnew_c((size_t)flag->field - 1,
+				flag->zero ? '0' : ' '), 0, 0);
 		ft_join_free(&flag->str, "%", flag->min ? 0 : 1, 0);
 	}
 	else

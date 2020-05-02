@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/09 17:10:20 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/19 18:08:36 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 15:55:03 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,27 +36,27 @@ static int	check_base(char *base)
 
 int			ft_putnbr_base(int nbr, char *base)
 {
-	int	ret;
-
 	if (!(*base) || !(*(base + 1)) || check_base(base))
-		return (-1);
+		return (FAILURE);
 	if (nbr < 0)
 	{
-		ret = write(1, "-", 1);
+		if (write(1, "-", 1) == FAILURE)
+			return (FAILURE);
 		if (nbr == -2147483648)
 		{
-			ret = ft_putnbr_base((nbr / (int)ft_strlen(base)) * -1, base);
-			ret += ft_putchar(base[(nbr % (int)ft_strlen(base)) * -1]);
-			return (ret);
+			if (ft_putnbr_base((nbr / (int)ft_strlen(base)) * -1, base)
+				== FAILURE)
+				return (FAILURE);
+			return (ft_putchar(base[(nbr % (int)ft_strlen(base)) * -1]));
 		}
-		ret = ft_putnbr_base(nbr * -1, base);
+		return (ft_putnbr_base(nbr * -1, base));
 	}
 	else if (nbr < (int)ft_strlen(base))
-		ret = ft_putchar(base[nbr]);
+		return (ft_putchar(base[nbr]));
 	else
 	{
-		ret = ft_putnbr_base(nbr / (int)ft_strlen(base), base);
-		ret = ft_putnbr_base(nbr % (int)ft_strlen(base), base);
+		if (ft_putnbr_base(nbr / (int)ft_strlen(base), base) == FAILURE)
+			return (FAILURE);
+		return (ft_putnbr_base(nbr % (int)ft_strlen(base), base));
 	}
-	return (ret);
 }

@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:47:12 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/03/11 17:35:39 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:43:37 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static char				*ft_set_string(long nb, t_flag *flag, char c)
 		s = ft_itoa_base_l(nb, 10);
 	flag->precision -= ft_strlen(s);
 	flag->precision < 0 ? flag->precision = 0 : flag->precision;
-	flag->field -= flag->precision + ft_strlen(s)
+	flag->field -= flag->precision + (int)ft_strlen(s)
 				+ flag->neg + flag->plus + flag->space;
 	return (s);
 }
@@ -94,6 +94,7 @@ char					*ft_hub_conversion_nb(long int nb,
 		flag->space = 0;
 	ft_fill_string(&s, flag, c);
 	if (flag->field > 0 && !flag->zero)
-		ft_filler(&s, ft_strnew_c(flag->field, ' '), flag->min, flag->null);
+		ft_filler(&s, ft_strnew_c((size_t)flag->field, ' '),
+			flag->min, flag->null);
 	return (s);
 }

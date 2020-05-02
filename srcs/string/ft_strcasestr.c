@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 17:29:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/13 17:32:14 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 18:08:31 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ static unsigned char	ft_cmp_char(const char c1, const char c2)
 	return (c1_tmp == c2_tmp);
 }
 
-char					*ft_strcasestr(const char *haystack, const char *needle)
+const char				*ft_strcasestr(const char *haystack, const char *needle)
 {
 	size_t		i;
 	size_t		j;
@@ -40,8 +40,8 @@ char					*ft_strcasestr(const char *haystack, const char *needle)
 			k++;
 		}
 		if (!needle[j])
-			return ((char *)(haystack + i));
+			return (haystack + i);
 		i++;
 	}
-	return ((haystack[i] == needle[j]) ? ((char *)(haystack + i)) : NULL);
+	return ((haystack[i] == needle[j]) ? (haystack + i) : NULL);
 }

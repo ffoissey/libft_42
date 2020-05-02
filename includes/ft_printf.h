@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/03/11 17:33:51 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 18:11:42 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 typedef	struct	s_flag
 {
 	char		*str;
+	int			precision;
+	int			field;
 	int			sharp;
 	int			zero;
 	int			min;
@@ -41,8 +43,6 @@ typedef	struct	s_flag
 	int			hh;
 	int			dot;
 	int			space;
-	int			precision;
-	int			field;
 	int			neg;
 	int			percent;
 	int			null;
@@ -53,10 +53,11 @@ typedef	struct	s_flag
 int				ft_printf(const char *format, ...);
 int				ft_dprintf(int fd, const char *format, ...);
 char			*ft_asprintf(const char *format, ...);
-int				ft_loop_args(char *s, va_list *args, char **out, t_flag *flag);
-char			*ft_fillcstr(const char *s, char **out, int null);
+int				ft_loop_args(const char *s, va_list *args, char **out,
+					t_flag *flag);
+const char		*ft_fillcstr(char *s, char **out, int null);
 void			ft_wildcard(va_list *args, t_flag *flag);
-double			ft_double_select(va_list *args, t_flag *flag);
+long double		ft_double_select(va_list *args, t_flag *flag);
 char			*ft_nb(va_list *args, char *format, t_flag *flag);
 char			*ft_set_all_flags(char *s, t_flag *flag);
 void			ft_init_flags(t_flag *flag);

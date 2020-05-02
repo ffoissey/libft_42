@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/07 17:35:45 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/08/31 22:17:35 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:10:24 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,11 +14,11 @@
 
 void	*ft_memmove(void *dst, const void *src, size_t len)
 {
-	unsigned char	*dst_cp;
-	unsigned char	*src_cp;
+	unsigned char		*dst_cp;
+	const unsigned char	*src_cp;
 
 	dst_cp = (unsigned char *)dst;
-	src_cp = (unsigned char *)src;
+	src_cp = (const unsigned char *)src;
 	if (dst < src)
 	{
 		while (len--)

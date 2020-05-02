@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/10 16:23:52 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 18:17:36 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,11 +47,12 @@ int			ft_strncasecmp(const char *s1, const char *s2, size_t n);
 ***************
 */
 
-char		*ft_strchr(const char *s, int c);
-char		*ft_strrchr(const char *s, int c);
-char		*ft_strstr(const char *haystack, const char *needle);
-char		*ft_strnstr(const char *haystack, const char *needle, size_t len);
-char		*ft_strcasestr(const char *haystack, const char *needle);
+const char	*ft_strchr(const char *s, int c);
+const char	*ft_strrchr(const char *s, int c);
+const char	*ft_strstr(const char *haystack, const char *needle);
+const char	*ft_strnstr(const char *haystack, const char *needle,
+					size_t len);
+const char	*ft_strcasestr(const char *haystack, const char *needle);
 
 /*
 ***************

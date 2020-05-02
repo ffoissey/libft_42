@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 10:09:22 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/26 10:12:44 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:26:19 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@ int			ft_check_zero_mantissa(int *tab)
 
 static void	ft_align(char **s1, char **s2)
 {
-	int		len;
+	size_t	len;
 	char	*tmp;
 
 	if (ft_strlen(*s1) > ft_strlen(*s2))
 	{
 		len = ft_strlen(*s1);
 		tmp = ft_strnew(len);
-		ft_fill_with_zero(tmp, len);
+		ft_fill_with_zero(tmp, (int)len);
 		ft_str_rev_cpy(tmp, *s2);
 		ft_strdel(s2);
 		*s2 = ft_strdup(tmp);
@@ -42,7 +42,7 @@ static void	ft_align(char **s1, char **s2)
 	{
 		len = ft_strlen(*s2);
 		tmp = ft_strnew(len);
-		ft_fill_with_zero(tmp, len);
+		ft_fill_with_zero(tmp, (int)len);
 		ft_str_rev_cpy(tmp, *s1);
 		ft_strdel(s1);
 		*s1 = ft_strdup(tmp);
@@ -53,11 +53,11 @@ static void	ft_align(char **s1, char **s2)
 char		*ft_power_of_two(char *s)
 {
 	char	*ret;
-	int		len;
+	size_t	len;
 
 	len = ft_strlen(s) + 1;
 	ret = ft_strnew(len);
-	ft_fill_with_zero(ret, len);
+	ft_fill_with_zero(ret, (int)len);
 	ft_str_rev_cpy(ret, s);
 	ret = ft_addition(ret, ft_strdup(ret));
 	return (ret);

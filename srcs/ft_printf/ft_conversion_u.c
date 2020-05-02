@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:33:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/09 15:02:27 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:38:01 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ static unsigned long	ft_u_conversion(unsigned long nb,
 static char				*ft_set_ustring(unsigned long nb,
 								t_flag *flag, char c)
 {
-	char	*s;
-	int		base;
+	char			*s;
+	unsigned int	base;
 
 	base = 10;
 	if (c == 'b' || c == 'B')
@@ -50,9 +50,9 @@ static char				*ft_set_ustring(unsigned long nb,
 		flag->sharp = 0;
 	if (c == 'x')
 		s = ft_strlowcase(s);
-	flag->precision -= ft_strlen(s);
+	flag->precision -= (int)ft_strlen(s);
 	flag->precision < 0 ? flag->precision = 0 : flag->precision;
-	flag->field -= flag->precision + ft_strlen(s) + flag->space;
+	flag->field -= flag->precision + (int)ft_strlen(s) + flag->space;
 	return (s);
 }
 
@@ -86,17 +86,17 @@ static char				*ft_binary_format(char *s)
 	char	*new;
 	int		i;
 	int		j;
-	int		count;
+	size_t	count;
 
 	i = -1;
 	count = 0;
 	while (s[++i])
 		if (s[i] == '0' || s[i] == '1')
 			count++;
-	count = !(count % 8) && count ? count / 8 - 1 : count / 8;
+	count = !(count % 8) && count != 0 ? count / 8 - 1 : count / 8;
 	new = ft_strnew(ft_strlen(s) + count);
-	j = ft_strlen(s) - 1;
-	i = ft_strlen(s) + count - 1;
+	j = (int)ft_strlen(s) - 1;
+	i = (int)ft_strlen(s) + (int)count - 1;
 	count = 0;
 	while (j >= 0 && s[j] != '0' && s[j] != '1')
 		new[i--] = s[j--];
@@ -132,6 +132,7 @@ char					*ft_conversion_u(unsigned long nb,
 	if ((c == 'b' || c == 'B') && flag->sharp)
 		s = ft_binary_format(s);
 	if (flag->field > 0 && !flag->zero)
-		ft_filler(&s, ft_strnew_c(flag->field, ' '), flag->min, flag->null);
+		ft_filler(&s, ft_strnew_c((size_t)flag->field, ' '),
+				flag->min, flag->null);
 	return (s);
 }

@@ -6,17 +6,17 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 12:00:30 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/03/11 17:37:19 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 18:11:23 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-char	*ft_fillcstr(const char *s, char **out, int null)
+const char	*ft_fillcstr(char *s, char **out, int null)
 {
-	char	*tmp;
-	char	*tmp2;
-	char	*tmp_out;
+	const char	*tmp;
+	char		*tmp2;
+	char		*tmp_out;
 
 	tmp_out = *out;
 	if (!(tmp = ft_strchr(s, '%')))
@@ -25,14 +25,14 @@ char	*ft_fillcstr(const char *s, char **out, int null)
 		ft_strdel(&tmp_out);
 		return (NULL);
 	}
-	tmp2 = ft_strsub(s, 0, tmp - s);
+	tmp2 = ft_strsub(s, 0, (size_t)(tmp - s));
 	*out = ft_strjoin_hub(*out, tmp2, null, 1);
 	ft_strdel(&tmp_out);
 	ft_strdel(&tmp2);
 	return (tmp + 1);
 }
 
-void	ft_wildcard(va_list *args, t_flag *flag)
+void		ft_wildcard(va_list *args, t_flag *flag)
 {
 	int		tmp_field;
 
@@ -59,7 +59,7 @@ void	ft_wildcard(va_list *args, t_flag *flag)
 	}
 }
 
-double	ft_double_select(va_list *args, t_flag *flag)
+long double	ft_double_select(va_list *args, t_flag *flag)
 {
 	long double	nb;
 	double		nb2;
@@ -74,7 +74,7 @@ double	ft_double_select(va_list *args, t_flag *flag)
 	return (nb);
 }
 
-char	*ft_nb(va_list *args, char *format, t_flag *flag)
+char		*ft_nb(va_list *args, char *format, t_flag *flag)
 {
 	if (*format == 'd' || *format == 'D' || *format == 'i' || *format == 'p')
 		return (ft_hub_conversion_nb(va_arg(*args, long), flag, *format));

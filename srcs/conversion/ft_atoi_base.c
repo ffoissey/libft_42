@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/05 15:38:53 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/05 16:08:26 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:15:56 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int			ft_atoi_base(const char *str, const char *base)
 
 	if (base == NULL)
 		return (0);
-	nb_base = ft_strlen(base);
+	nb_base = (int)ft_strlen(base);
 	if (nb_base < 2 || check_base(base) == 1)
 		return (0);
 	return (ft_atoi_process(str, base, nb_base));

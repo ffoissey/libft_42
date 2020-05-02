@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:26:42 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/19 18:06:17 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:12:27 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,8 @@
 int		ft_putendl(char const *s)
 {
 	if (!s)
-		return (0);
-	write(1, s, ft_strlen(s));
-	return (write(1, "\n", 1));
+		return (FAILURE);
+	if (write(1, s, ft_strlen(s)) == FAILURE)
+		return (FAILURE);
+	return ((int)write(1, "\n", 1));
 }

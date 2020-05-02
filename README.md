@@ -213,12 +213,16 @@ Ils sont definis par la structure suivante:
 > Renvoie le nombre d'occurence d'une caine de charactère dans un vecteur.
 #### vct_cpy
 > Copie le contenu d'un vecteur dans un autre.
+#### vct_creadline
+> Lis jusqu'à 'c' sur un fd et renvoie velle-ci via la chaine contenu dans le vecteur passé en paramètre.
 #### vct_cut
 > Supprime le dernier caractère d'un vecteur.
 #### vct_cutfrom
 > Supprime les n derniers caractères d'un vecteur.
 #### vct_del
 > Supprime un vecteur.
+#### vct_delchar
+> Supprime un charactere.
 #### vct_dup
 > Duplique un vecteur.
 #### vct_dupstr

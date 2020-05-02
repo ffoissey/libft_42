@@ -6,67 +6,23 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 10:09:12 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/26 12:29:37 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 16:08:00 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_double.h"
 
-static void	ft_set_mantisse_extend2(char *m, int *tab, int size, int i)
+static char	*get_tab_mantisse(const int i)
 {
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P41)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P42)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P43)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P44)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P45)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P46)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P47)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P48)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P49)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P50)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P51)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P52)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P53)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P54)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P55)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P56)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P57)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P58)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P59)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P60)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P61)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P62)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P63)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P64)) : m;
-}
+	static char	*mantisse[] = {P1, P21, P3, P4, P5, P6, P7, P8, P9, P10,
+							P11, P12, P13, P14, P15, P16, P17, P18, P19, P20,
+							P21, P22, P23, P24, P25, P26, P27, P28, P29, P30,
+							P31, P32, P33, P34, P35, P36, P37, P38, P39, P40,
+							P41, P42, P43, P44, P45, P46, P47, P48, P49, P50,
+							P51, P52, P53, P54, P55, P56, P57, P58, P59, P60,
+							P61, P62, P63, P64};
 
-static void	ft_set_mantisse_extend1(char *m, int *tab, int size, int i)
-{
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P17)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P18)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P19)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P20)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P21)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P22)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P23)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P24)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P25)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P26)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P27)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P28)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P29)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P30)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P31)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P32)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P33)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P34)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P35)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P36)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P37)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P38)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P39)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P40)) : m;
-	ft_set_mantisse_extend2(m, tab, size, i);
+	return (mantisse[i]);
 }
 
 char		*ft_set_mantisse(int *tab, int size)
@@ -76,22 +32,13 @@ char		*ft_set_mantisse(int *tab, int size)
 
 	i = 0;
 	m = ft_strdup(P0);
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P1)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P2)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P3)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P4)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P5)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P6)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P7)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P8)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P9)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P10)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P11)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P12)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P13)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P14)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P15)) : m;
-	m = i < size && tab[i++] ? ft_addition(m, ft_strdup(P16)) : m;
-	ft_set_mantisse_extend1(m, tab, size, i);
+	while (i < size)
+	{
+		if (tab[i] != 0)
+		{
+			m = ft_addition(m, ft_strdup(get_tab_mantisse(i)));
+			i++;
+		}
+	}
 	return (m);
 }

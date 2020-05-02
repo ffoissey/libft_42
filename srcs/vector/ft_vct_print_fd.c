@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 14:27:06 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 14:29:46 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:13:50 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int		vct_print_fd(t_vector *vct, int fd)
 {
-	return (write(fd, vct->str, vct->len));
+	if (vct == NULL || vct->str == NULL)
+		return (FAILURE);
+	return ((int)write(fd, vct->str, vct->len));
 }

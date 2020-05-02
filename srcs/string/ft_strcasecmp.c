@@ -6,14 +6,15 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 16:54:57 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/16 13:18:28 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:01:22 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_char.h"
+#include "ft_string.h"
 #include <string.h>
 
-static unsigned int	ft_cmp_char(const char c1, const char c2)
+static int			ft_cmp_char(const char c1, const char c2)
 {
 	unsigned char c1_tmp;
 	unsigned char c2_tmp;

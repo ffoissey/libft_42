@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:06:34 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/28 16:51:11 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:43:04 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,10 +21,10 @@ void		ft_fill_string(char **s, t_flag *flag, char c)
 	{
 		if (flag->zero && c != 'o')
 			tmp = flag->field;
-		ft_filler(s, ft_strnew_c(flag->precision, '0'), 1, flag->null);
+		ft_filler(s, ft_strnew_c((size_t)flag->precision, '0'), 1, flag->null);
 	}
 	if (flag->field > 0 && flag->zero)
-		ft_filler(s, ft_strnew_c(flag->field, '0'), 0, flag->null);
+		ft_filler(s, ft_strnew_c((size_t)flag->field, '0'), 0, flag->null);
 	if (c == 'p' || ((c == 'X' || c == 'x') && flag->sharp))
 		ft_join_free(s, c == 'X' ? "0X" : "0x", 0, 0);
 	if (flag->neg)
@@ -34,7 +34,7 @@ void		ft_fill_string(char **s, t_flag *flag, char c)
 	else if (flag->space)
 		ft_join_free(s, " ", 0, flag->null);
 	if (tmp > 0 && !flag->zero)
-		ft_filler(s, ft_strnew_c(tmp, ' '), 0, flag->null);
+		ft_filler(s, ft_strnew_c((size_t)tmp, ' '), 0, flag->null);
 }
 
 char		*ft_conversion_char(int c, t_flag *flag)
@@ -42,16 +42,16 @@ char		*ft_conversion_char(int c, t_flag *flag)
 	char	*s;
 
 	s = NULL;
-	if ((unsigned char)c == 0)
+	if ((char)c == 0)
 		flag->null++;
 	flag->field--;
 	if (flag->field < 0)
 		flag->field = 0;
 	s = ft_strnew_c((size_t)flag->field + 1, flag->zero ? '0' : ' ');
 	if ((flag->min || flag->field <= 0))
-		s[0] = (unsigned char)c;
+		s[0] = (char)c;
 	else if (flag->field > 0)
-		s[flag->field] = (unsigned char)c;
+		s[flag->field] = (char)c;
 	return (s);
 }
 
@@ -63,18 +63,18 @@ char		*ft_conversion_str(const char *src, t_flag *flag)
 	if (!src && (flag->precision > 5 || flag->precision == 0) && !flag->dot)
 		s = ft_strdup("(null)");
 	else if (!src && flag->precision)
-		s = ft_strndup("(null)", flag->precision);
+		s = ft_strndup("(null)", (size_t)flag->precision);
 	else if (flag->dot)
 	{
 		if (flag->precision > 0)
-			s = ft_strndup(src, flag->precision);
+			s = ft_strndup(src, (size_t)flag->precision);
 	}
 	else
 		s = ft_strdup(src);
-	flag->field = s ? (int)(flag->field - (ft_strlen(s))) : flag->field;
+	flag->field = s ? (flag->field - ((int)ft_strlen(s))) : flag->field;
 	if (flag->field > 0)
-		ft_filler(&s, ft_strnew_c(flag->field, flag->zero && !flag->min ? '0'
-		: ' '), flag->min, 0);
+		ft_filler(&s, ft_strnew_c((size_t)flag->field,
+			flag->zero && !flag->min ? '0' : ' '), flag->min, 0);
 	return (s);
 }
 
@@ -86,7 +86,7 @@ char		*ft_conversion_double(long double nb, t_flag *flag, char c)
 	s = ft_dtoa(&nb, flag->dot ? flag->precision : 6);
 	ft_nan_inf(s, flag);
 	ft_double_flag_neg(&s, flag);
-	len = ft_strlen(s);
+	len = (int)ft_strlen(s);
 	if (flag->dot && !flag->precision && flag->sharp && s[len - 1] != '.')
 		ft_join_free(&s, ".", 1, 0);
 	if (s[len - 1] == '.' && !flag->sharp)
@@ -98,10 +98,11 @@ char		*ft_conversion_double(long double nb, t_flag *flag, char c)
 		ft_strupcase(s);
 	flag->precision -= len;
 	flag->precision < 0 ? flag->precision = 0 : flag->precision;
-	flag->field -= flag->precision + ft_strlen(s)
+	flag->field -= flag->precision + (int)ft_strlen(s)
 				+ flag->space + flag->plus + flag->neg;
 	ft_fill_string(&s, flag, c);
 	if (flag->field >= 0 && !flag->zero)
-		ft_filler(&s, ft_strnew_c(flag->field, ' '), flag->min, flag->null);
+		ft_filler(&s, ft_strnew_c((size_t)flag->field, ' '),
+			flag->min, flag->null);
 	return (s);
 }

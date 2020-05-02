@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 15:46:55 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 15:52:05 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:24:27 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ size_t		vct_countchar(t_vector *vct, char c)
 	size_t	count;
 
 	if (vct == NULL || vct->str == NULL)
-		return (FAILURE);
+		return (0);
 	i = 0;
 	count = 0;
 	while (i < vct->len)

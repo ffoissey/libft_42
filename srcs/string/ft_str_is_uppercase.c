@@ -6,11 +6,12 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/13 14:37:01 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/13 14:39:20 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:07:48 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_char.h"
+#include "ft_string.h"
 #include <stdlib.h>
 
 int		ft_str_is_uppercase(char *str)

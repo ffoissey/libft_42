@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/26 10:09:00 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/01/26 10:12:08 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:29:18 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void		ft_fill_with_zero(char *s, int size)
 
 void		ft_str_rev_cpy(char *dest, char *src)
 {
-	int		len_src;
-	int		len;
+	size_t	len_src;
+	size_t	len;
 
 	len_src = ft_strlen(src);
 	len = ft_strlen(dest);
@@ -35,28 +35,28 @@ void		ft_str_rev_cpy(char *dest, char *src)
 		dest[--len] = src[--len_src];
 }
 
-static void	ft_process_addition(char *m, char *s, int size)
+static void	ft_process_addition(char *m, char *s, size_t size)
 {
 	char	*carry;
 	int		res;
 	char	*empty;
-	int		tmp;
+	size_t	tmp;
 
 	tmp = size;
 	carry = ft_strnew(size);
-	ft_fill_with_zero(carry, size);
+	ft_fill_with_zero(carry, (int)size);
 	empty = ft_strnew(size);
-	ft_fill_with_zero(empty, size);
+	ft_fill_with_zero(empty, (int)size);
 	while (size-- > 0)
 	{
 		if ((res = (m[size] - '0' + s[size] - '0')) > 9)
 		{
-			m[size] = res % 10 + '0';
+			m[size] = (char)(res % 10 + '0');
 			if (size - 1 > 0)
-				carry[size - 1] = res / 10 + '0';
+				carry[size - 1] = (char)(res / 10 + '0');
 		}
 		else
-			m[size] = res + '0';
+			m[size] = (char)(res + '0');
 	}
 	if (ft_strcmp(carry, empty) && tmp)
 		ft_process_addition(m, carry, tmp);
@@ -66,7 +66,7 @@ static void	ft_process_addition(char *m, char *s, int size)
 
 char		*ft_addition(char *m, char *s)
 {
-	int		len;
+	size_t	len;
 
 	len = ft_strlen(m);
 	ft_process_addition(m, s, len);

@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:26:35 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/19 18:05:07 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:11:23 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,5 @@
 
 int	ft_putchar_fd(char c, int fd)
 {
-	return (write(fd, &c, 1));
+	return ((int)write(fd, &c, 1));
 }

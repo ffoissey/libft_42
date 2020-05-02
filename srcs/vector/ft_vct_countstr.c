@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/13 15:49:23 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/13 17:42:00 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:24:08 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	vct_countstr(t_vector *vct, char *str)
 	size_t	len;
 
 	if (vct == NULL || str == NULL)
-		return (FAILURE);
+		return (0);
 	index = 0;
 	count = 0;
 	len = ft_strlen(str);

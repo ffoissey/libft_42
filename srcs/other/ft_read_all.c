@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/12/06 15:52:08 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/12/06 16:12:50 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/22 17:17:02 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 
 char	*ft_read_all(int fd)
 {
-	int		ret;
+	ssize_t	ret;
 	char	buf[BUFF_SIZE + 1];
 	char	*str;
 	char	*tmp_str;
