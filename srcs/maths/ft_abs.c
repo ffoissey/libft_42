@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_maths.h                                         :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 18:25:10 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/05/02 23:10:20 by ffoissey         ###   ########.fr       */
+/*   Created: 2018/11/09 16:08:14 by ffoissey          #+#    #+#             */
+/*   Updated: 2020/05/02 23:09:59 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef FT_MATHS_H
-# define FT_MATHS_H
+#include "ft_maths.h"
 
-# include "define_libft.h"
-
-int				ft_sqrt(int nb);
-int				ft_pow(int n, int p);
-int				ft_factorial(int nb);
-unsigned long	ft_abs(long nb);
-
-#endif
+unsigned long	ft_abs(long nb)
+{
+	return (nb < 0 ? -nb : nb);
+}
