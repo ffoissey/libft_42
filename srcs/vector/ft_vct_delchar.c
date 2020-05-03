@@ -1,33 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_vct_cutfrom.c                                   :+:      :+:    :+:   */
+/*   ft_vct_delchar.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/09/01 08:33:04 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/29 21:20:55 by ffoissey         ###   ########.fr       */
+/*   Created: 2019/09/01 14:44:08 by ffoissey          #+#    #+#             */
+/*   Updated: 2020/04/29 17:33:13 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_vector.h"
 
-int		vct_cutfrom(t_vector *vct, size_t index)
+int		vct_delchar(t_vector *vct, size_t index)
 {
-	size_t	i;
-
 	if (vct == NULL)
 		return (FAILURE);
-	if (vct->len == 0 || index >= vct->len)
-		return (SUCCESS);
-	if (index == 0)
-		vct_clear(vct);
-	else
+	if (index + 1 == vct->len)
+		vct_cut(vct);
+	else if (index == 0)
+		vct_pop(vct);
+	else if (index + 1 < vct->len)
 	{
-		i = index;
-		while (i < vct->len)
-			vct->str[i++] = '\0';
-		vct->len = index;
+		ft_memmove(vct->str + index, vct->str + index + 1,
+				vct->len - index + 1);
+		vct->str[vct->len - 1] = '\0';
+		vct->len--;
 	}
 	return (SUCCESS);
 }

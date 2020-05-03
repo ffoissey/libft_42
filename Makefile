@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2020/04/12 17:27:45 by ffoissey         ###   ########.fr        #
+#    Updated: 2020/05/03 12:10:28 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -199,6 +199,9 @@ SRCS += ft_strcheck.c
 # New
 SRCS += ft_strnew.c
 
+# Tab
+SRCS += ft_tabsize.c
+
 # Trim
 SRCS += ft_strtrim.c
 SRCS += ft_strctrim.c
@@ -306,6 +309,7 @@ SRCS += ft_itoa_base.c
 SRCS += ft_factorial.c
 SRCS += ft_pow.c
 SRCS += ft_sqrt.c
+SRCS += ft_abs.c
 
 #------------------------------------ LIST ------------------------------------#
 
@@ -404,9 +408,11 @@ SRCS += ft_vct_clen.c
 SRCS += ft_vct_countchar.c
 SRCS += ft_vct_countstr.c
 SRCS += ft_vct_cpy.c
+SRCS += ft_vct_creadline.c
 SRCS += ft_vct_cut.c
 SRCS += ft_vct_cutfrom.c
 SRCS += ft_vct_del.c
+SRCS += ft_vct_delchar.c
 SRCS += ft_vct_dup.c
 SRCS += ft_vct_dupstr.c
 SRCS += ft_vct_endby.c

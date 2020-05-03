@@ -1,25 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 15:20:05 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/29 20:14:25 by ffoissey         ###   ########.fr       */
+/*   Created: 2018/11/09 16:08:14 by ffoissey          #+#    #+#             */
+/*   Updated: 2020/05/02 23:09:59 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
+#include "ft_maths.h"
 
-char	*ft_strdup(const char *s1)
+unsigned long	ft_abs(long nb)
 {
-	char	*new_str;
-
-	if (s1 == NULL)
-		return (NULL);
-	new_str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (new_str == NULL)
-		return (NULL);
-	return (ft_strcpy(new_str, s1));
+	return (nb < 0 ? -nb : nb);
 }

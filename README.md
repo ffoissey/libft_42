@@ -213,12 +213,16 @@ Ils sont definis par la structure suivante:
 > Renvoie le nombre d'occurence d'une caine de charactère dans un vecteur.
 #### vct_cpy
 > Copie le contenu d'un vecteur dans un autre.
+#### vct_creadline
+> Lis jusqu'à 'c' sur un fd et renvoie velle-ci via la chaine contenu dans le vecteur passé en paramètre.
 #### vct_cut
 > Supprime le dernier caractère d'un vecteur.
 #### vct_cutfrom
 > Supprime les n derniers caractères d'un vecteur.
 #### vct_del
 > Supprime un vecteur.
+#### vct_delchar
+> Supprime un charactere.
 #### vct_dup
 > Duplique un vecteur.
 #### vct_dupstr
@@ -352,6 +356,8 @@ Reproduction de fonctions de la lib C :
 > Renvoie la factorielle du nombre passé en paramètre.
 #### ft_pow
 > Renvoie le nombre n à la puissance p.
+#### ft_abs
+> Renvoie la valeur absolue d'un nombre.
 #### ft_sqrt
 > Renvoie la racine carré du nombre passé en paramètre.
 #### ft_swap_bits
@@ -380,6 +386,8 @@ Reproduction de fonctions de la lib C :
 > Effectue un insertion sort sur un tableau de strings.
 #### ft_free_tab_str
 > Libère un tableau de strings.
+#### ft_tabsize
+> Renvoie la taille d'un tableau de strings terminé par NULL.
 #### ft_str_is_lowercase
 > Verifie si la chaine n'est composé que de minuscules.
 #### ft_str_is_uppercase

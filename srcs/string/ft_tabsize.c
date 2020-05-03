@@ -1,25 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_tabsize.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: ffoissey <ffoissey@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/05 15:20:05 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/29 20:14:25 by ffoissey         ###   ########.fr       */
+/*   Created: 2020/05/03 11:57:34 by ffoissey          #+#    #+#             */
+/*   Updated: 2020/05/03 12:10:57 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_string.h"
+#include <string.h>
 
-char	*ft_strdup(const char *s1)
+int		ft_tabsize(char **tab)
 {
-	char	*new_str;
+	size_t	i;
 
-	if (s1 == NULL)
-		return (NULL);
-	new_str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + 1));
-	if (new_str == NULL)
-		return (NULL);
-	return (ft_strcpy(new_str, s1));
+	i = 0;
+	while (tab[i] != NULL)
+		i++;
+	return ((int)i);
 }

@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 13:24:24 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/22 18:17:36 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/05/03 11:59:34 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -171,5 +171,13 @@ char		**ft_strsplit_whitespaces(char const *s);
 
 char		*ft_strmap(char const *s, char (*f)(char));
 char		*ft_strmapi(char const *s, char (*f)(unsigned int, char));
+
+/*
+***************
+****  Tab   ***
+***************
+*/
+
+int			ft_tabsize(char **tab);
 
 #endif
