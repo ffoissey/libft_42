@@ -1,23 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_tabsize.c                                       :+:      :+:    :+:   */
+/*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: ffoissey <ffoissey@student.42.fr>          +#+  +:+       +#+        */
+/*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2020/05/03 11:57:34 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/05/03 12:10:57 by ffoissey         ###   ########.fr       */
+/*   Created: 2018/11/09 16:08:14 by ffoissey          #+#    #+#             */
+/*   Updated: 2020/05/02 23:09:59 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include "ft_maths.h"
 
-int		ft_tabsize(char **tab)
+unsigned long	ft_abs(long nb)
 {
-	size_t	i;
-
-	i = 0;
-	while (tab[i] != NULL)
-		i++;
-	return ((int)i);
+	return (nb < 0 ? -nb : nb);
 }

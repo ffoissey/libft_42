@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/05 18:25:10 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/03/14 15:58:34 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/05/02 23:10:20 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,8 +15,9 @@
 
 # include "define_libft.h"
 
-int		ft_sqrt(int nb);
-int		ft_pow(int n, int p);
-int		ft_factorial(int nb);
+int				ft_sqrt(int nb);
+int				ft_pow(int n, int p);
+int				ft_factorial(int nb);
+unsigned long	ft_abs(long nb);
 
 #endif
