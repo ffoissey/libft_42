@@ -6,7 +6,7 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/01/16 12:42:17 by ffoissey          #+#    #+#             */
-/*   Updated: 2020/04/09 15:01:54 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/28 20:43:09 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ static void	fill_str_lu(char *str, unsigned long nbr,
 			str[*i] = (char)nbr % 10 + 'A';
 		(*i)++;
 	}
-	else
+	else if (base != 0)
 	{
 		fill_str_lu(str, nbr / base, i, base);
 		fill_str_lu(str, nbr % base, i, base);

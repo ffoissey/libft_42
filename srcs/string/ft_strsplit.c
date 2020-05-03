@@ -6,11 +6,12 @@
 /*   By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/08 16:59:04 by ffoissey          #+#    #+#             */
-/*   Updated: 2018/11/12 11:09:37 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/04/28 20:41:14 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_string.h"
+#include "ft_memory.h"
 
 static size_t	ft_count_words(char const *s, char c)
 {
@@ -32,10 +33,14 @@ static size_t	ft_count_words(char const *s, char c)
 
 static void		free_table(char **tab, size_t master_i)
 {
-	while (--master_i)
+	size_t	i;
+
+	i = 0;
+	while (i < master_i)
 	{
-		free(tab[master_i]);
-		tab[master_i] = NULL;
+		free(tab[i]);
+		tab[i] = NULL;
+		i++;
 	}
 }
 
@@ -83,7 +88,7 @@ char			**ft_strsplit(char const *s, char c)
 		count = ft_count_words(s, c);
 	if (!(tab = (char **)malloc(sizeof(char *) * (count + 1))))
 		return (NULL);
-	tab[count] = NULL;
+	ft_bzero(tab, sizeof(char *) * (count + 1));
 	if (count)
 	{
 		if (!(tab = ft_fill_table(s + i, tab, c)))
