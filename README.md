@@ -384,6 +384,8 @@ Reproduction de fonctions de la lib C :
 > Effectue un insertion sort sur un tableau de strings.
 #### ft_free_tab_str
 > Libère un tableau de strings.
+#### ft_tabsize
+> Renvoie la taille d'un tableau de strings terminé par NULL.
 #### ft_str_is_lowercase
 > Verifie si la chaine n'est composé que de minuscules.
 #### ft_str_is_uppercase

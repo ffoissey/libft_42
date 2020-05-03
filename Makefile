@@ -6,7 +6,7 @@
 #    By: ffoissey <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2018/11/05 18:25:23 by ffoissey          #+#    #+#              #
-#    Updated: 2020/05/01 14:28:01 by ffoissey         ###   ########.fr        #
+#    Updated: 2020/05/03 12:00:13 by ffoissey         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -198,6 +198,9 @@ SRCS += ft_strcheck.c
 
 # New
 SRCS += ft_strnew.c
+
+# Tab
+SRCS += ft_tabsize.c
 
 # Trim
 SRCS += ft_strtrim.c
