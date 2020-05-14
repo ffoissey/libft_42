@@ -6,7 +6,7 @@
 /*   By: ffoissey <ffoisssey@student.42.fr>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/08/31 20:04:11 by ffoissey          #+#    #+#             */
-/*   Updated: 2019/09/01 17:59:38 by ffoissey         ###   ########.fr       */
+/*   Updated: 2020/05/14 20:23:58 by ffoissey         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@ t_vector	*vct_reset(t_vector *vct, size_t size)
 	}
 	else
 	{
-		vct->size = DFL_VCT_SIZE;
+		vct->size = size;
 		vct->scale = DFL_VCT_SCALE;
 		vct->len = 0;
 	}
