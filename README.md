@@ -214,7 +214,7 @@ Ils sont definis par la structure suivante:
 #### vct_cpy
 > Copie le contenu d'un vecteur dans un autre.
 #### vct_creadline
-> Lis jusqu'à 'c' sur un fd et renvoie velle-ci via la chaine contenu dans le vecteur passé en paramètre.
+> Lis jusqu'à 'c' sur un fd et renvoie celle-ci via la chaine contenu dans le vecteur passé en paramètre.
 #### vct_cut
 > Supprime le dernier caractère d'un vecteur.
 #### vct_cutfrom
